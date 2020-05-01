@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://ccbirds.cn/ICnotes1/</loc>
+    <lastmod>2020-05-01</lastmod>
+  </url>  <url>
+    <loc>http://ccbirds.cn/blog-on-nanopi/</loc>
+    <lastmod>2020-05-01</lastmod>
+  </url>  <url>
     <loc>http://ccbirds.cn/hexo-blog-gitalk/</loc>
     <lastmod>2020-04-12</lastmod>
   </url>  <url>
@@ -8,9 +14,6 @@
     <lastmod>2020-04-12</lastmod>
   </url>  <url>
     <loc>http://ccbirds.cn/Paper-gadget-recommendation/</loc>
-    <lastmod>2020-04-12</lastmod>
-  </url>  <url>
-    <loc>http://ccbirds.cn/blog-on-nanopi/</loc>
     <lastmod>2020-04-12</lastmod>
   </url>  <url>
     <loc>http://ccbirds.cn/ubuntu-pycharm/</loc>

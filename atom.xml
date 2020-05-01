@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ccbirds.cn/"/>
-  <updated>2020-04-12T07:30:48.777Z</updated>
+  <updated>2020-05-01T13:36:19.975Z</updated>
   <id>http://ccbirds.cn/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>集成电路学习笔记（一）IC617工艺库安装</title>
+    <link href="http://ccbirds.cn/ICnotes1/"/>
+    <id>http://ccbirds.cn/ICnotes1/</id>
+    <published>2020-05-01T11:38:14.000Z</published>
+    <updated>2020-05-01T13:36:19.975Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p>博主的博客网站<br>欢迎大家访问！</p><p><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p><hr><h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h3><hr><p>集成电路设计使用cadence virtuoso 作为开发环境。virtuoso的安装十分复杂，在此不对开发环境的安装过多阐述，大家可自行咸鱼或淘宝。本人使用IC617进行学习。</p><hr><h3 id="工艺库"><a href="#工艺库" class="headerlink" title="工艺库"></a>工艺库</h3><hr><p>工艺库是各工艺厂商为设计人员提供的，不同厂商的工艺库是不同，设计集成电路必须使用工艺库。工艺库的安装也比较简单，但工艺库 两种，CDB，和IOA。CDB是为IC5xx提供，OA是为IC6XX提供。咱们是IC617安装CDB的库稍稍麻烦一点，下面将分别介绍安装方法。</p><hr><h3 id="CDB库安装"><a href="#CDB库安装" class="headerlink" title="CDB库安装"></a>CDB库安装</h3><hr><a id="more"></a><p>下载smic18ee的库。<a href="https://lanzous.com/b0evko4gf" target="_blank" rel="noopener">https://lanzous.com/b0evko4gf</a></p><p>进入库所在目录，解压</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ tar -zxvf smic18ee_2P6M_20100810.tar.gz<br></code></pre></td></tr></table></figure><p>并将解压后的目录复制到设计目录，我是在用户home目录下，新建一个virtuoso目录，以后在这个目录进行设计 。将解压后的目录复制到~/virtuoso。启动IC617。使用命令icfb或者virtuoso。点<em>tools</em>，</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6171.png" alt></p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6172.png" alt></p><p>选择倒数第二个，<em>conversion toolbox</em>.</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6173.png" alt></p><p>选择第一个，<em>CDB to open access translator</em>.</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6175.png" alt></p><p>点<em>Browse</em>找到复制到virtuoso下工艺库文件目录。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6176.png" alt></p><p>点<em>ok</em></p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6177.png" alt></p><p>在右边的框里会有<em>smic18ee</em>，选中，一定要点一下，默认是不选中的。点<em>ok</em>。稍等一会。CIW这里会提示完成。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6178.png" alt></p><p>在virtuos目录下会多一个smic18ee的目录。打开<em>library  manager</em>会出现smic18ee的库。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6179.png" alt></p><p>到这里smic18ee的库安装成功了。</p><hr><h3 id="OA库安装"><a href="#OA库安装" class="headerlink" title="OA库安装"></a>OA库安装</h3><hr><p>将需要安装的库解压并移动到virtuoso下。下载地址。<a href="https://lanzous.com/ic5p21a" target="_blank" rel="noopener">https://lanzous.com/ic5p21a</a></p><p>OA库的安装，比较简单。打开virtuoso，打开<em>tools<em>下的</em>library path Editor</em></p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61710.png" alt></p><p>选中最下方的空白格。点<em>Edit</em> 。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61711.png" alt></p><p>选择<em>Add Library</em> </p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61712.png" alt></p><p>选择smic65这个文件夹，点进去。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61713.png" alt></p><p>选择右边框里的<em>smic65_OA<em>，点</em>ok</em></p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61714.png" alt></p><p>保存一下。打开<em>library  manager</em>就可以看到库了。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61715.png" alt></p><p>到这里OA库也安装完了。</p><hr><p>欢迎大家访问！</p><p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p><p>也可电邮我</p><p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;博主的博客网站&lt;br&gt;欢迎大家访问！&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://ccbirds.cn&quot;&gt;ccbirds.cn&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://ccbirds.github.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ccbirds.github.io&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;开发环境&quot;&gt;&lt;a href=&quot;#开发环境&quot; class=&quot;headerlink&quot; title=&quot;开发环境&quot;&gt;&lt;/a&gt;开发环境&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;集成电路设计使用cadence virtuoso 作为开发环境。virtuoso的安装十分复杂，在此不对开发环境的安装过多阐述，大家可自行咸鱼或淘宝。本人使用IC617进行学习。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;工艺库&quot;&gt;&lt;a href=&quot;#工艺库&quot; class=&quot;headerlink&quot; title=&quot;工艺库&quot;&gt;&lt;/a&gt;工艺库&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;工艺库是各工艺厂商为设计人员提供的，不同厂商的工艺库是不同，设计集成电路必须使用工艺库。工艺库的安装也比较简单，但工艺库 两种，CDB，和IOA。CDB是为IC5xx提供，OA是为IC6XX提供。咱们是IC617安装CDB的库稍稍麻烦一点，下面将分别介绍安装方法。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;CDB库安装&quot;&gt;&lt;a href=&quot;#CDB库安装&quot; class=&quot;headerlink&quot; title=&quot;CDB库安装&quot;&gt;&lt;/a&gt;CDB库安装&lt;/h3&gt;&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="集成电路设计" scheme="http://ccbirds.cn/categories/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+      <category term="cadence" scheme="http://ccbirds.cn/tags/cadence/"/>
+    
+      <category term="virtuoso" scheme="http://ccbirds.cn/tags/virtuoso/"/>
+    
+  </entry>
   
   <entry>
     <title>快速重装win10系统</title>
@@ -169,7 +204,7 @@
     <link href="http://ccbirds.cn/blog-on-nanopi/"/>
     <id>http://ccbirds.cn/blog-on-nanopi/</id>
     <published>2020-03-01T12:11:50.000Z</published>
-    <updated>2020-04-12T07:40:43.034Z</updated>
+    <updated>2020-05-01T13:00:43.000Z</updated>
     
     <content type="html"><![CDATA[<p>最近买了一个nanopi，里面运行的是Ubuntu，可以做很多事情，我便想到用来做我博客的服务器。这前我是把我的博客托管在Github上。Github在国内的速度还是比较慢的。而且以前有被墙过。</p><hr><p>在nanopi上安装nginx</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt install nginx<br></code></pre></td></tr></table></figure><a id="more"></a><p>编辑nginx的设置文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ vim /etc/nginx/nginx.conf<br></code></pre></td></tr></table></figure><p>在http里面加</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">server &#123;<br>                listen          80 default_server;<br>                server_name     ccbirds.cn;//自己的域名<br>                root            /home/fa/hexo-blog; //<span class="hljs-built_in">clone</span>下来的位置<br>                location / &#123;<br>                &#125;<br>        &#125;<br><br>        server &#123;<br>                listen          80;<br>                server_name     www.ccbirds.cn;<br>                <span class="hljs-built_in">return</span>          301 http://ccbirds.cn<span class="hljs-variable">$request_uri</span>;<br>        &#125;<br></code></pre></td></tr></table></figure><p>开启nginx服务</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo service nginx start  //启动命令<br>$ sudo service nginx stop   //停止命令<br>$ sudo service nginx restart  //重启命令<br></code></pre></td></tr></table></figure><p>如果报错，根据提示查看报错原因，</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo nginx -t  //查看配置文件是否有问题<br>$ ps -ef | grep nginx  //显示nginx的进程<br>$ sudo <span class="hljs-built_in">kill</span> -quit 14952  //杀死进程<br></code></pre></td></tr></table></figure><p>现在使用IP或者域名就可以访问了。</p><hr><p>可是每次更新博客都要手动clone一下吗？</p><p>网上有使用webhooks自动部署的方法，不过本人比较笨，没有弄好，感兴趣的可以试试，成功了记得告诉我一声。</p><p>我采用了比较笨的一种方法，每天定时删除hexo-log，定时重新clone一次。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ crontab -e <br>//在最后加上两句<br>0 0 * * * sudo rm -rf /home/fa/hexo-blog  //每天零点删除hexo-blog<br>5 0 * * * sudo git <span class="hljs-built_in">clone</span> https://github.com/ccbirds/ccbirds.github.io.git /home/fa/hexo-blog  //每天零点五分 重新<span class="hljs-built_in">clone</span><br>$ sudo service cron restart  //重启cron<br>$ service cron restart<br></code></pre></td></tr></table></figure><p>五个* * * * *<br>对应的分别是 分 时 天 月 周</p><p>不是很完美，先这样吧。</p><hr><p>遇到的问题：</p><p>启动nginx时，报错，80端口已经被占用，看了一下进程，发现是nginx自己占用了80端口。使用nginx -t 看一下问题，是/etc/nginx/sites-enabled/default这个也在使用80端口，把这里的80改成其他端口就没有问题了</p><hr><p>欢迎大家访问！</p><p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>]]></content>
     
