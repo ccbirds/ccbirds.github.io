@@ -35,46 +35,42 @@
     var CONFIG = {"hostname":"ccbirds.cn","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"您搜索的${query}我们暂时还没有哦","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="本文主要记录在IC617中原理图的绘制和schematic的使用方法。  新建library 要画设计自己的集成电路，需要建一个自己的库，方便对自己设计文件的管理。 打开library manager，file 下NEW下Library">
+  <meta name="description" content="本文主要记录使用ADE进行仿真的过程。  搭建仿真测试电路 新建一个Cell，填加画好的反相器symbol，如下图所示。  仿真，需要填加电源和信号源，（也可以不加电源和信号源，方法在后面会介绍）。电源和信号源，在analoglib库中，这里面的器都 是理想器件，是不能layout的。电源的cell名为-vdc，电源的电源在下面的DC voltage修改，在这里设置为3.3V，大家根据自己情况设置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="集成电路学习笔记（二）基于IC617反相器设计之原理图绘制">
-<meta property="og:url" content="http://ccbirds.cn/ICnotes21/index.html">
+<meta property="og:url" content="http://ccbirds.cn/ICnotes22/index.html">
 <meta property="og:site_name" content="ccbirds blog">
-<meta property="og:description" content="本文主要记录在IC617中原理图的绘制和schematic的使用方法。  新建library 要画设计自己的集成电路，需要建一个自己的库，方便对自己设计文件的管理。 打开library manager，file 下NEW下Library">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a1.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a2.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a3.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a4.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a6.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a7.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a8.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a9.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a10.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_A11.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a12.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a13.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a14.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a15.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a16.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a17.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a18.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a19.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a20.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a21.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a22.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a23.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a24.png">
-<meta property="article:published_time" content="2020-05-01T23:50:18.000Z">
-<meta property="article:modified_time" content="2020-05-02T01:41:29.061Z">
+<meta property="og:description" content="本文主要记录使用ADE进行仿真的过程。  搭建仿真测试电路 新建一个Cell，填加画好的反相器symbol，如下图所示。  仿真，需要填加电源和信号源，（也可以不加电源和信号源，方法在后面会介绍）。电源和信号源，在analoglib库中，这里面的器都 是理想器件，是不能layout的。电源的cell名为-vdc，电源的电源在下面的DC voltage修改，在这里设置为3.3V，大家根据自己情况设置">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade1.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ADE2.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade3.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade4.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade5.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade6.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade7.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade8.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade9.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade10.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade11.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade12.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade13.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade14.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade15.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade16.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade17.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade18.png">
+<meta property="article:published_time" content="2020-05-03T01:14:12.000Z">
+<meta property="article:modified_time" content="2020-05-03T01:19:32.000Z">
 <meta property="article:author" content="ccbirds">
 <meta property="article:tag" content="cadence">
 <meta property="article:tag" content="virtuoso">
 <meta property="article:tag" content="原理图">
 <meta property="article:tag" content="schmetic">
+<meta property="article:tag" content="ADE仿真">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a1.png">
+<meta name="twitter:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade1.png">
 
-<link rel="canonical" href="http://ccbirds.cn/ICnotes21/">
+<link rel="canonical" href="http://ccbirds.cn/ICnotes22/">
 
 
 <script id="page-configurations">
@@ -259,7 +255,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://ccbirds.cn/ICnotes21/">
+    <link itemprop="mainEntityOfPage" href="http://ccbirds.cn/ICnotes22/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -283,7 +279,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-05-02 07:50:18 / 修改时间：09:41:29" itemprop="dateCreated datePublished" datetime="2020-05-02T07:50:18+08:00">2020-05-02</time>
+              <time title="创建时间：2020-05-03 09:14:12 / 修改时间：09:19:32" itemprop="dateCreated datePublished" datetime="2020-05-03T09:14:12+08:00">2020-05-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -296,7 +292,7 @@
             </span>
 
           
-            <span id="/ICnotes21/" class="post-meta-item leancloud_visitors" data-flag-title="集成电路学习笔记（二）基于IC617反相器设计之原理图绘制" title="阅读次数">
+            <span id="/ICnotes22/" class="post-meta-item leancloud_visitors" data-flag-title="集成电路学习笔记（二）基于IC617反相器设计之原理图绘制" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -311,8 +307,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/ICnotes21/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="ICnotes21/" itemprop="commentCount"></span>
+    <a title="disqus" href="/ICnotes22/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="ICnotes22/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -325,8 +321,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/ICnotes21/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/ICnotes21/" itemprop="commentCount"></span>
+    <a title="valine" href="/ICnotes22/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/ICnotes22/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -341,131 +337,51 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <hr>
-<p>本文主要记录在IC617中原理图的绘制和schematic的使用方法。</p>
+        <p>本文主要记录使用ADE进行仿真的过程。</p>
 <hr>
-<h3 id="新建library"><a href="#新建library" class="headerlink" title="新建library"></a>新建library</h3><hr>
-<p>要画设计自己的集成电路，需要建一个自己的库，方便对自己设计文件的管理。</p>
-<p>打开<em>library manager<em>，</em>file</em> 下<em>NEW<em>下</em>Library</em></p>
+<h3 id="搭建仿真测试电路"><a href="#搭建仿真测试电路" class="headerlink" title="搭建仿真测试电路"></a>搭建仿真测试电路</h3><hr>
+<p>新建一个Cell，填加画好的反相器symbol，如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade1.png" alt></p>
+<p>仿真，需要填加电源和信号源，（也可以不加电源和信号源，方法在后面会介绍）。电源和信号源，在analoglib库中，这里面的器都 是理想器件，是不能layout的。电源的cell名为-<strong>vdc</strong>，电源的电源在下面的<strong>DC voltage</strong>修改，在这里设置为3.3V，大家根据自己情况设置。加完电源后，需要要加一个<strong>gnd</strong>，gnd没有参数。</p>
 <a id="more"></a>
 
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a1.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a2.png" alt></p>
-<p>选择库的保存路径，一般默认即可，并在<em>name<em>中填入自己库的名字。点</em>ok</em></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a3.png" alt></p>
-<p>弹出<em>Technology File for New Library</em> 窗口，选择第三个<em>Attach to an existing technology library</em> ，点<em>ok</em></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a4.png" alt></p>
-<p>选择<em>smic18ee</em>工艺库，点<em>ok</em>。在<em>library manager</em>中就可以看见自己的库了。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a6.png" alt></p>
-<p>现在自己的库是空的，需要自己新建<em>cell</em>。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ADE2.png" alt></p>
+<p>加完电源，加信号源。<strong>vpulse</strong>，这是一个脉冲信号，额<strong>voltage1</strong>和<strong>voltage2</strong>两电压，代表脉冲高低电平的电压，<strong>period</strong>是周期，不是频率！！！<strong>Pulse width</strong>是脉冲宽度。大家根据自己情况设置。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade3.png" alt></p>
+<p>填加完电源和信号源，连线，如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade4.png" alt></p>
+<p>可以给线填加一个label。使用快捷键<strong>l</strong>，</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade5.png" alt></p>
+<p>在<strong>names</strong>里写入线的名字。之后鼠标放到原理图上，选择需要标记的线，点一下。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade6.png" alt></p>
+<p>到这里，仿真测试环境搭建完成。</p>
 <hr>
-<h3 id="新建cell"><a href="#新建cell" class="headerlink" title="新建cell"></a>新建cell</h3><hr>
-<p>在<em>library manager</em>中<em>file</em>菜单<em>NEW</em>选择<em>cell View</em>。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a7.png" alt></p>
-<p>在<em>Cell<em>里填入自己cell的名字,在</em>Type<em>里选择</em>schematic</em>.点<em>ok</em>，弹出原理图绘制窗口。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a8.png" alt></p>
-<hr>
-<h3 id="反相器原理图绘制"><a href="#反相器原理图绘制" class="headerlink" title="反相器原理图绘制"></a>反相器原理图绘制</h3><hr>
-<p>说一下常用快捷键</p>
-<table>
-<thead>
-<tr>
-<th align="center">快捷键</th>
-<th align="center">作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">i</td>
-<td align="center">放置器件</td>
-</tr>
-<tr>
-<td align="center">p</td>
-<td align="center">放置Pin</td>
-</tr>
-<tr>
-<td align="center">l</td>
-<td align="center">加标签</td>
-</tr>
-<tr>
-<td align="center">c</td>
-<td align="center">复制</td>
-</tr>
-<tr>
-<td align="center">m</td>
-<td align="center">移动</td>
-</tr>
-<tr>
-<td align="center">w</td>
-<td align="center">画电气线</td>
-</tr>
-<tr>
-<td align="center">shift+x</td>
-<td align="center">save&amp;check</td>
-</tr>
-<tr>
-<td align="center">q</td>
-<td align="center">查看与修改器件属性</td>
-</tr>
-</tbody></table>
-<p>点原理图空白处，按快捷键<em>i</em></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a9.png" alt></p>
-<p>弹出<em>Add Instance</em> 窗口，点<em>Browes</em></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a10.png" alt></p>
-<p>会弹出<em>library manager</em>窗口，选择smic18ee的库并选择mosfets类，如果没有<em>Category</em>这一栏，在左上角<em>Show Categories</em>前面的方框里打勾。</p>
-<p>选择<em>p33e2r<em>，其中</em>p<em>代表PMOS，</em>33<em>代表3.3V电压，</em>18<em>代表1.8电压 ，</em>50</em> 代表5V电压，<em>155</em>代表15V电压 。NMOS的<em>nz</em>代表低阈值电压。我习惯用3.3V。大家可根据自己情况选择MOS。</p>
-<p>选中后，双击<em>View<em>栏的</em>symbol</em></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_A11.png" alt></p>
-<p>器件参数设置，在这里，我们需要修改<em>Length</em>和<em>Total Width</em>，宽长可根据自己需要修改，也可不修改。我常设置<em>Length</em>为1u，可减小沟道长度调制效应，PMOS的宽长比是NMOS的2.5倍左右，因为PMOS是空穴导电，NMOS是电子导电。其他参数，会在后面需要的时候介绍。</p>
-<p>修改完成后，把鼠标放到原理图窗口，会有一个随鼠标动的MOS，选择一个位置，点一下，就可以放置了。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a12.png" alt></p>
-<p>随后放置Nmos，</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a13.png" alt></p>
-<p>可以直接在<em>Cell</em>里，把<em>p</em>改成<em>n</em>就行。也可以按<em>PMOS</em>的选择方式，选择。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a14.png" alt></p>
-<p>根据自己需要修改宽长比。找位置放置，放置完成后按<em>esc</em></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a15.png" alt></p>
-<p>下面放置PIN，按快捷键<em>p</em>，</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a16.png" alt></p>
-<p>弹出<em>create Pin<em>窗口，</em>Names<em>填入Pin的名字，</em>Direction<em>填入数据方向，</em>Signal Type<em>填入pin类型，这里一般不需要管，它会自己设置好的。放置四个pin。放置完成后，按</em>ESC</em></p>
-<table>
-<thead>
-<tr>
-<th align="center">name</th>
-<th align="center">direction</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">out</td>
-<td align="center">output</td>
-</tr>
-<tr>
-<td align="center">in</td>
-<td align="center">input</td>
-</tr>
-<tr>
-<td align="center">vcc</td>
-<td align="center">inputoutput</td>
-</tr>
-<tr>
-<td align="center">gnd</td>
-<td align="center">inputoutput</td>
-</tr>
-</tbody></table>
-<p>放置完成如下图所示。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a17.png" alt></p>
-<p>下面开始连线，按快捷键<em>w</em>，开始连线。要注意MOS衬底的连接。连接完成如下图所示。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a18.png" alt></p>
-<p>按快捷键<em>shift + x</em>检查和保存。无错误，会在<em>CIW</em>中提示，保存完成。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a19.png" alt></p>
-<p>下面我们来生成symbol，方便以后在其他设计中调取使用。选择<strong>create</strong>菜单，之后 依次选择<strong>cellview</strong>，<strong>from cellview</strong></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a20.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a21.png" alt></p>
-<p>不需要修改，点<strong>ok</strong>即可，</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a22.png" alt></p>
-<p>在上下左右放置pin，可根据自己需要修改放置位置，其他参数不需要修改。点<em>ok</em>。可得到下图的symbol，在<em>library manager</em>中也可看到。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a23.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/inv_a24.png" alt></p>
-<p>到这里，反相器的原理图绘制完成了。</p>
+<h3 id="开始仿真"><a href="#开始仿真" class="headerlink" title="开始仿真"></a>开始仿真</h3><hr>
+<p>打开ADE仿真环境。<strong>launch</strong>-&gt;<strong>ADE L</strong></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade7.png" alt></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade8.png" alt></p>
+<p>打开ADE后，选择<strong>setup</strong>下<strong>model libraries</strong></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade9.png" alt></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade10.png" alt></p>
+<p>在这里，已经自动填加好了，如果没有，需要自己手动填加，<strong>tt</strong>是普通模式。仿真库一般在./model/spectre下。设置完点<strong>ok</strong>即可。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade11.png" alt></p>
+<p>设置仿真类型，选择<strong>analyses</strong>下的<strong>choose</strong>，这次以瞬态仿真，记录ADE的使用，其他的仿真类型，以后分加别介绍。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade12.png" alt></p>
+<p><strong>stop time</strong>填<strong>5u</strong>，咱们设置的信号源周期是<strong>1u</strong>，咱们观察5 个周期。<strong>Enable</strong>后面的框打勾。点<strong>ok</strong>。</p>
+<p><strong>ouput</strong>下的<strong>to be plotted</strong>下的<strong>select on design</strong>。在原理图中选择看的电压和电流。看电压，选择线，看电流选择器件端子。我们看下输入和输出波形。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade13.png" alt></p>
+<p>选择后线会变色，器件端子会自动画个圈。全部选择完后，按下<strong>ESC</strong></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade14.png" alt></p>
+<p>点右侧的绿色的开始按钮，开始仿真。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade15.png" alt></p>
+<p>会弹出一人框，显示仿真信息，如果有错误，也会在这里显示 。仿真结果如下图。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade16.png" alt></p>
+<p>点左侧的<strong>vis</strong>列的小眼睛可以隐藏或显示相应的波形。</p>
+<p>可以看到out是in的反相。则反相器设计成功。</p>
+<p>到这，仿真就完成了，但每次打开都要设置这么多吗？我们可以把仿真设置保存下来。选择<strong>session</strong>-&gt;<strong>save state</strong></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade17.png" alt></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/ade18.png" alt></p>
+<p>在<strong>save as</strong>这里，可以自己定义名字。之后 点<strong>ok</strong>就可以保存了，下次打开ADE，选择<strong>load state</strong>就可以加载 这次保存的设置。</p>
 <hr>
 <p>欢迎大家访问！</p>
 <p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
@@ -514,6 +430,7 @@
               <a href="/tags/virtuoso/" rel="tag"><i class="fa fa-tag"></i> virtuoso</a>
               <a href="/tags/%E5%8E%9F%E7%90%86%E5%9B%BE/" rel="tag"><i class="fa fa-tag"></i> 原理图</a>
               <a href="/tags/schmetic/" rel="tag"><i class="fa fa-tag"></i> schmetic</a>
+              <a href="/tags/ADE%E4%BB%BF%E7%9C%9F/" rel="tag"><i class="fa fa-tag"></i> ADE仿真</a>
           </div>
 
         
@@ -522,13 +439,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/ICnotes1/" rel="prev" title="集成电路学习笔记（一）IC617工艺库安装">
-      <i class="fa fa-chevron-left"></i> 集成电路学习笔记（一）IC617工艺库安装
+    <a href="/ICnotes21/" rel="prev" title="集成电路学习笔记（二）基于IC617反相器设计之原理图绘制">
+      <i class="fa fa-chevron-left"></i> 集成电路学习笔记（二）基于IC617反相器设计之原理图绘制
     </a></div>
-      <div class="post-nav-item">
-    <a href="/ICnotes22/" rel="next" title="集成电路学习笔记（二）基于IC617反相器设计之原理图绘制">
-      集成电路学习笔记（二）基于IC617反相器设计之原理图绘制 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -608,7 +522,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建library"><span class="nav-number">1.</span> <span class="nav-text">新建library</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建cell"><span class="nav-number">2.</span> <span class="nav-text">新建cell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反相器原理图绘制"><span class="nav-number">3.</span> <span class="nav-text">反相器原理图绘制</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建仿真测试电路"><span class="nav-number">1.</span> <span class="nav-text">搭建仿真测试电路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始仿真"><span class="nav-number">2.</span> <span class="nav-text">开始仿真</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -773,8 +687,8 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "http://ccbirds.cn/ICnotes21/";
-    this.page.identifier = "ICnotes21/";
+    this.page.url = "http://ccbirds.cn/ICnotes22/";
+    this.page.identifier = "ICnotes22/";
     this.page.title = "集成电路学习笔记（二）基于IC617反相器设计之原理图绘制";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
