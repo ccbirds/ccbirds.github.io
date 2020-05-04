@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>[Hexo] Theme BeanTech</title>
+    <url>/Theme-BeanTech/</url>
+    <content><![CDATA[<blockquote>
+<p>Ported Theme of <a href="https://github.com/Huxpro/huxpro.github.io" target="_blank" rel="noopener">Hux Blog</a>, Thank <a href="https://github.com/Huxpro" target="_blank" rel="noopener">Huxpro</a> for designing such a flawless theme.</p>
+<p>This BeanTech theme created by <a href="http://beantech.org" target="_blank" rel="noopener">YuHsuan</a> modified from the original Porter <a href="http://kaijun.rocks/hexo-theme-huxblog/" target="_blank" rel="noopener">Kaijun</a></p>
+</blockquote>
+<h1 id="Live-Demo"><a href="#Live-Demo" class="headerlink" title="Live Demo"></a><a href="http://beantech.org" target="_blank" rel="noopener">Live Demo</a></h1><hr>
+<p><img src="http://beantech.org/img/beantech-desktop.png" alt="BeanTech Desktop"></p>
+<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><hr>
+<p>I publish the whole project for your convenience, so you can just follow the instruction down below, then you can easily customiz your own blog!</p>
+<p>Let’s begin!!!</p>
+<h2 id="Init"><a href="#Init" class="headerlink" title="Init"></a>Init</h2><hr>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/YenYuHsuan/hexo-theme-beantech.git ./hexo-beantech<br><span class="hljs-built_in">cd</span> hexo-beantech<br>npm install<br></code></pre></td></tr></table></figure>
+
+<h2 id="Modify"><a href="#Modify" class="headerlink" title="Modify"></a>Modify</h2><hr>
+<p>Modify <code>_config.yml</code> file with your own info.<br>Especially the section:</p>
+<h3 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h3><p>Replace to your own repo!</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/&lt;yourAccount&gt;/&lt;repo&gt;</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">&lt;your-branch&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Sidebar-settings"><a href="#Sidebar-settings" class="headerlink" title="Sidebar settings"></a>Sidebar settings</h3><p>Copy your avatar image to <code>&lt;root&gt;/img/</code> and modify the <code>_config.yml</code>:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">sidebar:</span> <span class="hljs-literal">true</span>    <span class="hljs-comment"># whether or not using Sidebar.</span><br><span class="hljs-attr">sidebar-about-description:</span> <span class="hljs-string">"&lt;your description&gt;"</span><br><span class="hljs-attr">sidebar-avatar:</span> <span class="hljs-string">img/&lt;your</span> <span class="hljs-string">avatar</span> <span class="hljs-string">path&gt;</span><br></code></pre></td></tr></table></figure>
+<p>and activate your personal widget you like</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">widgets:</span>         <span class="hljs-comment"># here are widget you can use, you can comment out</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">featured-tags</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">short-about</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">recent-posts</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">friends-blog</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">archive</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">category</span><br></code></pre></td></tr></table></figure>
+<p>if you want to add sidebar widget, please add at <code>layout/_widget</code>.</p>
+<h3 id="Signature-Setup"><a href="#Signature-Setup" class="headerlink" title="Signature Setup"></a>Signature Setup</h3><p>Copy your signature image to <code>&lt;root&gt;/img/signature</code> and modify the <code>_config.yml</code>:</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">signature:</span> <span class="hljs-literal">true</span>   <span class="hljs-comment"># show signature</span><br><span class="hljs-attr">signature-img:</span> <span class="hljs-string">img/signature/&lt;your-signature-ID&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="Go-to-top-icon-Setup"><a href="#Go-to-top-icon-Setup" class="headerlink" title="Go to top icon Setup"></a>Go to top icon Setup</h3><p>My icon is using iron man, you can change to your own icon at <code>css/image</code>.</p>
+<h3 id="Post-tag"><a href="#Post-tag" class="headerlink" title="Post tag"></a>Post tag</h3><p>You can decide to show post tags or not.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">home_posts_tag:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+<p><img src="/.cn//home_posts_tag-true.png" alt="home_posts_tag-true"></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">home_posts_tag:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<p><img src="/.cn//home_posts_tag-false.png" alt="home_posts_tag-false"></p>
+<h3 id="Markdown-render"><a href="#Markdown-render" class="headerlink" title="Markdown render"></a>Markdown render</h3><p>My markdown render engine plugin is <a href="https://github.com/celsomiranda/hexo-renderer-markdown-it" target="_blank" rel="noopener">hexo-renderer-markdown-it</a>.</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># Markdown-it config</span><br><span class="hljs-comment">## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki</span><br><span class="hljs-attr">markdown:</span><br>  <span class="hljs-attr">render:</span><br>    <span class="hljs-attr">html:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">xhtmlOut:</span> <span class="hljs-literal">false</span><br>    <span class="hljs-attr">breaks:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">linkify:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">typographer:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">quotes:</span> <span class="hljs-string">'“”‘’'</span><br></code></pre></td></tr></table></figure>
+<p>and if you want to change the header anchor ‘ℬ’, you can go to <code>layout/post.ejs</code> to change it.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">async</span>(<span class="hljs-string">"https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>        anchors.options = &#123;<br>          <span class="hljs-attr">visible</span>: <span class="hljs-string">'hover'</span>,<br>          <span class="hljs-attr">placement</span>: <span class="hljs-string">'left'</span>,<br>          <span class="hljs-attr">icon</span>: ℬ <span class="hljs-comment">// this is the header anchor "unicode" icon</span><br>        &#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="Hexo-Basics"><a href="#Hexo-Basics" class="headerlink" title="Hexo Basics"></a>Hexo Basics</h2><hr>
+<p>Some hexo command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo new post <span class="hljs-string">"&lt;post name&gt;"</span> <span class="hljs-comment"># you can change post to another layout if you want</span><br>hexo clean &amp;&amp; hexo generate <span class="hljs-comment"># generate the static file</span><br>hexo server <span class="hljs-comment"># run hexo in local environment</span><br>hexo deploy <span class="hljs-comment"># hexo will push the static files automatically into the specific branch(gh-pages) of your repo!</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="Have-fun"><a href="#Have-fun" class="headerlink" title="Have fun ^_^"></a>Have fun ^_^</h1><hr>
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- Place this tag where you want the button to render. -->
+
+<p>Please <a class="github-button" href="https://github.com/YenYuHsuan/hexo-theme-beantech" target="_blank" rel="noopener" data-icon="octicon-star" aria-label="Star YenYuHsuan/hexo-theme-beantech on GitHub">Star</a> this Project if you like it! <a class="github-button" href="https://github.com/YenYuHsuan" target="_blank" rel="noopener" aria-label="Follow @YenYuHsuan on GitHub">Follow</a> would also be appreciated!<br>Peace!</p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nanopi neo2 black 上电使用</title>
+    <url>/nanopi-neo2-black-power-on/</url>
+    <content><![CDATA[<p>最近上手一个小东西，nanopi neo2 black，非常精致，可以运行linux core ，可以运行Ubuntu 内核，感兴趣可以淘宝，或者<a href="http://nanopi.org/" target="_blank" rel="noopener">官网</a>看看。</p>
+<hr>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi%E4%B8%801.png" alt></p>
+<a id="more"></a>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi%E4%B8%802.jpg" alt><br>我买这个板子的时候，赠送了16GB的TF卡，里面有系统，所以我没有编译系统，关于系统的制作可以参考官方<a href="http://wiki.friendlyarm.com/wiki/index.php/NanoPi_NEO2_Black#Configure_System_with_npi-config" target="_blank" rel="noopener">文档</a></p>
+<hr>
+<h3 id="1-通过ssh连接"><a href="#1-通过ssh连接" class="headerlink" title="1. 通过ssh连接"></a>1. 通过ssh连接</h3><hr>
+<p>登录方式有有三种：串口、HDMI、ssh<br>串口需要使用debug UART引脚，然而板子出厂时这个引脚是不焊的，所以暂时没有办法使用串口登录。<br>HDMI是使用提供的模块，也是通过串口debug UART连接，所以暂时也无法使用。<br>只能使用SSH登录。<br>由于身边没有路由器，无法使用有线网络。只能使用无线网卡连接网络。<br>插上网卡，接上键盘，没有显示输出，只能盲打（大家如果能使用有线，nanopi会直接获取ip，就可以跳过这步了）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ su root<br>fa<br>$ nmcli r wifi on //打开wifi<br>$ nmcli dev //显示网络设备，无线网卡是wlan0<br>$ nmcli dev wifi //扫描wifi信号<br>$ nmcli dev wifi connect <span class="hljs-string">"SSID"</span> password <span class="hljs-string">"PASSWORD"</span> ifname wlan0 //连接无线网，SSID是无线网名称，PASSWORD是密码<br></code></pre></td></tr></table></figure>
+<p>等一会就会从oled上看到IP了，使用xshell能过ssh就可以登录了，登录名pi，密码pi。root的密码fa。<br><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi%E4%B8%803.png" alt><br>这样就连接成功了。</p>
+<hr>
+<h3 id="2-更新"><a href="#2-更新" class="headerlink" title="2. 更新"></a>2. 更新</h3><hr>
+<p>更改更新源为国内源</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo vim /etc/apt/sources.list<br>//加入以下源<br>deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main multiverse restricted universe<br>deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-backports main multiverse restricted universe<br>deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-proposed main multiverse restricted universe<br>deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-security main multiverse restricted universe<br>deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-updates main multiverse restricted universe<br>deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main multiverse restricted universe<br>deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-backports main multiverse restricted universe<br>deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-proposed main multiverse restricted universe<br>deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-security main multiverse restricted universe<br>deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-updates main multiverse restricted universe<br></code></pre></td></tr></table></figure>
+<p>有点慢，大家耐心等待（也可以是我的网慢）<br>执行更新命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt-get update<br>$ sudo apt-get upgrade<br></code></pre></td></tr></table></figure>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi%E4%B8%804.png" alt></p>
+<hr>
+<h3 id="3-测网速"><a href="#3-测网速" class="headerlink" title="3.测网速"></a>3.测网速</h3><hr>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt install speedtest-cli //安装<br>$ sudo speedtest-cli //测试，有时可能测不出来<br>Retrieving speedtest.net configuration...<br>Retrieving speedtest.net server list...<br>Testing from China Mobile Guangdong (223.104.236.97)...<br>Selecting best server based on latency...<br>Hosted by ChinaMobile, Liaoning Branch,Dalian (Dalian) [247.24 km]: 75.654 ms<br>Testing download speed........................................<br>Download: 2.42 Mbit/s<br>Testing upload speed..................................................<br>Upload: 0.76 Mbit/s<br>我是热点连接，手机又被限速了所以很慢<br></code></pre></td></tr></table></figure>
+<p>我是热点连接，手机又被限速了所以很慢</p>
+<hr>
+<p>大家可以为所欲为了，哈哈。</p>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+]]></content>
+      <categories>
+        <category>nanopi</category>
+      </categories>
+      <tags>
+        <tag>nanopi</tag>
+        <tag>ubuntu</tag>
+        <tag>SSH</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nanopi_neo2_black_防烧屏设置</title>
     <url>/nanopi_neo2_black_Anti-burn_screen/</url>
     <content><![CDATA[<p>oled长时间点亮一个点，付出现烧屏现象，为了避免烧屏。我们将oled设置为闪屏。</p>
@@ -128,97 +219,6 @@
       </tags>
   </entry>
   <entry>
-    <title>[Hexo] Theme BeanTech</title>
-    <url>/Theme-BeanTech/</url>
-    <content><![CDATA[<blockquote>
-<p>Ported Theme of <a href="https://github.com/Huxpro/huxpro.github.io" target="_blank" rel="noopener">Hux Blog</a>, Thank <a href="https://github.com/Huxpro" target="_blank" rel="noopener">Huxpro</a> for designing such a flawless theme.</p>
-<p>This BeanTech theme created by <a href="http://beantech.org" target="_blank" rel="noopener">YuHsuan</a> modified from the original Porter <a href="http://kaijun.rocks/hexo-theme-huxblog/" target="_blank" rel="noopener">Kaijun</a></p>
-</blockquote>
-<h1 id="Live-Demo"><a href="#Live-Demo" class="headerlink" title="Live Demo"></a><a href="http://beantech.org" target="_blank" rel="noopener">Live Demo</a></h1><hr>
-<p><img src="http://beantech.org/img/beantech-desktop.png" alt="BeanTech Desktop"></p>
-<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><hr>
-<p>I publish the whole project for your convenience, so you can just follow the instruction down below, then you can easily customiz your own blog!</p>
-<p>Let’s begin!!!</p>
-<h2 id="Init"><a href="#Init" class="headerlink" title="Init"></a>Init</h2><hr>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/YenYuHsuan/hexo-theme-beantech.git ./hexo-beantech<br><span class="hljs-built_in">cd</span> hexo-beantech<br>npm install<br></code></pre></td></tr></table></figure>
-
-<h2 id="Modify"><a href="#Modify" class="headerlink" title="Modify"></a>Modify</h2><hr>
-<p>Modify <code>_config.yml</code> file with your own info.<br>Especially the section:</p>
-<h3 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h3><p>Replace to your own repo!</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/&lt;yourAccount&gt;/&lt;repo&gt;</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">&lt;your-branch&gt;</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="Sidebar-settings"><a href="#Sidebar-settings" class="headerlink" title="Sidebar settings"></a>Sidebar settings</h3><p>Copy your avatar image to <code>&lt;root&gt;/img/</code> and modify the <code>_config.yml</code>:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">sidebar:</span> <span class="hljs-literal">true</span>    <span class="hljs-comment"># whether or not using Sidebar.</span><br><span class="hljs-attr">sidebar-about-description:</span> <span class="hljs-string">"&lt;your description&gt;"</span><br><span class="hljs-attr">sidebar-avatar:</span> <span class="hljs-string">img/&lt;your</span> <span class="hljs-string">avatar</span> <span class="hljs-string">path&gt;</span><br></code></pre></td></tr></table></figure>
-<p>and activate your personal widget you like</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">widgets:</span>         <span class="hljs-comment"># here are widget you can use, you can comment out</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">featured-tags</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">short-about</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">recent-posts</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">friends-blog</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">archive</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">category</span><br></code></pre></td></tr></table></figure>
-<p>if you want to add sidebar widget, please add at <code>layout/_widget</code>.</p>
-<h3 id="Signature-Setup"><a href="#Signature-Setup" class="headerlink" title="Signature Setup"></a>Signature Setup</h3><p>Copy your signature image to <code>&lt;root&gt;/img/signature</code> and modify the <code>_config.yml</code>:</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">signature:</span> <span class="hljs-literal">true</span>   <span class="hljs-comment"># show signature</span><br><span class="hljs-attr">signature-img:</span> <span class="hljs-string">img/signature/&lt;your-signature-ID&gt;</span><br></code></pre></td></tr></table></figure>
-<h3 id="Go-to-top-icon-Setup"><a href="#Go-to-top-icon-Setup" class="headerlink" title="Go to top icon Setup"></a>Go to top icon Setup</h3><p>My icon is using iron man, you can change to your own icon at <code>css/image</code>.</p>
-<h3 id="Post-tag"><a href="#Post-tag" class="headerlink" title="Post tag"></a>Post tag</h3><p>You can decide to show post tags or not.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">home_posts_tag:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
-<p><img src="/.cn//home_posts_tag-true.png" alt="home_posts_tag-true"></p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">home_posts_tag:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
-<p><img src="/.cn//home_posts_tag-false.png" alt="home_posts_tag-false"></p>
-<h3 id="Markdown-render"><a href="#Markdown-render" class="headerlink" title="Markdown render"></a>Markdown render</h3><p>My markdown render engine plugin is <a href="https://github.com/celsomiranda/hexo-renderer-markdown-it" target="_blank" rel="noopener">hexo-renderer-markdown-it</a>.</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># Markdown-it config</span><br><span class="hljs-comment">## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki</span><br><span class="hljs-attr">markdown:</span><br>  <span class="hljs-attr">render:</span><br>    <span class="hljs-attr">html:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">xhtmlOut:</span> <span class="hljs-literal">false</span><br>    <span class="hljs-attr">breaks:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">linkify:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">typographer:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">quotes:</span> <span class="hljs-string">'“”‘’'</span><br></code></pre></td></tr></table></figure>
-<p>and if you want to change the header anchor ‘ℬ’, you can go to <code>layout/post.ejs</code> to change it.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">async</span>(<span class="hljs-string">"https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>        anchors.options = &#123;<br>          <span class="hljs-attr">visible</span>: <span class="hljs-string">'hover'</span>,<br>          <span class="hljs-attr">placement</span>: <span class="hljs-string">'left'</span>,<br>          <span class="hljs-attr">icon</span>: ℬ <span class="hljs-comment">// this is the header anchor "unicode" icon</span><br>        &#125;;<br></code></pre></td></tr></table></figure>
-
-<h2 id="Hexo-Basics"><a href="#Hexo-Basics" class="headerlink" title="Hexo Basics"></a>Hexo Basics</h2><hr>
-<p>Some hexo command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo new post <span class="hljs-string">"&lt;post name&gt;"</span> <span class="hljs-comment"># you can change post to another layout if you want</span><br>hexo clean &amp;&amp; hexo generate <span class="hljs-comment"># generate the static file</span><br>hexo server <span class="hljs-comment"># run hexo in local environment</span><br>hexo deploy <span class="hljs-comment"># hexo will push the static files automatically into the specific branch(gh-pages) of your repo!</span><br></code></pre></td></tr></table></figure>
-
-<h1 id="Have-fun"><a href="#Have-fun" class="headerlink" title="Have fun ^_^"></a>Have fun ^_^</h1><hr>
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<!-- Place this tag where you want the button to render. -->
-
-<p>Please <a class="github-button" href="https://github.com/YenYuHsuan/hexo-theme-beantech" target="_blank" rel="noopener" data-icon="octicon-star" aria-label="Star YenYuHsuan/hexo-theme-beantech on GitHub">Star</a> this Project if you like it! <a class="github-button" href="https://github.com/YenYuHsuan" target="_blank" rel="noopener" aria-label="Follow @YenYuHsuan on GitHub">Follow</a> would also be appreciated!<br>Peace!</p>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Blog</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nanopi neo2 black 上电使用</title>
-    <url>/nanopi-neo2-black-power-on/</url>
-    <content><![CDATA[<p>最近上手一个小东西，nanopi neo2 black，非常精致，可以运行linux core ，可以运行Ubuntu 内核，感兴趣可以淘宝，或者<a href="http://nanopi.org/" target="_blank" rel="noopener">官网</a>看看。</p>
-<hr>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi%E4%B8%801.png" alt></p>
-<a id="more"></a>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi%E4%B8%802.jpg" alt><br>我买这个板子的时候，赠送了16GB的TF卡，里面有系统，所以我没有编译系统，关于系统的制作可以参考官方<a href="http://wiki.friendlyarm.com/wiki/index.php/NanoPi_NEO2_Black#Configure_System_with_npi-config" target="_blank" rel="noopener">文档</a></p>
-<hr>
-<h3 id="1-通过ssh连接"><a href="#1-通过ssh连接" class="headerlink" title="1. 通过ssh连接"></a>1. 通过ssh连接</h3><hr>
-<p>登录方式有有三种：串口、HDMI、ssh<br>串口需要使用debug UART引脚，然而板子出厂时这个引脚是不焊的，所以暂时没有办法使用串口登录。<br>HDMI是使用提供的模块，也是通过串口debug UART连接，所以暂时也无法使用。<br>只能使用SSH登录。<br>由于身边没有路由器，无法使用有线网络。只能使用无线网卡连接网络。<br>插上网卡，接上键盘，没有显示输出，只能盲打（大家如果能使用有线，nanopi会直接获取ip，就可以跳过这步了）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ su root<br>fa<br>$ nmcli r wifi on //打开wifi<br>$ nmcli dev //显示网络设备，无线网卡是wlan0<br>$ nmcli dev wifi //扫描wifi信号<br>$ nmcli dev wifi connect <span class="hljs-string">"SSID"</span> password <span class="hljs-string">"PASSWORD"</span> ifname wlan0 //连接无线网，SSID是无线网名称，PASSWORD是密码<br></code></pre></td></tr></table></figure>
-<p>等一会就会从oled上看到IP了，使用xshell能过ssh就可以登录了，登录名pi，密码pi。root的密码fa。<br><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi%E4%B8%803.png" alt><br>这样就连接成功了。</p>
-<hr>
-<h3 id="2-更新"><a href="#2-更新" class="headerlink" title="2. 更新"></a>2. 更新</h3><hr>
-<p>更改更新源为国内源</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo vim /etc/apt/sources.list<br>//加入以下源<br>deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main multiverse restricted universe<br>deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-backports main multiverse restricted universe<br>deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-proposed main multiverse restricted universe<br>deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-security main multiverse restricted universe<br>deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-updates main multiverse restricted universe<br>deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main multiverse restricted universe<br>deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-backports main multiverse restricted universe<br>deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-proposed main multiverse restricted universe<br>deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-security main multiverse restricted universe<br>deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-updates main multiverse restricted universe<br></code></pre></td></tr></table></figure>
-<p>有点慢，大家耐心等待（也可以是我的网慢）<br>执行更新命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt-get update<br>$ sudo apt-get upgrade<br></code></pre></td></tr></table></figure>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi%E4%B8%804.png" alt></p>
-<hr>
-<h3 id="3-测网速"><a href="#3-测网速" class="headerlink" title="3.测网速"></a>3.测网速</h3><hr>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt install speedtest-cli //安装<br>$ sudo speedtest-cli //测试，有时可能测不出来<br>Retrieving speedtest.net configuration...<br>Retrieving speedtest.net server list...<br>Testing from China Mobile Guangdong (223.104.236.97)...<br>Selecting best server based on latency...<br>Hosted by ChinaMobile, Liaoning Branch,Dalian (Dalian) [247.24 km]: 75.654 ms<br>Testing download speed........................................<br>Download: 2.42 Mbit/s<br>Testing upload speed..................................................<br>Upload: 0.76 Mbit/s<br>我是热点连接，手机又被限速了所以很慢<br></code></pre></td></tr></table></figure>
-<p>我是热点连接，手机又被限速了所以很慢</p>
-<hr>
-<p>大家可以为所欲为了，哈哈。</p>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-]]></content>
-      <categories>
-        <category>nanopi</category>
-      </categories>
-      <tags>
-        <tag>nanopi</tag>
-        <tag>ubuntu</tag>
-        <tag>SSH</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>nanopi neo2 black 音乐闹钟</title>
     <url>/nanopi-neo2-black-Musical-alarm-clock/</url>
     <content><![CDATA[<p>nanopi neo2 black 有音频接口，可以用它来放个音乐，折腾一下做个音乐闹钟吧。</p>
@@ -306,6 +306,55 @@
       </tags>
   </entry>
   <entry>
+    <title>ubuntu下将文件备份到github</title>
+    <url>/Back-up-files-to-github-under-ubuntu/</url>
+    <content><![CDATA[<p>将hexo博客目录备份到github，以防意外删除文件，这样也方便在其他设备上写博客</p>
+<hr>
+<h3 id="1-安装git"><a href="#1-安装git" class="headerlink" title="1. 安装git"></a>1. 安装git</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt-get install git<br></code></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="2-生成ssh-key"><a href="#2-生成ssh-key" class="headerlink" title="2.生成ssh key"></a>2.生成ssh key</h3><p>使用命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ ssh-keygen -t rsa -C “github username”<br></code></pre></td></tr></table></figure>
+<p>会生成下面三个文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">id_rsa  id_rsa.pub  known_hosts<br></code></pre></td></tr></table></figure>
+<h3 id="3-github-setting"><a href="#3-github-setting" class="headerlink" title="3.github setting"></a>3.github setting</h3><p>登录github，setting,左边有SSH and GPG keys 选项，点new<br>ssh key。title随便写，key 填写id_rsa.pub文件中的内容。<br>新建一个仓库用来备份。<br>测试ssh key是否成功</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ ssh -T git@github.com<br>Hi ccbirds! You<span class="hljs-string">'ve successfully authenticated, but GitHub does not provide shell access.</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="4-在需要备份的目录下初始化git"><a href="#4-在需要备份的目录下初始化git" class="headerlink" title="4.在需要备份的目录下初始化git"></a>4.在需要备份的目录下初始化git</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git init<br>Reinitialized existing Git repository <span class="hljs-keyword">in</span> /home/czq/blog/.git/<br></code></pre></td></tr></table></figure>
+<h3 id="5-设置git"><a href="#5-设置git" class="headerlink" title="5.设置git"></a>5.设置git</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git config user.name “github user name” <br>$ git config user.email “github email”<br>$ git config user.name //查看设置的name<br>$ git config user.email //查看设置的邮箱<br>$ git remote add origin https://github.com/ccbirds/hexo.git //github 仓库地址<br></code></pre></td></tr></table></figure>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/Github1.png" alt><br>如果显示origin已经存在,删除origin，并重新设置origin</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git remote rm origin <br>$ git remote add origin https://github.com/ccbirds/hexo.git<br></code></pre></td></tr></table></figure>
+<h3 id="6-添加文件"><a href="#6-添加文件" class="headerlink" title="6.添加文件"></a>6.添加文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git add test.txt //指定一个文件<br>$ git add .    //目录下的所有文件<br>$ git commit -m <span class="hljs-string">"2020-02-27"</span> //备注<br>$ git push origin master<br>Username <span class="hljs-keyword">for</span> <span class="hljs-string">'https://github.com'</span>: ccbirds //输入用户名<br>Password <span class="hljs-keyword">for</span> <span class="hljs-string">'https://ccbirds@github.com'</span>:  //输入密码，密码不会显示<br>Writing objects: 100% (3/3), 277 bytes | 277.00 KiB/s, <span class="hljs-keyword">done</span>.<br>Total 3 (delta 0), reused 0 (delta 0)<br>To https://github.com/ccbirds/hexo.git<br>   da79977..341a1a4  master -&gt; master<br></code></pre></td></tr></table></figure>
+<h3 id="这样就成功啦"><a href="#这样就成功啦" class="headerlink" title="这样就成功啦"></a>这样就成功啦</h3><p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+]]></content>
+      <categories>
+        <category>经验分享</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+        <tag>git</tag>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu中使用pycharm有些快捷键无法使用</title>
+    <url>/ubuntu-pycharm/</url>
+    <content><![CDATA[<p>问题描述：在使用pycharm过程中，ctrl+c,ctrl+v,ctrl+d等快捷键无法使用。</p>
+<p>解决办法：file-&gt;setting-&gt;Editor下面有一个Vim Emulation选项。</p>
+<a id="more"></a>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/pycharm.png" alt><br>将Handler一列中的vim全部改为IDE，点Apply。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/pycharm2.png" alt><br>这样，快捷键就可以正常使用啦。</p>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+]]></content>
+      <categories>
+        <category>经验分享</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+        <tag>python</tag>
+        <tag>pcharm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nanopi性能测试unixbench</title>
     <url>/nanopi-test/</url>
     <content><![CDATA[<p>入手nanopi不知道它的性能怎么样，下面我们来使用unixbench，对nanopi跑分测试一下</p>
@@ -328,6 +377,81 @@
       <tags>
         <tag>nanopi</tag>
         <tag>unixbench</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>将静态博客托管在nanopi上</title>
+    <url>/blog-on-nanopi/</url>
+    <content><![CDATA[<p>最近买了一个nanopi，里面运行的是Ubuntu，可以做很多事情，我便想到用来做我博客的服务器。这前我是把我的博客托管在Github上。Github在国内的速度还是比较慢的。而且以前有被墙过。</p>
+<hr>
+<p>在nanopi上安装nginx</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt install nginx<br></code></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>编辑nginx的设置文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ vim /etc/nginx/nginx.conf<br></code></pre></td></tr></table></figure>
+
+<p>在http里面加</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">server &#123;<br>                listen          80 default_server;<br>                server_name     ccbirds.cn;//自己的域名<br>                root            /home/fa/hexo-blog; //<span class="hljs-built_in">clone</span>下来的位置<br>                location / &#123;<br>                &#125;<br>        &#125;<br><br>        server &#123;<br>                listen          80;<br>                server_name     www.ccbirds.cn;<br>                <span class="hljs-built_in">return</span>          301 http://ccbirds.cn<span class="hljs-variable">$request_uri</span>;<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<p>开启nginx服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo service nginx start  //启动命令<br>$ sudo service nginx stop   //停止命令<br>$ sudo service nginx restart  //重启命令<br></code></pre></td></tr></table></figure>
+
+<p>如果报错，根据提示查看报错原因，</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo nginx -t  //查看配置文件是否有问题<br>$ ps -ef | grep nginx  //显示nginx的进程<br>$ sudo <span class="hljs-built_in">kill</span> -quit 14952  //杀死进程<br></code></pre></td></tr></table></figure>
+
+<p>现在使用IP或者域名就可以访问了。</p>
+<hr>
+<p>可是每次更新博客都要手动clone一下吗？</p>
+<p>网上有使用webhooks自动部署的方法，不过本人比较笨，没有弄好，感兴趣的可以试试，成功了记得告诉我一声。</p>
+<p>我采用了比较笨的一种方法，每天定时删除hexo-log，定时重新clone一次。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ crontab -e <br>//在最后加上两句<br>0 0 * * * sudo rm -rf /home/fa/hexo-blog  //每天零点删除hexo-blog<br>5 0 * * * sudo git <span class="hljs-built_in">clone</span> https://github.com/ccbirds/ccbirds.github.io.git /home/fa/hexo-blog  //每天零点五分 重新<span class="hljs-built_in">clone</span><br>$ sudo service cron restart  //重启cron<br>$ service cron restart<br></code></pre></td></tr></table></figure>
+
+<p>五个* * * * *<br>对应的分别是 分 时 天 月 周</p>
+<p>不是很完美，先这样吧。</p>
+<hr>
+<p>遇到的问题：</p>
+<p>启动nginx时，报错，80端口已经被占用，看了一下进程，发现是nginx自己占用了80端口。使用nginx -t 看一下问题，是/etc/nginx/sites-enabled/default这个也在使用80端口，把这里的80改成其他端口就没有问题了</p>
+<hr>
+<p>欢迎大家访问！</p>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+]]></content>
+      <categories>
+        <category>nanopi</category>
+      </categories>
+      <tags>
+        <tag>nanopi</tag>
+        <tag>博客托管</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>手机无线投屏win10</title>
+    <url>/Mobile-phone-wireless-projection-screen-win10/</url>
+    <content><![CDATA[<p>手机上屏幕小，看视频特别难受，并且有些软件没与PC版，应该怎么办?下面我来介绍一种方法，将手机屏幕投屏到电脑上。</p>
+<hr>
+<p>条件：1.装有win10的PC。<br>2. 手机具有无线投屏功能（现在大多数手机都有无线投屏功能，只是名字可能有些不同，下面一以荣耀V10手机为例给大家演示）</p>
+<a id="more"></a>
+<hr>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><hr>
+<h3 id="1-PC端"><a href="#1-PC端" class="headerlink" title="1.PC端"></a>1.PC端</h3><hr>
+<h4 id="使用搜索命令搜索“连接”"><a href="#使用搜索命令搜索“连接”" class="headerlink" title="使用搜索命令搜索“连接”"></a>使用搜索命令搜索“连接”</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F1.png" alt></p>
+<h4 id="打开连接应用，"><a href="#打开连接应用，" class="headerlink" title="打开连接应用，"></a>打开连接应用，</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F2.png" alt></p>
+<h4 id="记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。"><a href="#记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。" class="headerlink" title="记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。"></a>记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。</h4><hr>
+<h3 id="2-手机端"><a href="#2-手机端" class="headerlink" title="2.手机端"></a>2.手机端</h3><hr>
+<h4 id="打开设置"><a href="#打开设置" class="headerlink" title="打开设置"></a>打开设置</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F3.jpg" alt></p>
+<h4 id="选择设备连接"><a href="#选择设备连接" class="headerlink" title="选择设备连接"></a>选择设备连接</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F4.jpg" alt></p>
+<h4 id="选择无线投屏功能"><a href="#选择无线投屏功能" class="headerlink" title="选择无线投屏功能"></a>选择无线投屏功能</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F5.jpg" alt></p>
+<h4 id="需要打开WLAN，它会搜索可使用设备。"><a href="#需要打开WLAN，它会搜索可使用设备。" class="headerlink" title="需要打开WLAN，它会搜索可使用设备。"></a>需要打开WLAN，它会搜索可使用设备。</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F6.jpg" alt><br><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F7.jpg" alt></p>
+<h4 id="选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。"><a href="#选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。" class="headerlink" title="选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。"></a>选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F8.png" alt></p>
+<h4 id="点右上角按钮，可以全屏。"><a href="#点右上角按钮，可以全屏。" class="headerlink" title="点右上角按钮，可以全屏。"></a>点右上角按钮，可以全屏。</h4><hr>
+<p>大家赶紧去试试吧。<br>有问题可以联系我，邮箱：<a href="mailto:hanbing3566@gmail.com">hanbing3566@gmail.com</a></p>
+<hr>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+]]></content>
+      <categories>
+        <category>经验分享</category>
+      </categories>
+      <tags>
+        <tag>投屏</tag>
       </tags>
   </entry>
   <entry>
@@ -387,55 +511,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ubuntu下将文件备份到github</title>
-    <url>/Back-up-files-to-github-under-ubuntu/</url>
-    <content><![CDATA[<p>将hexo博客目录备份到github，以防意外删除文件，这样也方便在其他设备上写博客</p>
-<hr>
-<h3 id="1-安装git"><a href="#1-安装git" class="headerlink" title="1. 安装git"></a>1. 安装git</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt-get install git<br></code></pre></td></tr></table></figure>
-<a id="more"></a>
-<h3 id="2-生成ssh-key"><a href="#2-生成ssh-key" class="headerlink" title="2.生成ssh key"></a>2.生成ssh key</h3><p>使用命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ ssh-keygen -t rsa -C “github username”<br></code></pre></td></tr></table></figure>
-<p>会生成下面三个文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">id_rsa  id_rsa.pub  known_hosts<br></code></pre></td></tr></table></figure>
-<h3 id="3-github-setting"><a href="#3-github-setting" class="headerlink" title="3.github setting"></a>3.github setting</h3><p>登录github，setting,左边有SSH and GPG keys 选项，点new<br>ssh key。title随便写，key 填写id_rsa.pub文件中的内容。<br>新建一个仓库用来备份。<br>测试ssh key是否成功</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ ssh -T git@github.com<br>Hi ccbirds! You<span class="hljs-string">'ve successfully authenticated, but GitHub does not provide shell access.</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="4-在需要备份的目录下初始化git"><a href="#4-在需要备份的目录下初始化git" class="headerlink" title="4.在需要备份的目录下初始化git"></a>4.在需要备份的目录下初始化git</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git init<br>Reinitialized existing Git repository <span class="hljs-keyword">in</span> /home/czq/blog/.git/<br></code></pre></td></tr></table></figure>
-<h3 id="5-设置git"><a href="#5-设置git" class="headerlink" title="5.设置git"></a>5.设置git</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git config user.name “github user name” <br>$ git config user.email “github email”<br>$ git config user.name //查看设置的name<br>$ git config user.email //查看设置的邮箱<br>$ git remote add origin https://github.com/ccbirds/hexo.git //github 仓库地址<br></code></pre></td></tr></table></figure>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/Github1.png" alt><br>如果显示origin已经存在,删除origin，并重新设置origin</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git remote rm origin <br>$ git remote add origin https://github.com/ccbirds/hexo.git<br></code></pre></td></tr></table></figure>
-<h3 id="6-添加文件"><a href="#6-添加文件" class="headerlink" title="6.添加文件"></a>6.添加文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git add test.txt //指定一个文件<br>$ git add .    //目录下的所有文件<br>$ git commit -m <span class="hljs-string">"2020-02-27"</span> //备注<br>$ git push origin master<br>Username <span class="hljs-keyword">for</span> <span class="hljs-string">'https://github.com'</span>: ccbirds //输入用户名<br>Password <span class="hljs-keyword">for</span> <span class="hljs-string">'https://ccbirds@github.com'</span>:  //输入密码，密码不会显示<br>Writing objects: 100% (3/3), 277 bytes | 277.00 KiB/s, <span class="hljs-keyword">done</span>.<br>Total 3 (delta 0), reused 0 (delta 0)<br>To https://github.com/ccbirds/hexo.git<br>   da79977..341a1a4  master -&gt; master<br></code></pre></td></tr></table></figure>
-<h3 id="这样就成功啦"><a href="#这样就成功啦" class="headerlink" title="这样就成功啦"></a>这样就成功啦</h3><p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-]]></content>
-      <categories>
-        <category>经验分享</category>
-      </categories>
-      <tags>
-        <tag>ubuntu</tag>
-        <tag>git</tag>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ubuntu中使用pycharm有些快捷键无法使用</title>
-    <url>/ubuntu-pycharm/</url>
-    <content><![CDATA[<p>问题描述：在使用pycharm过程中，ctrl+c,ctrl+v,ctrl+d等快捷键无法使用。</p>
-<p>解决办法：file-&gt;setting-&gt;Editor下面有一个Vim Emulation选项。</p>
-<a id="more"></a>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/pycharm.png" alt><br>将Handler一列中的vim全部改为IDE，点Apply。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/pycharm2.png" alt><br>这样，快捷键就可以正常使用啦。</p>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-]]></content>
-      <categories>
-        <category>经验分享</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>ubuntu</tag>
-        <tag>pcharm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>为使用hexo搭建的博客加入评论系统gitalk</title>
     <url>/hexo-blog-gitalk/</url>
     <content><![CDATA[<p>使用hexo结合github搭建自己的个人博客网站，非常方便，而且免费，对于个人来说是一个不错的选择。不过有一个缺点是没有评论系统。需要自己额外引入评论插件。<br>现在常用的评论插件有三种：<br>disqus：已经被墙了，暂时不考虑。<br>gitment：基于github的一个评论系统，但是作者长时间没有维护，需要使用自己的服务器。<br>gitalk：也是基于github的一个评论系统，目前可以正常使用。<br>主题不同添加gitalk的方法也略有区别，有的主题本身带有gitalk评论，打开相应的开关就可以。我使用的主题是beantech，本身没有gitalk评论系统。</p>
@@ -462,6 +537,69 @@
       <tags>
         <tag>hexo</tag>
         <tag>gitalk</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>集成电路学习笔记（一）IC617工艺库安装</title>
+    <url>/ICnotes1/</url>
+    <content><![CDATA[<hr>
+<h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h3><hr>
+<p>集成电路设计使用cadence virtuoso 作为开发环境。virtuoso的安装十分复杂，在此不对开发环境的安装过多阐述，大家可自行咸鱼或淘宝。本人使用IC617进行学习。</p>
+<hr>
+<h3 id="工艺库"><a href="#工艺库" class="headerlink" title="工艺库"></a>工艺库</h3><hr>
+<p>工艺库是各工艺厂商为设计人员提供的，不同厂商的工艺库是不同，设计集成电路必须使用工艺库。工艺库的安装也比较简单，但工艺库 两种，CDB，和IOA。CDB是为IC5xx提供，OA是为IC6XX提供。咱们是IC617安装CDB的库稍稍麻烦一点，下面将分别介绍安装方法。</p>
+<hr>
+<h3 id="CDB库安装"><a href="#CDB库安装" class="headerlink" title="CDB库安装"></a>CDB库安装</h3><hr>
+<a id="more"></a>
+
+<p>下载smic18ee的库。<a href="https://lanzous.com/b0evko4gf" target="_blank" rel="noopener">https://lanzous.com/b0evko4gf</a></p>
+<p>进入库所在目录，解压</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ tar -zxvf smic18ee_2P6M_20100810.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>并将解压后的目录复制到设计目录，我是在用户home目录下，新建一个virtuoso目录，以后在这个目录进行设计 。将解压后的目录复制到~/virtuoso。启动IC617。使用命令icfb或者virtuoso。点<em>tools</em>，</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6171.png" alt></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6172.png" alt></p>
+<p>选择倒数第二个，<em>conversion toolbox</em>.</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6173.png" alt></p>
+<p>选择第一个，<em>CDB to open access translator</em>.</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6175.png" alt></p>
+<p>点<em>Browse</em>找到复制到virtuoso下工艺库文件目录。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6176.png" alt></p>
+<p>点<em>ok</em></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6177.png" alt></p>
+<p>在右边的框里会有<em>smic18ee</em>，选中，一定要点一下，默认是不选中的。点<em>ok</em>。稍等一会。CIW这里会提示完成。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6178.png" alt></p>
+<p>在virtuos目录下会多一个smic18ee的目录。打开<em>library  manager</em>会出现smic18ee的库。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6179.png" alt></p>
+<p>到这里smic18ee的库安装成功了。</p>
+<hr>
+<h3 id="OA库安装"><a href="#OA库安装" class="headerlink" title="OA库安装"></a>OA库安装</h3><hr>
+<p>将需要安装的库解压并移动到virtuoso下。下载地址。<a href="https://lanzous.com/ic5p21a" target="_blank" rel="noopener">https://lanzous.com/ic5p21a</a></p>
+<p>OA库的安装，比较简单。打开virtuoso，打开<em>tools<em>下的</em>library path Editor</em></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61710.png" alt></p>
+<p>选中最下方的空白格。点<em>Edit</em> 。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61711.png" alt></p>
+<p>选择<em>Add Library</em> </p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61712.png" alt></p>
+<p>选择smic65这个文件夹，点进去。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61713.png" alt></p>
+<p>选择右边框里的<em>smic65_OA<em>，点</em>ok</em></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61714.png" alt></p>
+<p>保存一下。打开<em>library  manager</em>就可以看到库了。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61715.png" alt></p>
+<p>到这里OA库也安装完了。</p>
+<hr>
+<p>欢迎大家访问！</p>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+<p>也可电邮我</p>
+<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
+]]></content>
+      <categories>
+        <category>集成电路设计</category>
+      </categories>
+      <tags>
+        <tag>cadence</tag>
+        <tag>virtuoso</tag>
       </tags>
   </entry>
   <entry>
@@ -550,61 +688,6 @@
       </tags>
   </entry>
   <entry>
-    <title>写论文小工具推荐</title>
-    <url>/Paper-gadget-recommendation/</url>
-    <content><![CDATA[<p>在这里给大家安利几款软件，都是在写论文过程中常用的软件。</p>
-<p>由于这些软件我都已经安装过了，所以没有给出详细的安装过程，不过均给出了相关的教程地址。</p>
-<hr>
-<h3 id="首先就是office和wps"><a href="#首先就是office和wps" class="headerlink" title="首先就是office和wps"></a>首先就是office和wps</h3><hr>
-<a id="more"></a>
-<p>这俩款软件，不需要多说，大家都在用。至于用哪个，看大家使用习惯。</p>
-<p>wps可以从官网上下载安装包，安装. <a href="https://www.wps.cn/" target="_blank" rel="noopener">https://www.wps.cn/</a></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/wps1.png" alt></p>
-<p>office,如果是个人使用，不用商业用途可以在微信公众号==软件安装管家==上获取最新的破解版本。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%AE%A1%E5%AE%B61.png" alt></p>
-<p>点软件目录，里面有很多专业工具。里面有安装教程，我就不再说明了。</p>
-<h4 id="仅可用于个人使用"><a href="#仅可用于个人使用" class="headerlink" title="仅可用于个人使用"></a>仅可用于个人使用</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%AE%A1%E5%AE%B62.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/word1.png" alt></p>
-<hr>
-<h3 id="画框图工具"><a href="#画框图工具" class="headerlink" title="画框图工具"></a>画框图工具</h3><hr>
-<p>要写论文过程中，框图电路图等，是论文中的必要元素，通常大家可能会使用visio画图，今天我再给大家推荐一款软件==亿图==也是一款画图软件，功能比较强大，个人感觉，亿图比较好用。</p>
-<p>visio：同样在公众号里会有最新版本有visio。此处不再赘述。</p>
-<p>亿图：也是一款收费软件，如果大家是个人使用，可以点击链接下载破解版<a href="https://www.lanzous.com/iaakh4b" target="_blank" rel="noopener">https://www.lanzous.com/iaakh4b</a></p>
-<p>压缩包内有详细的安装和破解过程，另外，亿可以导出多种格式，非常方便。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E4%BA%BF%E5%9B%BE1.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E4%BA%BF%E5%9B%BE2.png" alt></p>
-<hr>
-<h3 id="图表"><a href="#图表" class="headerlink" title="图表"></a>图表</h3><hr>
-<p>框图和电路图画好了，在数据结果部分可能需要画图表，图表可以使用excel来画，不过想让图表美观一点，可能有点费力了。最常用的是MATLAB来画图和渲染，matlab的下载和安装，同样在微信公众号软件安管家上可以找到。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/matlab1.png" alt="盗一张图"></p>
-<hr>
-<h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><hr>
-<p>写论文时难免会需要输入一些公式，尤其是理工科。常用的公式编辑器为mathtype。</p>
-<p><a href="https://www.mathtype.cn/" target="_blank" rel="noopener">https://www.mathtype.cn/</a> 大家可以在官网下载安装使用</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/mathtype1.png" alt></p>
-<p>再给大家安利一款公式软件，它不是用来写公式的而是用来识别公式，截图需要识别的公式，它会自己识别公式，可以转为latex语言，也可以直接放入word中。下载地址<a href="https://mathpix.com/" target="_blank" rel="noopener">https://mathpix.com/</a> 选择相应的版本下载安装即可。需要注册登录才能下载，是free的。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/mathpix1.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/mathpix2.png" alt></p>
-<hr>
-<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><hr>
-<p>参考文献的引用，如果按格式一个一个输入，很慢的。给大家推荐一个网址，可以批量引用参考文献—百度学术<a href="http://xueshu.baidu.com/" target="_blank" rel="noopener">http://xueshu.baidu.com/</a> </p>
-<p>输入参考文献名称或者关键字，点批量引用。点右下角的图标。选择引用格式一键复制即可。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E7%99%BE%E5%BA%A6%E5%AD%A6%E6%9C%AF2.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E7%99%BE%E5%BA%A6%E5%AD%A6%E6%9C%AF1.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E7%99%BE%E5%BA%A6%E5%AD%A6%E6%9C%AF3.png" alt></p>
-<p>这是一些常用的论文工具，如有没有提及或者表述不对之处，希望大家帮我指出来</p>
-<hr>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-]]></content>
-      <categories>
-        <category>经验分享</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-        <tag>写论文</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>集成电路学习笔记（二）基于IC617反相器设计之ADE仿真</title>
     <url>/ICnotes22/</url>
     <content><![CDATA[<p>本文主要记录使用ADE进行仿真的过程。</p>
@@ -667,6 +750,161 @@
         <tag>原理图</tag>
         <tag>schmetic</tag>
         <tag>ADE仿真</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>写论文小工具推荐</title>
+    <url>/Paper-gadget-recommendation/</url>
+    <content><![CDATA[<p>在这里给大家安利几款软件，都是在写论文过程中常用的软件。</p>
+<p>由于这些软件我都已经安装过了，所以没有给出详细的安装过程，不过均给出了相关的教程地址。</p>
+<hr>
+<h3 id="首先就是office和wps"><a href="#首先就是office和wps" class="headerlink" title="首先就是office和wps"></a>首先就是office和wps</h3><hr>
+<a id="more"></a>
+<p>这俩款软件，不需要多说，大家都在用。至于用哪个，看大家使用习惯。</p>
+<p>wps可以从官网上下载安装包，安装. <a href="https://www.wps.cn/" target="_blank" rel="noopener">https://www.wps.cn/</a></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/wps1.png" alt></p>
+<p>office,如果是个人使用，不用商业用途可以在微信公众号==软件安装管家==上获取最新的破解版本。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%AE%A1%E5%AE%B61.png" alt></p>
+<p>点软件目录，里面有很多专业工具。里面有安装教程，我就不再说明了。</p>
+<h4 id="仅可用于个人使用"><a href="#仅可用于个人使用" class="headerlink" title="仅可用于个人使用"></a>仅可用于个人使用</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%AE%A1%E5%AE%B62.png" alt></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/word1.png" alt></p>
+<hr>
+<h3 id="画框图工具"><a href="#画框图工具" class="headerlink" title="画框图工具"></a>画框图工具</h3><hr>
+<p>要写论文过程中，框图电路图等，是论文中的必要元素，通常大家可能会使用visio画图，今天我再给大家推荐一款软件==亿图==也是一款画图软件，功能比较强大，个人感觉，亿图比较好用。</p>
+<p>visio：同样在公众号里会有最新版本有visio。此处不再赘述。</p>
+<p>亿图：也是一款收费软件，如果大家是个人使用，可以点击链接下载破解版<a href="https://www.lanzous.com/iaakh4b" target="_blank" rel="noopener">https://www.lanzous.com/iaakh4b</a></p>
+<p>压缩包内有详细的安装和破解过程，另外，亿可以导出多种格式，非常方便。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E4%BA%BF%E5%9B%BE1.png" alt></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E4%BA%BF%E5%9B%BE2.png" alt></p>
+<hr>
+<h3 id="图表"><a href="#图表" class="headerlink" title="图表"></a>图表</h3><hr>
+<p>框图和电路图画好了，在数据结果部分可能需要画图表，图表可以使用excel来画，不过想让图表美观一点，可能有点费力了。最常用的是MATLAB来画图和渲染，matlab的下载和安装，同样在微信公众号软件安管家上可以找到。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/matlab1.png" alt="盗一张图"></p>
+<hr>
+<h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><hr>
+<p>写论文时难免会需要输入一些公式，尤其是理工科。常用的公式编辑器为mathtype。</p>
+<p><a href="https://www.mathtype.cn/" target="_blank" rel="noopener">https://www.mathtype.cn/</a> 大家可以在官网下载安装使用</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/mathtype1.png" alt></p>
+<p>再给大家安利一款公式软件，它不是用来写公式的而是用来识别公式，截图需要识别的公式，它会自己识别公式，可以转为latex语言，也可以直接放入word中。下载地址<a href="https://mathpix.com/" target="_blank" rel="noopener">https://mathpix.com/</a> 选择相应的版本下载安装即可。需要注册登录才能下载，是free的。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/mathpix1.png" alt></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/mathpix2.png" alt></p>
+<hr>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><hr>
+<p>参考文献的引用，如果按格式一个一个输入，很慢的。给大家推荐一个网址，可以批量引用参考文献—百度学术<a href="http://xueshu.baidu.com/" target="_blank" rel="noopener">http://xueshu.baidu.com/</a> </p>
+<p>输入参考文献名称或者关键字，点批量引用。点右下角的图标。选择引用格式一键复制即可。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E7%99%BE%E5%BA%A6%E5%AD%A6%E6%9C%AF2.png" alt></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E7%99%BE%E5%BA%A6%E5%AD%A6%E6%9C%AF1.png" alt></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E7%99%BE%E5%BA%A6%E5%AD%A6%E6%9C%AF3.png" alt></p>
+<p>这是一些常用的论文工具，如有没有提及或者表述不对之处，希望大家帮我指出来</p>
+<hr>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+]]></content>
+      <categories>
+        <category>经验分享</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+        <tag>写论文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>集成电路设计学习笔记（二）基于IC617反相器设计之layout</title>
+    <url>/ICnotes23/</url>
+    <content><![CDATA[<p>本文主要记录反相器版图的绘制以及layout的常用操作。</p>
+<h3 id="打开Layout-XL"><a href="#打开Layout-XL" class="headerlink" title="打开Layout XL"></a>打开Layout XL</h3><hr>
+<p>打开已经画好的反相器原理图，打开菜单<strong>Launch</strong>选择<strong>layout XL</strong></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout1.png" alt></p>
+<a id="more"></a>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout2.png" alt></p>
+<p>点<strong>ok</strong>即可</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout3.png" alt></p>
+<p><strong>cell</strong>名要和原理图的名字一致，<strong>Type</strong>这里选择<strong>layout</strong>，点<strong>ok</strong></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout4.png" alt></p>
+<p>成功进入layout界面</p>
+<hr>
+<h3 id="绘制版图"><a href="#绘制版图" class="headerlink" title="绘制版图"></a>绘制版图</h3><hr>
+<p><strong>常用快捷键</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">快捷键</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">p</td>
+<td align="center">画线</td>
+</tr>
+<tr>
+<td align="center">o</td>
+<td align="center">过孔</td>
+</tr>
+<tr>
+<td align="center">shift+f</td>
+<td align="center">显示所有层</td>
+</tr>
+<tr>
+<td align="center">ctrl+f</td>
+<td align="center">隐藏层</td>
+</tr>
+<tr>
+<td align="center">l</td>
+<td align="center">放label</td>
+</tr>
+<tr>
+<td align="center">m</td>
+<td align="center">移动</td>
+</tr>
+<tr>
+<td align="center">c</td>
+<td align="center">复制</td>
+</tr>
+<tr>
+<td align="center">f</td>
+<td align="center">满工作区显示</td>
+</tr>
+<tr>
+<td align="center">k</td>
+<td align="center">标尺</td>
+</tr>
+<tr>
+<td align="center">r</td>
+<td align="center">画矩形</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">拉伸</td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td align="center">对齐</td>
+</tr>
+<tr>
+<td align="center">backspace</td>
+<td align="center">撤销上一个点</td>
+</tr>
+</tbody></table>
+<p>导入器件，打开<strong>菜单connectivity</strong>选择<strong>Generate</strong>点<strong>All from source</strong></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout5.png" alt></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout6.png" alt></p>
+<p>在<strong>generate</strong>中，只需要勾选<strong>Instances</strong>。其余两个不需要勾选。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout7.png" alt></p>
+<p>会出现两个红框，这时器件已经导入进来了，只是没有显示层，使用快捷键<strong>shift+f</strong>。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout8.png" alt></p>
+<p>这时就看到了器件的版图。并在各极上显示有网络标号。使用快捷键<strong>a</strong>将两个器件栅极对齐，使用<strong>p</strong>将两个栅极连接，使用<strong>p</strong>时，软件会自动识别线层和线宽，连接完成时按 <strong>enter</strong>（这是IC617的功能）。操作处下图。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout9.gif" alt></p>
+<p>将栅极连好后，同样使用<strong>p</strong>连接其他极，连接网络标号相同的极。</p>
+<p>如果，在原理图选中器件后，版图中也会同时标记出来，在原理图中，选中连接线后，在版图中会高亮显示，相应器件。</p>
+]]></content>
+      <categories>
+        <category>集成电路设计本文</category>
+      </categories>
+      <tags>
+        <tag>cadence</tag>
+        <tag>virtuoso</tag>
+        <tag>原理图</tag>
+        <tag>schmetic</tag>
+        <tag>layout</tag>
       </tags>
   </entry>
   <entry>
@@ -811,144 +1049,6 @@
         <tag>virtuoso</tag>
         <tag>原理图</tag>
         <tag>schmetic</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>将静态博客托管在nanopi上</title>
-    <url>/blog-on-nanopi/</url>
-    <content><![CDATA[<p>最近买了一个nanopi，里面运行的是Ubuntu，可以做很多事情，我便想到用来做我博客的服务器。这前我是把我的博客托管在Github上。Github在国内的速度还是比较慢的。而且以前有被墙过。</p>
-<hr>
-<p>在nanopi上安装nginx</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt install nginx<br></code></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>编辑nginx的设置文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ vim /etc/nginx/nginx.conf<br></code></pre></td></tr></table></figure>
-
-<p>在http里面加</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">server &#123;<br>                listen          80 default_server;<br>                server_name     ccbirds.cn;//自己的域名<br>                root            /home/fa/hexo-blog; //<span class="hljs-built_in">clone</span>下来的位置<br>                location / &#123;<br>                &#125;<br>        &#125;<br><br>        server &#123;<br>                listen          80;<br>                server_name     www.ccbirds.cn;<br>                <span class="hljs-built_in">return</span>          301 http://ccbirds.cn<span class="hljs-variable">$request_uri</span>;<br>        &#125;<br></code></pre></td></tr></table></figure>
-
-<p>开启nginx服务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo service nginx start  //启动命令<br>$ sudo service nginx stop   //停止命令<br>$ sudo service nginx restart  //重启命令<br></code></pre></td></tr></table></figure>
-
-<p>如果报错，根据提示查看报错原因，</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo nginx -t  //查看配置文件是否有问题<br>$ ps -ef | grep nginx  //显示nginx的进程<br>$ sudo <span class="hljs-built_in">kill</span> -quit 14952  //杀死进程<br></code></pre></td></tr></table></figure>
-
-<p>现在使用IP或者域名就可以访问了。</p>
-<hr>
-<p>可是每次更新博客都要手动clone一下吗？</p>
-<p>网上有使用webhooks自动部署的方法，不过本人比较笨，没有弄好，感兴趣的可以试试，成功了记得告诉我一声。</p>
-<p>我采用了比较笨的一种方法，每天定时删除hexo-log，定时重新clone一次。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ crontab -e <br>//在最后加上两句<br>0 0 * * * sudo rm -rf /home/fa/hexo-blog  //每天零点删除hexo-blog<br>5 0 * * * sudo git <span class="hljs-built_in">clone</span> https://github.com/ccbirds/ccbirds.github.io.git /home/fa/hexo-blog  //每天零点五分 重新<span class="hljs-built_in">clone</span><br>$ sudo service cron restart  //重启cron<br>$ service cron restart<br></code></pre></td></tr></table></figure>
-
-<p>五个* * * * *<br>对应的分别是 分 时 天 月 周</p>
-<p>不是很完美，先这样吧。</p>
-<hr>
-<p>遇到的问题：</p>
-<p>启动nginx时，报错，80端口已经被占用，看了一下进程，发现是nginx自己占用了80端口。使用nginx -t 看一下问题，是/etc/nginx/sites-enabled/default这个也在使用80端口，把这里的80改成其他端口就没有问题了</p>
-<hr>
-<p>欢迎大家访问！</p>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-]]></content>
-      <categories>
-        <category>nanopi</category>
-      </categories>
-      <tags>
-        <tag>nanopi</tag>
-        <tag>博客托管</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>集成电路学习笔记（一）IC617工艺库安装</title>
-    <url>/ICnotes1/</url>
-    <content><![CDATA[<hr>
-<h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h3><hr>
-<p>集成电路设计使用cadence virtuoso 作为开发环境。virtuoso的安装十分复杂，在此不对开发环境的安装过多阐述，大家可自行咸鱼或淘宝。本人使用IC617进行学习。</p>
-<hr>
-<h3 id="工艺库"><a href="#工艺库" class="headerlink" title="工艺库"></a>工艺库</h3><hr>
-<p>工艺库是各工艺厂商为设计人员提供的，不同厂商的工艺库是不同，设计集成电路必须使用工艺库。工艺库的安装也比较简单，但工艺库 两种，CDB，和IOA。CDB是为IC5xx提供，OA是为IC6XX提供。咱们是IC617安装CDB的库稍稍麻烦一点，下面将分别介绍安装方法。</p>
-<hr>
-<h3 id="CDB库安装"><a href="#CDB库安装" class="headerlink" title="CDB库安装"></a>CDB库安装</h3><hr>
-<a id="more"></a>
-
-<p>下载smic18ee的库。<a href="https://lanzous.com/b0evko4gf" target="_blank" rel="noopener">https://lanzous.com/b0evko4gf</a></p>
-<p>进入库所在目录，解压</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ tar -zxvf smic18ee_2P6M_20100810.tar.gz<br></code></pre></td></tr></table></figure>
-
-<p>并将解压后的目录复制到设计目录，我是在用户home目录下，新建一个virtuoso目录，以后在这个目录进行设计 。将解压后的目录复制到~/virtuoso。启动IC617。使用命令icfb或者virtuoso。点<em>tools</em>，</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6171.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6172.png" alt></p>
-<p>选择倒数第二个，<em>conversion toolbox</em>.</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6173.png" alt></p>
-<p>选择第一个，<em>CDB to open access translator</em>.</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6175.png" alt></p>
-<p>点<em>Browse</em>找到复制到virtuoso下工艺库文件目录。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6176.png" alt></p>
-<p>点<em>ok</em></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6177.png" alt></p>
-<p>在右边的框里会有<em>smic18ee</em>，选中，一定要点一下，默认是不选中的。点<em>ok</em>。稍等一会。CIW这里会提示完成。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6178.png" alt></p>
-<p>在virtuos目录下会多一个smic18ee的目录。打开<em>library  manager</em>会出现smic18ee的库。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6179.png" alt></p>
-<p>到这里smic18ee的库安装成功了。</p>
-<hr>
-<h3 id="OA库安装"><a href="#OA库安装" class="headerlink" title="OA库安装"></a>OA库安装</h3><hr>
-<p>将需要安装的库解压并移动到virtuoso下。下载地址。<a href="https://lanzous.com/ic5p21a" target="_blank" rel="noopener">https://lanzous.com/ic5p21a</a></p>
-<p>OA库的安装，比较简单。打开virtuoso，打开<em>tools<em>下的</em>library path Editor</em></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61710.png" alt></p>
-<p>选中最下方的空白格。点<em>Edit</em> 。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61711.png" alt></p>
-<p>选择<em>Add Library</em> </p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61712.png" alt></p>
-<p>选择smic65这个文件夹，点进去。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61713.png" alt></p>
-<p>选择右边框里的<em>smic65_OA<em>，点</em>ok</em></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61714.png" alt></p>
-<p>保存一下。打开<em>library  manager</em>就可以看到库了。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61715.png" alt></p>
-<p>到这里OA库也安装完了。</p>
-<hr>
-<p>欢迎大家访问！</p>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-<p>也可电邮我</p>
-<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
-]]></content>
-      <categories>
-        <category>集成电路设计</category>
-      </categories>
-      <tags>
-        <tag>cadence</tag>
-        <tag>virtuoso</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>手机无线投屏win10</title>
-    <url>/Mobile-phone-wireless-projection-screen-win10/</url>
-    <content><![CDATA[<p>手机上屏幕小，看视频特别难受，并且有些软件没与PC版，应该怎么办?下面我来介绍一种方法，将手机屏幕投屏到电脑上。</p>
-<hr>
-<p>条件：1.装有win10的PC。<br>2. 手机具有无线投屏功能（现在大多数手机都有无线投屏功能，只是名字可能有些不同，下面一以荣耀V10手机为例给大家演示）</p>
-<a id="more"></a>
-<hr>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><hr>
-<h3 id="1-PC端"><a href="#1-PC端" class="headerlink" title="1.PC端"></a>1.PC端</h3><hr>
-<h4 id="使用搜索命令搜索“连接”"><a href="#使用搜索命令搜索“连接”" class="headerlink" title="使用搜索命令搜索“连接”"></a>使用搜索命令搜索“连接”</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F1.png" alt></p>
-<h4 id="打开连接应用，"><a href="#打开连接应用，" class="headerlink" title="打开连接应用，"></a>打开连接应用，</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F2.png" alt></p>
-<h4 id="记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。"><a href="#记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。" class="headerlink" title="记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。"></a>记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。</h4><hr>
-<h3 id="2-手机端"><a href="#2-手机端" class="headerlink" title="2.手机端"></a>2.手机端</h3><hr>
-<h4 id="打开设置"><a href="#打开设置" class="headerlink" title="打开设置"></a>打开设置</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F3.jpg" alt></p>
-<h4 id="选择设备连接"><a href="#选择设备连接" class="headerlink" title="选择设备连接"></a>选择设备连接</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F4.jpg" alt></p>
-<h4 id="选择无线投屏功能"><a href="#选择无线投屏功能" class="headerlink" title="选择无线投屏功能"></a>选择无线投屏功能</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F5.jpg" alt></p>
-<h4 id="需要打开WLAN，它会搜索可使用设备。"><a href="#需要打开WLAN，它会搜索可使用设备。" class="headerlink" title="需要打开WLAN，它会搜索可使用设备。"></a>需要打开WLAN，它会搜索可使用设备。</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F6.jpg" alt><br><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F7.jpg" alt></p>
-<h4 id="选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。"><a href="#选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。" class="headerlink" title="选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。"></a>选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F8.png" alt></p>
-<h4 id="点右上角按钮，可以全屏。"><a href="#点右上角按钮，可以全屏。" class="headerlink" title="点右上角按钮，可以全屏。"></a>点右上角按钮，可以全屏。</h4><hr>
-<p>大家赶紧去试试吧。<br>有问题可以联系我，邮箱：<a href="mailto:hanbing3566@gmail.com">hanbing3566@gmail.com</a></p>
-<hr>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-]]></content>
-      <categories>
-        <category>经验分享</category>
-      </categories>
-      <tags>
-        <tag>投屏</tag>
       </tags>
   </entry>
 </search>

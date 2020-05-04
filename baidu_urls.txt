@@ -1,3 +1,4 @@
+http://ccbirds.cn/ICnotes23/
 http://ccbirds.cn/ICnotes22/
 http://ccbirds.cn/ICnotes21/
 http://ccbirds.cn/ICnotes1/
@@ -7,4 +8,3 @@ http://ccbirds.cn/nanopi-test/
 http://ccbirds.cn/nanopi-install-oh-my-zsh/
 http://ccbirds.cn/nanopi-pressure-test/
 http://ccbirds.cn/blog-on-nanopi/
-http://ccbirds.cn/markedown-typora-picgo-github-aliyun/

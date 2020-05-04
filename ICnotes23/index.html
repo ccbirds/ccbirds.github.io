@@ -35,15 +35,33 @@
     var CONFIG = {"hostname":"ccbirds.cn","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"您搜索的${query}我们暂时还没有哦","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ccbirds blog">
-<meta property="og:url" content="http://ccbirds.cn/categories/nanopi/index.html">
+  <meta name="description" content="本文主要记录反相器版图的绘制以及layout的常用操作。 打开Layout XL 打开已经画好的反相器原理图，打开菜单Launch选择layout XL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集成电路设计学习笔记（二）基于IC617反相器设计之layout">
+<meta property="og:url" content="http://ccbirds.cn/ICnotes23/index.html">
 <meta property="og:site_name" content="ccbirds blog">
+<meta property="og:description" content="本文主要记录反相器版图的绘制以及layout的常用操作。 打开Layout XL 打开已经画好的反相器原理图，打开菜单Launch选择layout XL">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout1.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout2.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout3.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout4.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout5.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout6.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout7.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout8.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout9.gif">
+<meta property="article:published_time" content="2020-05-03T23:16:13.000Z">
+<meta property="article:modified_time" content="2020-05-04T03:35:56.554Z">
 <meta property="article:author" content="ccbirds">
-<meta property="article:tag" content="IC设计">
+<meta property="article:tag" content="cadence">
+<meta property="article:tag" content="virtuoso">
+<meta property="article:tag" content="原理图">
+<meta property="article:tag" content="schmetic">
+<meta property="article:tag" content="layout">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout1.png">
 
-<link rel="canonical" href="http://ccbirds.cn/categories/nanopi/">
+<link rel="canonical" href="http://ccbirds.cn/ICnotes23/">
 
 
 <script id="page-configurations">
@@ -51,12 +69,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-Hans'
   };
 </script>
 
-  <title>分类: nanopi | ccbirds blog</title>
+  <title>集成电路设计学习笔记（二）基于IC617反相器设计之layout | ccbirds blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161422209-1"></script>
     <script>
@@ -223,174 +241,267 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">nanopi
-          <small>分类</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://ccbirds.cn/ICnotes23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="ccbirds">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ccbirds blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          集成电路设计学习笔记（二）基于IC617反相器设计之layout
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-04 07:16:13 / 修改时间：11:35:56" itemprop="dateCreated datePublished" datetime="2020-05-04T07:16:13+08:00">2020-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E6%9C%AC%E6%96%87/" itemprop="url" rel="index"><span itemprop="name">集成电路设计本文</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/ICnotes23/" class="post-meta-item leancloud_visitors" data-flag-title="集成电路设计学习笔记（二）基于IC617反相器设计之layout" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/ICnotes23/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="ICnotes23/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/ICnotes23/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/ICnotes23/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-12T20:11:50+08:00"
-              content="2020-03-12">
-          03-12
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/nanopi-test/" itemprop="url">
-            <span itemprop="name">nanopi性能测试unixbench</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-10T15:00:00+08:00"
-              content="2020-03-10">
-          03-10
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/nanopi-install-oh-my-zsh/" itemprop="url">
-            <span itemprop="name">nanopi安装oh my zsh</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-04T20:11:50+08:00"
-              content="2020-03-04">
-          03-04
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/nanopi-pressure-test/" itemprop="url">
-            <span itemprop="name">nanopi压力测试和散热能力</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-01T20:11:50+08:00"
-              content="2020-03-01">
-          03-01
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/blog-on-nanopi/" itemprop="url">
-            <span itemprop="name">将静态博客托管在nanopi上</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-28T15:07:46+08:00"
-              content="2020-02-28">
-          02-28
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/nanopi_neo2_black_Anti-burn_screen/" itemprop="url">
-            <span itemprop="name">nanopi_neo2_black_防烧屏设置</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-28T10:37:00+08:00"
-              content="2020-02-28">
-          02-28
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/nanopi-neo2-black-Musical-alarm-clock/" itemprop="url">
-            <span itemprop="name">nanopi neo2 black 音乐闹钟</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-27T20:39:55+08:00"
-              content="2020-02-27">
-          02-27
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/nanopi-neo2-black-power-on/" itemprop="url">
-            <span itemprop="name">nanopi neo2 black 上电使用</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
+        <p>本文主要记录反相器版图的绘制以及layout的常用操作。</p>
+<h3 id="打开Layout-XL"><a href="#打开Layout-XL" class="headerlink" title="打开Layout XL"></a>打开Layout XL</h3><hr>
+<p>打开已经画好的反相器原理图，打开菜单<strong>Launch</strong>选择<strong>layout XL</strong></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout1.png" alt></p>
+<a id="more"></a>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout2.png" alt></p>
+<p>点<strong>ok</strong>即可</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout3.png" alt></p>
+<p><strong>cell</strong>名要和原理图的名字一致，<strong>Type</strong>这里选择<strong>layout</strong>，点<strong>ok</strong></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout4.png" alt></p>
+<p>成功进入layout界面</p>
+<hr>
+<h3 id="绘制版图"><a href="#绘制版图" class="headerlink" title="绘制版图"></a>绘制版图</h3><hr>
+<p><strong>常用快捷键</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">快捷键</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">p</td>
+<td align="center">画线</td>
+</tr>
+<tr>
+<td align="center">o</td>
+<td align="center">过孔</td>
+</tr>
+<tr>
+<td align="center">shift+f</td>
+<td align="center">显示所有层</td>
+</tr>
+<tr>
+<td align="center">ctrl+f</td>
+<td align="center">隐藏层</td>
+</tr>
+<tr>
+<td align="center">l</td>
+<td align="center">放label</td>
+</tr>
+<tr>
+<td align="center">m</td>
+<td align="center">移动</td>
+</tr>
+<tr>
+<td align="center">c</td>
+<td align="center">复制</td>
+</tr>
+<tr>
+<td align="center">f</td>
+<td align="center">满工作区显示</td>
+</tr>
+<tr>
+<td align="center">k</td>
+<td align="center">标尺</td>
+</tr>
+<tr>
+<td align="center">r</td>
+<td align="center">画矩形</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">拉伸</td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td align="center">对齐</td>
+</tr>
+<tr>
+<td align="center">backspace</td>
+<td align="center">撤销上一个点</td>
+</tr>
+</tbody></table>
+<p>导入器件，打开<strong>菜单connectivity</strong>选择<strong>Generate</strong>点<strong>All from source</strong></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout5.png" alt></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout6.png" alt></p>
+<p>在<strong>generate</strong>中，只需要勾选<strong>Instances</strong>。其余两个不需要勾选。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout7.png" alt></p>
+<p>会出现两个红框，这时器件已经导入进来了，只是没有显示层，使用快捷键<strong>shift+f</strong>。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout8.png" alt></p>
+<p>这时就看到了器件的版图。并在各极上显示有网络标号。使用快捷键<strong>a</strong>将两个器件栅极对齐，使用<strong>p</strong>将两个栅极连接，使用<strong>p</strong>时，软件会自动识别线层和线宽，连接完成时按 <strong>enter</strong>（这是IC617的功能）。操作处下图。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/layout9.gif" alt></p>
+<p>将栅极连好后，同样使用<strong>p</strong>连接其他极，连接网络标号相同的极。</p>
+<p>如果，在原理图选中器件后，版图中也会同时标记出来，在原理图中，选中连接线后，在版图中会高亮显示，相应器件。</p>
 
     </div>
+
+    
+    
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+        <div class="reward-container">
+  <div>您的支持鼓励我继续创作</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/wechatpay.png" alt="ccbirds 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/alipay.jpg" alt="ccbirds 支付宝">
+        <p>支付宝</p>
+      </div>
+
   </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cadence/" rel="tag"><i class="fa fa-tag"></i> cadence</a>
+              <a href="/tags/virtuoso/" rel="tag"><i class="fa fa-tag"></i> virtuoso</a>
+              <a href="/tags/%E5%8E%9F%E7%90%86%E5%9B%BE/" rel="tag"><i class="fa fa-tag"></i> 原理图</a>
+              <a href="/tags/schmetic/" rel="tag"><i class="fa fa-tag"></i> schmetic</a>
+              <a href="/tags/layout/" rel="tag"><i class="fa fa-tag"></i> layout</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ICnotes22/" rel="prev" title="集成电路学习笔记（二）基于IC617反相器设计之ADE仿真">
+      <i class="fa fa-chevron-left"></i> 集成电路学习笔记（二）基于IC617反相器设计之ADE仿真
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
   
   
   
 
-  
-
+  </div>
 
 
           </div>
           
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-disqus">disqus</a></li>
+            <li class="tab"><a href="#comment-valine">valine</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+            </div>
+            <div class="tab-pane valine" id="comment-valine">
+              <div class="comments" id="valine-comments"></div>
+            </div>
+        </div>
+      </div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -437,6 +548,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#打开Layout-XL"><span class="nav-number">1.</span> <span class="nav-text">打开Layout XL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制版图"><span class="nav-number">2.</span> <span class="nav-text">绘制版图</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -598,6 +710,26 @@
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://ccbirds.cn/ICnotes23/";
+    this.page.identifier = "ICnotes23/";
+    this.page.title = "集成电路设计学习笔记（二）基于IC617反相器设计之layout";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://ccbirds.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
 
