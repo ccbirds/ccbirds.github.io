@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ccbirds.cn/"/>
-  <updated>2020-05-04T03:27:24.000Z</updated>
+  <updated>2020-05-05T01:55:48.553Z</updated>
   <id>http://ccbirds.cn/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>集成电路学习笔记（三）基于IC617的直流分析</title>
+    <link href="http://ccbirds.cn/ICnotes3/"/>
+    <id>http://ccbirds.cn/ICnotes3/</id>
+    <published>2020-05-04T23:19:30.000Z</published>
+    <updated>2020-05-05T01:55:48.553Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文主要介绍使用ADE进行直流仿真与分析。</p><hr><h3 id="1-原理介绍"><a href="#1-原理介绍" class="headerlink" title="1. 原理介绍"></a>1. 原理介绍</h3><hr><h4 id="Id电流"><a href="#Id电流" class="headerlink" title="Id电流"></a>Id电流</h4><p>载有电流I半导体棒，如果沿电流方向的电荷密度是Qd,电荷移动速度是v，那么$I=Q_d*V$，Qd可以表示为$Q_d=WC_{Ox}(V_{GS}-V_X-V_{th})$ 则电流可给出 $I_D=WC_{OX}[V_{GS}-V_{(X)}-V_{TH}]$ 。负号是因为载流子电荷为负引入的，v表示沟道电子的漂移速度。电子迁移率用  ，可得到如下结论。</p><p>截止区     $I_D\approx0$                             </p><p>线性区    $I_D=\frac{u_nC_{OX}W}{2L}[2(V_{GS}-T_(TH))V_{DS}-V_{DS}^2]$</p><p>饱和区    $I_D=\frac{U_NC_{OX}W}{2L}(V_{GS}-V_{TH})^2$</p><a id="more"></a><h4 id="跨导gm"><a href="#跨导gm" class="headerlink" title="跨导gm"></a>跨导gm</h4><p>由于MOSFET工作在饱和区时，其电流受栅源电压过驱动电压控制，所以我们可以定义一个性能系数来表示电压转换关系的能力，更准确地说，由于在处理信号的过程中，我们要考虑电压和电流的变化，因此我们把这个性能系数定义为漏电流的变化量除以栅源电压的变化量。我们称之为“跨导”，并用$g_m $来表示，其数值为</p><p>$$g_m=\frac{dI_D}{dV_{GS}}|V_{DS},const$$</p><p>$$g_m=\mu_nC_{OX}\frac{W}{L}(V_{GS}-V(th))$$</p><h4 id="阈值电压vth"><a href="#阈值电压vth" class="headerlink" title="阈值电压vth"></a>阈值电压vth</h4><p>随着VG的增加，耗尽层宽度和氧化物与硅界面处的电势也增加。从某种意义上讲,这样的结构类似两个电容的串联:栅氧化层电容和耗尽区电容。当界面电势达到足够高时,电子便从源流向界面并最终流到漏端。这时，源和漏之间的栅氧下就形成了载流子”沟道”,同时晶体管“导通”。我们也称之为界面“反型”。形成沟道所对应的VG称为“阈值电压”,VTH。如果VG进一步升高,则耗尽区的电荷保持相对恒定,而沟道电荷密度继续增加,导致源漏电流增加。</p><p>$$V_{th}=\phi MS+2\phi F+\frac{Q_{DEP}}{C_{OX}}$$</p><hr><h3 id="2-画原理图"><a href="#2-画原理图" class="headerlink" title="2. 画原理图"></a>2. 画原理图</h3><hr><p>打开virtuos,本文只是研究分析方法，使用简单的电路结构，一个NMOS加一个一个电阻。电路 图如下所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc1.png" alt></p><p>电源电压3.3V，电阻阻值任意。其中mos栅极电源，设置为变量，如下图</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc2.png" alt></p><hr><h3 id="3-漏极电流随栅极电压的变化"><a href="#3-漏极电流随栅极电压的变化" class="headerlink" title="3.漏极电流随栅极电压的变化"></a>3.漏极电流随栅极电压的变化</h3><hr><p>打开ADE，首先我们需要设置变量。<strong>Variables</strong>选择<strong>Edit</strong>.</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc3.png" alt></p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc4.png" alt></p><p>在<strong>name</strong>中填入变量名<strong>vgs</strong>，在<strong>value</strong>中填入默认值<strong>0</strong>，当对其他变量仿真时，这个变量的大小为默认值</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc5.png" alt></p><p>不可以在这里双击修改。</p><p>设置DC仿真，点下右边红框内的按钮。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc6.png" alt></p><p>依次设置红框中的内容，仿真类型为<strong>dc</strong>，并保存DC工作点，开始与结束电压范围<strong>0-3.3V</strong>。最后选择变量，点<strong>select Design Variable</strong></p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc7.png" alt></p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc8.png" alt></p><p>选择刚才设置的变量<strong>vgs</strong>，</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc9.png" alt></p><p>选择输出，选择NMOS的漏极，为漏电流<strong>Id</strong></p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc10.png" alt></p><p>最后，ADE配置界面如图所示，点右边绿色按钮，开始仿真</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc11.png" alt></p><p>结果如下 。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc12.png" alt></p><p>将鼠标放在线上的一点，使用快捷键<strong>m</strong>，可快速标记线上的一点，并显示坐标点信息。如上图绿框所示。可知，此MOS的阈值电压约为0.8V。</p><hr><h3 id="4-gm随vgs的变化"><a href="#4-gm随vgs的变化" class="headerlink" title="4. gm随vgs的变化"></a>4. gm随vgs的变化</h3><hr><p>查看gm，需要用到计算器，MOS管的转移曲线需要【Design variable】与【parameter analysis】共同使用。</p><p>填加gm作为输出。打开<strong>tools</strong>，选择<strong>Results Browser</strong>。（如果这里是灰色，先点绿色按钮仿真一下）</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc13.png" alt></p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc14.png" alt></p><p>依次选择<strong>dcOplnfo</strong>，<strong>mo</strong>，在下方搜索<strong>gm</strong></p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc15.png" alt></p><p>找到后，右键，选择计算器</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc16.png" alt></p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc17.png" alt></p><p>之后选择<strong>output</strong>，<strong>setup</strong></p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc18.png" alt></p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc19.png" alt></p><p>输入变量名<strong>gm</strong>，点<strong>Get Expression</strong>。点<strong>ok</strong>即可。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc20.png" alt></p><p>但此时还不能仿真mos的转移曲线，还需要parameter analysis一起，才可以画出转移曲线。</p><p>选择<strong>tools</strong>下的<strong>parameter analysis</strong></p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc21.png" alt></p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc22.png" alt></p><p>依次设置<strong>valrible</strong>，<strong>from</strong>，<strong>to</strong>，<strong>total steps</strong>。步数越多，所需时间越长。</p><p>最后点绿色的开始按钮，开始仿真。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/dc23.png" alt></p><p>基本的直流分析 ，到这里就完事了。</p><hr><p>欢迎大家访问！</p><p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p><p>也可电邮我</p><p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文主要介绍使用ADE进行直流仿真与分析。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;1-原理介绍&quot;&gt;&lt;a href=&quot;#1-原理介绍&quot; class=&quot;headerlink&quot; title=&quot;1. 原理介绍&quot;&gt;&lt;/a&gt;1. 原理介绍&lt;/h3&gt;&lt;hr&gt;
+&lt;h4 id=&quot;Id电流&quot;&gt;&lt;a href=&quot;#Id电流&quot; class=&quot;headerlink&quot; title=&quot;Id电流&quot;&gt;&lt;/a&gt;Id电流&lt;/h4&gt;&lt;p&gt;载有电流I半导体棒，如果沿电流方向的电荷密度是Qd,电荷移动速度是v，那么$I=Q_d*V$，Qd可以表示为$Q_d=WC_{Ox}(V_{GS}-V_X-V_{th})$ 则电流可给出 $I_D=WC_{OX}[V_{GS}-V_{(X)}-V_{TH}]$ 。负号是因为载流子电荷为负引入的，v表示沟道电子的漂移速度。电子迁移率用  ，可得到如下结论。&lt;/p&gt;
+&lt;p&gt;截止区     $I_D\approx0$                             &lt;/p&gt;
+&lt;p&gt;线性区    $I_D=\frac{u_nC_{OX}W}{2L}[2(V_{GS}-T_(TH))V_{DS}-V_{DS}^2]$&lt;/p&gt;
+&lt;p&gt;饱和区    $I_D=\frac{U_NC_{OX}W}{2L}(V_{GS}-V_{TH})^2$&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="集成电路设计" scheme="http://ccbirds.cn/categories/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+      <category term="cadence" scheme="http://ccbirds.cn/tags/cadence/"/>
+    
+      <category term="virtuoso" scheme="http://ccbirds.cn/tags/virtuoso/"/>
+    
+      <category term="ADE仿真" scheme="http://ccbirds.cn/tags/ADE%E4%BB%BF%E7%9C%9F/"/>
+    
+      <category term="直流分析" scheme="http://ccbirds.cn/tags/%E7%9B%B4%E6%B5%81%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
   
   <entry>
     <title>集成电路设计学习笔记（二）基于IC617反相器设计之layout</title>
