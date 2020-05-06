@@ -35,34 +35,36 @@
     var CONFIG = {"hostname":"ccbirds.cn","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"您搜索的${query}我们暂时还没有哦","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在这里给大家安利几款软件，都是在写论文过程中常用的软件。 由于这些软件我都已经安装过了，所以没有给出详细的安装过程，不过均给出了相关的教程地址。  首先就是office和wps">
+  <meta name="description" content="以电阻负载的共源极放大器为例，记录交流小信号分析的方法与过程。  1. 电阻负载的共源极放大器 电路基本结构如下图所示  MOS管处于截止区时，$V_{gs}&lt;V_{TH}$ 处于饱和区时，$V_{gs}&gt;V_{TH}$且$V_{DS}&gt;V_{gs}-V_{TH}$  处于线性区时，$V_{gs}&gt;V_{TH}$ 且 $V_{DS}&lt;V_{gs}-V_{TH}$">
 <meta property="og:type" content="article">
-<meta property="og:title" content="写论文小工具推荐">
-<meta property="og:url" content="http://ccbirds.cn/Paper-gadget-recommendation/index.html">
+<meta property="og:title" content="集成电路设计学习笔记（四）基于IC617的交流小信号分析">
+<meta property="og:url" content="http://ccbirds.cn/ICnotes4/index.html">
 <meta property="og:site_name" content="ccbirds blog">
-<meta property="og:description" content="在这里给大家安利几款软件，都是在写论文过程中常用的软件。 由于这些软件我都已经安装过了，所以没有给出详细的安装过程，不过均给出了相关的教程地址。  首先就是office和wps">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/wps1.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%AE%A1%E5%AE%B61.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%AE%A1%E5%AE%B62.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/word1.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E4%BA%BF%E5%9B%BE1.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E4%BA%BF%E5%9B%BE2.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/matlab1.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/mathtype1.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/mathpix1.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/mathpix2.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E7%99%BE%E5%BA%A6%E5%AD%A6%E6%9C%AF2.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E7%99%BE%E5%BA%A6%E5%AD%A6%E6%9C%AF1.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E7%99%BE%E5%BA%A6%E5%AD%A6%E6%9C%AF3.png">
-<meta property="article:published_time" content="2020-03-15T13:17:52.000Z">
-<meta property="article:modified_time" content="2020-04-12T07:41:50.752Z">
+<meta property="og:description" content="以电阻负载的共源极放大器为例，记录交流小信号分析的方法与过程。  1. 电阻负载的共源极放大器 电路基本结构如下图所示  MOS管处于截止区时，$V_{gs}&lt;V_{TH}$ 处于饱和区时，$V_{gs}&gt;V_{TH}$且$V_{DS}&gt;V_{gs}-V_{TH}$  处于线性区时，$V_{gs}&gt;V_{TH}$ 且 $V_{DS}&lt;V_{gs}-V_{TH}$">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac1.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac2.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac3.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac4.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac5.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac6.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac7.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac8.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac9.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac10.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac11.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac12.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac13.png">
+<meta property="article:published_time" content="2020-05-06T01:10:53.000Z">
+<meta property="article:modified_time" content="2020-05-06T01:23:41.224Z">
 <meta property="article:author" content="ccbirds">
-<meta property="article:tag" content="工具">
-<meta property="article:tag" content="写论文">
+<meta property="article:tag" content="cadence">
+<meta property="article:tag" content="virtuoso">
+<meta property="article:tag" content="ADE仿真">
+<meta property="article:tag" content="交流小信号分析">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/wps1.png">
+<meta name="twitter:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac1.png">
 
-<link rel="canonical" href="http://ccbirds.cn/Paper-gadget-recommendation/">
+<link rel="canonical" href="http://ccbirds.cn/ICnotes4/">
 
 
 <script id="page-configurations">
@@ -75,7 +77,7 @@
   };
 </script>
 
-  <title>写论文小工具推荐 | ccbirds blog</title>
+  <title>集成电路设计学习笔记（四）基于IC617的交流小信号分析 | ccbirds blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161422209-1"></script>
     <script>
@@ -247,7 +249,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://ccbirds.cn/Paper-gadget-recommendation/">
+    <link itemprop="mainEntityOfPage" href="http://ccbirds.cn/ICnotes4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -260,7 +262,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          写论文小工具推荐
+          集成电路设计学习笔记（四）基于IC617的交流小信号分析
         </h1>
 
         <div class="post-meta">
@@ -269,28 +271,22 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-03-15 21:17:52" itemprop="dateCreated datePublished" datetime="2020-03-15T21:17:52+08:00">2020-03-15</time>
+              <time title="创建时间：2020-05-06 09:10:53 / 修改时间：09:23:41" itemprop="dateCreated datePublished" datetime="2020-05-06T09:10:53+08:00">2020-05-06</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-12 15:41:50" itemprop="dateModified" datetime="2020-04-12T15:41:50+08:00">2020-04-12</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/" itemprop="url" rel="index"><span itemprop="name">经验分享</span></a>
+                  <a href="/categories/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">集成电路设计</span></a>
                 </span>
             </span>
 
           
-            <span id="/Paper-gadget-recommendation/" class="post-meta-item leancloud_visitors" data-flag-title="写论文小工具推荐" title="阅读次数">
+            <span id="/ICnotes4/" class="post-meta-item leancloud_visitors" data-flag-title="集成电路设计学习笔记（四）基于IC617的交流小信号分析" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -305,8 +301,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/Paper-gadget-recommendation/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Paper-gadget-recommendation/" itemprop="commentCount"></span>
+    <a title="disqus" href="/ICnotes4/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="ICnotes4/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -319,8 +315,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/Paper-gadget-recommendation/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/Paper-gadget-recommendation/" itemprop="commentCount"></span>
+    <a title="valine" href="/ICnotes4/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/ICnotes4/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -335,49 +331,79 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在这里给大家安利几款软件，都是在写论文过程中常用的软件。</p>
-<p>由于这些软件我都已经安装过了，所以没有给出详细的安装过程，不过均给出了相关的教程地址。</p>
+        <p>以电阻负载的共源极放大器为例，记录交流小信号分析的方法与过程。</p>
 <hr>
-<h3 id="首先就是office和wps"><a href="#首先就是office和wps" class="headerlink" title="首先就是office和wps"></a>首先就是office和wps</h3><hr>
+<h3 id="1-电阻负载的共源极放大器"><a href="#1-电阻负载的共源极放大器" class="headerlink" title="1. 电阻负载的共源极放大器"></a>1. 电阻负载的共源极放大器</h3><hr>
+<p>电路基本结构如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac1.png" alt></p>
+<p>MOS管处于截止区时，$V_{gs}&lt;V_{TH}$</p>
+<p>处于饱和区时，$V_{gs}&gt;V_{TH}$且$V_{DS}&gt;V_{gs}-V_{TH}$ </p>
+<p>处于线性区时，$V_{gs}&gt;V_{TH}$ 且 $V_{DS}&lt;V_{gs}-V_{TH}$</p>
 <a id="more"></a>
-<p>这俩款软件，不需要多说，大家都在用。至于用哪个，看大家使用习惯。</p>
-<p>wps可以从官网上下载安装包，安装. <a href="https://www.wps.cn/" target="_blank" rel="noopener">https://www.wps.cn/</a></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/wps1.png" alt></p>
-<p>office,如果是个人使用，不用商业用途可以在微信公众号==软件安装管家==上获取最新的破解版本。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%AE%A1%E5%AE%B61.png" alt></p>
-<p>点软件目录，里面有很多专业工具。里面有安装教程，我就不再说明了。</p>
-<h4 id="仅可用于个人使用"><a href="#仅可用于个人使用" class="headerlink" title="仅可用于个人使用"></a>仅可用于个人使用</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%AE%A1%E5%AE%B62.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/word1.png" alt></p>
+
+<p>输出电压，$Vout=-gmV_1(r_0//R_D)$ </p>
+<p>电压增益，$A_V=\frac{V_{out}}{V_{in}}=-g_m(r_0//R_D)$ </p>
+<p>输入电阻，$R_i=\infty$</p>
+<p>输出电阻，$R_o=r_o//R_D$ </p>
+<p>由于$r_o&gt;&gt;R_D$ 所以$A_v=-g_mR_D=-\sqrt{2\mu_nC_{ox}\frac{W}{L}I_DR_D}=-\sqrt{2\mu_nC_{ox\frac{W}{L}}}\frac{V_{RD}}{\sqrt{I_D}}$</p>
 <hr>
-<h3 id="画框图工具"><a href="#画框图工具" class="headerlink" title="画框图工具"></a>画框图工具</h3><hr>
-<p>要写论文过程中，框图电路图等，是论文中的必要元素，通常大家可能会使用visio画图，今天我再给大家推荐一款软件==亿图==也是一款画图软件，功能比较强大，个人感觉，亿图比较好用。</p>
-<p>visio：同样在公众号里会有最新版本有visio。此处不再赘述。</p>
-<p>亿图：也是一款收费软件，如果大家是个人使用，可以点击链接下载破解版<a href="https://www.lanzous.com/iaakh4b" target="_blank" rel="noopener">https://www.lanzous.com/iaakh4b</a></p>
-<p>压缩包内有详细的安装和破解过程，另外，亿可以导出多种格式，非常方便。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E4%BA%BF%E5%9B%BE1.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E4%BA%BF%E5%9B%BE2.png" alt></p>
+<h3 id="2-交流小信号分析"><a href="#2-交流小信号分析" class="headerlink" title="2. 交流小信号分析"></a>2. 交流小信号分析</h3><hr>
+<p><strong>幅频特性</strong></p>
+<p>​       幅频特性是指在电子技术实践中所遇到的信号往往不是单一频率的， 而是在某一段频率范围内，在放大电路、滤波电路及谐振电路等几乎所有的电子电路和设备中都含有电抗性元件， 由于它们在各种频率下的电抗值是不相同的，因而电信号在通过这些电子电路和设备的过程中，其幅度和相位发生了变化，亦即是使电信号在传输过程中发生了失真。电信号传输前后输入信号与输出信号的幅度之比称为幅频特性</p>
+<p>​       频率响应是控制系统对正弦输入信号的稳态正弦响应。即一个稳定的线性定常系统，在正弦信号的作用下，稳态时输出仍是一个与输入同频率的正弦信号，且稳态输出的幅值与相位是输入正弦信号频率的函数。幅频特性，它等于频率响应输出幅值与输入信号幅值之比。</p>
+<p>​       幅频特性就是指系统频率响应的幅度随频率变化的曲线,幅度大的地方对应通带,也就是对应频率成分通过系统有较小衰减,幅度小的地方对应阻带,也就是对应频率成分通过系统有较大衰减，根据这个特性，可以用来观测比较滤波器的情况，观察其是否符合要求也就是作为滤波器的技术指标。</p>
+<p>　　理想滤波器是分段常数型的,对应的脉冲响应是无限长的sinc函数,实际系统不可能实现,因此要对脉冲响应进行截断处理,这就在频域产生吉布斯效应,也就是在通带和阻带内形成波动,并且不再尖锐截止,产生过度带。同时可以画幅频特性曲线，这样可以主要检查设计的滤波器是否满足要求,主要指标有:通带截止频率,阻带截止频率,通带波纹和阻带衰减是否达到要求。</p>
+<p> <strong>相频特性</strong></p>
+<p>​       输入信号与输出信号的相角差称为相频特性，相角差与频率的关系曲线称为相频特性曲线</p>
+<p>正弦输入信号的响应也是正弦信号，频率与输入信号相同。不同的是相位与幅值。</p>
+<p>​       在电子技术实践中所遇到的信号往往不是单一频率的, 而是在某一段频率范围内, 在放大电路、滤波电路及谐振电路等几乎所有的电子电路和设备中都含有电抗性元件, 由于它们在各种频率下的电抗值是不相同的, 因而电信号在通过这些电子电路和设备的过程中, 其幅度和相位发生了变化, 亦即是使电信号在传输过程中发生了失真.这种失真有时候是我们需要的, 而有时候是不需要的, 而且必须加以克服。</p>
+<p>​       相位的测量, 通常是指两个或几个同频中的简谐信号之间的相位差的测量.它广泛应用于测量多相系统中或彩色电视系统中几个信号电压之间的相位关系;任意二端阻抗中的电压和电流之间的相位差;滤波器、移相器和放大器等网络的相位移及相位频率特性等</p>
 <hr>
-<h3 id="图表"><a href="#图表" class="headerlink" title="图表"></a>图表</h3><hr>
-<p>框图和电路图画好了，在数据结果部分可能需要画图表，图表可以使用excel来画，不过想让图表美观一点，可能有点费力了。最常用的是MATLAB来画图和渲染，matlab的下载和安装，同样在微信公众号软件安管家上可以找到。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/matlab1.png" alt="盗一张图"></p>
+<h3 id="3-DC仿真找静态工作点"><a href="#3-DC仿真找静态工作点" class="headerlink" title="3. DC仿真找静态工作点"></a>3. DC仿真找静态工作点</h3><hr>
+<p>绘制原理图，如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac2.png" alt></p>
+<p>其中电源电压为3.3V。输入信号设置为变量<strong>vgs</strong>，电阻阻值为10K左右，如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac3.png" alt></p>
+<p>打开ADE，设置变量<strong>vgs</strong>，仿真类型<strong>dc</strong>，设置输出为<strong>out</strong>。（相关操作可参考<a href="http://ccbirds.cn/ICnotes22/">http://ccbirds.cn/ICnotes22/</a>）设置完成后如图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac4.png" alt></p>
+<p>开始仿真，结果如下。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac5.png" alt></p>
+<p>使用快捷键<strong>m</strong>，标记线上的点，再使用快捷键 <strong>d</strong>，再点一个线上的点，会计算出两点之间的横坐标差与纵坐标差和斜率。（使用快捷键<strong>d</strong>时，要保持<strong>m</strong>点处于选中状态）。</p>
+<p>由上图可知 ，交流输入范围大约<em>790mV</em>，交流输出范围大约<em>1.4V</em>。输入电压的中点约<em>1.7V</em>左右。也就是静态工作点。</p>
 <hr>
-<h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><hr>
-<p>写论文时难免会需要输入一些公式，尤其是理工科。常用的公式编辑器为mathtype。</p>
-<p><a href="https://www.mathtype.cn/" target="_blank" rel="noopener">https://www.mathtype.cn/</a> 大家可以在官网下载安装使用</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/mathtype1.png" alt></p>
-<p>再给大家安利一款公式软件，它不是用来写公式的而是用来识别公式，截图需要识别的公式，它会自己识别公式，可以转为latex语言，也可以直接放入word中。下载地址<a href="https://mathpix.com/" target="_blank" rel="noopener">https://mathpix.com/</a> 选择相应的版本下载安装即可。需要注册登录才能下载，是free的。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/mathpix1.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/mathpix2.png" alt></p>
+<h3 id="4-tran仿真"><a href="#4-tran仿真" class="headerlink" title="4. tran仿真"></a>4. tran仿真</h3><hr>
+<p>输入信号设置为正弦，查看输出是否正常，有无畸变。</p>
+<p>将原理图中的输入信号改为正弦波输入，选用器件<strong>vsin</strong>，如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac6.png" alt></p>
+<p><strong>DC voltage</strong>为静态工工作点的值，<strong>Amplitude</strong>为输入范围的一半。<strong>frequency</strong>为频率设定，根据自己情况设置。</p>
+<p>电路如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac7.png" alt></p>
+<p>设置ADE仿真环境，仿真类型为<strong>tran</strong>，输出加上一个输入信号 <strong>vin</strong>，输入与输出 对比，查看波形是否正常。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac8.png" alt></p>
+<p>可以设置 多个仿真类型，使用哪个在哪个使能框中打勾即可。</p>
+<p>结果如下图。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac9.png" alt></p>
+<p>基本无失真，说明静态工作点设置合适。</p>
 <hr>
-<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><hr>
-<p>参考文献的引用，如果按格式一个一个输入，很慢的。给大家推荐一个网址，可以批量引用参考文献—百度学术<a href="http://xueshu.baidu.com/" target="_blank" rel="noopener">http://xueshu.baidu.com/</a> </p>
-<p>输入参考文献名称或者关键字，点批量引用。点右下角的图标。选择引用格式一键复制即可。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E7%99%BE%E5%BA%A6%E5%AD%A6%E6%9C%AF2.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E7%99%BE%E5%BA%A6%E5%AD%A6%E6%9C%AF1.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E7%99%BE%E5%BA%A6%E5%AD%A6%E6%9C%AF3.png" alt></p>
-<p>这是一些常用的论文工具，如有没有提及或者表述不对之处，希望大家帮我指出来</p>
+<h3 id="5-AC仿真"><a href="#5-AC仿真" class="headerlink" title="5. AC仿真"></a>5. AC仿真</h3><hr>
+<p>使用AC仿真，查看电路的幅频特性与相频特性。</p>
+<p>修改电路中<strong>vsin</strong>的参数 。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac10.png" alt></p>
+<p><strong>AC  magnitude</strong>，设置为<em>350mV</em>。<strong>AC  magnitude</strong>用于AC仿真，<strong>Amplitude</strong>用于瞬态仿真。</p>
+<p>设置仿真类型为ac，并设置开始与结束频率。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac11.png" alt></p>
+<p>开始仿真！，此时得到的结果不是幅频与相频，</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac12.png" alt></p>
+<p>选择红框中的<strong>AC Gain&amp;Phase</strong>。并依次选择原理图中的<strong>out</strong>与<strong>vin</strong></p>
+<p>结果如图所示，</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac13.png" alt></p>
+<p>此次没有优化放大器参数，电路特性不好。</p>
+<p>交流小信号分析就完事啦。</p>
 <hr>
+<p>欢迎大家访问！</p>
 <p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+<p>也可电邮我</p>
+<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
 
     </div>
 
@@ -417,8 +443,10 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"><i class="fa fa-tag"></i> 工具</a>
-              <a href="/tags/%E5%86%99%E8%AE%BA%E6%96%87/" rel="tag"><i class="fa fa-tag"></i> 写论文</a>
+              <a href="/tags/cadence/" rel="tag"><i class="fa fa-tag"></i> cadence</a>
+              <a href="/tags/virtuoso/" rel="tag"><i class="fa fa-tag"></i> virtuoso</a>
+              <a href="/tags/ADE%E4%BB%BF%E7%9C%9F/" rel="tag"><i class="fa fa-tag"></i> ADE仿真</a>
+              <a href="/tags/%E4%BA%A4%E6%B5%81%E5%B0%8F%E4%BF%A1%E5%8F%B7%E5%88%86%E6%9E%90/" rel="tag"><i class="fa fa-tag"></i> 交流小信号分析</a>
           </div>
 
         
@@ -427,13 +455,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/nanopi-test/" rel="prev" title="nanopi性能测试unixbench">
-      <i class="fa fa-chevron-left"></i> nanopi性能测试unixbench
+    <a href="/ICnotes3/" rel="prev" title="集成电路学习笔记（三）基于IC617的直流分析">
+      <i class="fa fa-chevron-left"></i> 集成电路学习笔记（三）基于IC617的直流分析
     </a></div>
-      <div class="post-nav-item">
-    <a href="/quickly-reinstall-win10-system/" rel="next" title="快速重装win10系统">
-      快速重装win10系统 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -513,7 +538,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先就是office和wps"><span class="nav-number">1.</span> <span class="nav-text">首先就是office和wps</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#仅可用于个人使用"><span class="nav-number">1.1.</span> <span class="nav-text">仅可用于个人使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画框图工具"><span class="nav-number">2.</span> <span class="nav-text">画框图工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图表"><span class="nav-number">3.</span> <span class="nav-text">图表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公式"><span class="nav-number">4.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-电阻负载的共源极放大器"><span class="nav-number">1.</span> <span class="nav-text">1. 电阻负载的共源极放大器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-交流小信号分析"><span class="nav-number">2.</span> <span class="nav-text">2. 交流小信号分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-DC仿真找静态工作点"><span class="nav-number">3.</span> <span class="nav-text">3. DC仿真找静态工作点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-tran仿真"><span class="nav-number">4.</span> <span class="nav-text">4. tran仿真</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-AC仿真"><span class="nav-number">5.</span> <span class="nav-text">5. AC仿真</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -665,6 +690,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
@@ -680,9 +758,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "http://ccbirds.cn/Paper-gadget-recommendation/";
-    this.page.identifier = "Paper-gadget-recommendation/";
-    this.page.title = "写论文小工具推荐";
+    this.page.url = "http://ccbirds.cn/ICnotes4/";
+    this.page.identifier = "ICnotes4/";
+    this.page.title = "集成电路设计学习笔记（四）基于IC617的交流小信号分析";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {

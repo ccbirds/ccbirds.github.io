@@ -1,3 +1,4 @@
+http://ccbirds.cn/ICnotes4/
 http://ccbirds.cn/ICnotes3/
 http://ccbirds.cn/ICnotes23/
 http://ccbirds.cn/ICnotes22/
@@ -7,4 +8,3 @@ http://ccbirds.cn/quickly-reinstall-win10-system/
 http://ccbirds.cn/Paper-gadget-recommendation/
 http://ccbirds.cn/nanopi-test/
 http://ccbirds.cn/nanopi-install-oh-my-zsh/
-http://ccbirds.cn/nanopi-pressure-test/
