@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ccbirds.cn/"/>
-  <updated>2020-05-06T01:23:41.224Z</updated>
+  <updated>2020-05-07T02:21:23.000Z</updated>
   <id>http://ccbirds.cn/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>集成电路设计学习笔记（五）基于IC617的以二极管连接的mos作负载的共源极放大器</title>
+    <link href="http://ccbirds.cn/ICnotes51/"/>
+    <id>http://ccbirds.cn/ICnotes51/</id>
+    <published>2020-05-07T02:17:12.000Z</published>
+    <updated>2020-05-07T02:21:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文记录以二极管连接的MOS作为负载的共源极放大器。</p><hr><h3 id="1-原理分析"><a href="#1-原理分析" class="headerlink" title="1. 原理分析"></a>1. 原理分析</h3><hr><p>二极管连接的MOS管如下图所示。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs1.png" alt></p><p>无论PMOS还是NMOS，当导通时，均工作在饱和区。</p><p>等效电阻为</p><p>$$R_x=\frac{V_x}{I_x}=\frac{1}{g_m}//R_o\approx\frac{1}{g_m}$$</p><p>以二极管连接的mos作负载的共源极放大器电路连接如下图所示</p><a id="more"></a><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs2.png" alt></p><p>以二极管连接的MOS管作负载时，交流小信号等效电路与以电阻为负载的共源极放大器相似，只是将$R_D$换为$\frac{1}{g_m}$</p><p>所以，$$V_{out}=-g_{m1}V_{1}\frac{1}{g_{m2}}$$</p><p>$$A_V=\frac{V_{out}}{V_{IN}}=-\frac{g_{m1}}{g_{m2}}=-\frac{\sqrt{\mu_p(W/L)}_1}{\sqrt{\mu_n(W/L)}_2}$$</p><p>$$R_i=\infty$$</p><p>$$R_o=\frac{1}{g_{m2}}$$</p><p>当考虑体效应时，</p><p>$$A_V=-\frac{\sqrt{\mu_p(W/L)}_1}{\sqrt{\mu_n(W/L)}_2}\frac{1}{1+\eta}$$</p><p>$$\eta=\frac{1}{g_{mb2}}$$</p><p>当不考虑体效应时，增益为两个MOS的宽长比。</p><hr><h3 id="2-仿真验证"><a href="#2-仿真验证" class="headerlink" title="2.仿真验证"></a>2.仿真验证</h3><hr><p>画电路图，填加电源，信号源，并正确设置MOS的宽长比，如下图所示。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs3.png" alt></p><p>打开ADE，设置仿真变量，仿真类型，和输出信号。</p><p>先DC仿真，找电路的静态工作点。</p><p>ADE设置如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs4.png" alt></p><p>开始仿真，得到如下结果。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs5.png" alt></p><p>放大位数10左右，输入范围大区120mV,输出范围大约1.25V。可设置AC的静态工作点。</p><p>进行瞬态仿真，查看波形是否正常放大。</p><p>将<strong>vdc</strong>修改为<strong>vsin</strong>，参数设置如下图。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs6.png" alt></p><p>保存电路，ADE填加瞬态仿真类型。如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs7.png" alt></p><p>并观察输入与输出信号的波形。如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs8.png" alt></p><p>点击上方红框中的按钮可将两曲线分离，由图可知电路正常放大信号，且无失真。</p><p>最后进行交流小信号分析。设置AC仿真如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs9.png" alt></p><p>开始仿真，完成后选择<strong>AC Gain &amp; Phase</strong>，并依次选择输出信号与输入信号 。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs10.png" alt></p><p>幅频与相频特性如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs11.png" alt></p><p>大概记录了一下以二极管连接的MOS作负载的共源极放大器原理与验证过程。</p><p>如有不对之处，大家多多指正。</p><hr><p>欢迎大家访问！</p><p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p><p>也可电邮我</p><p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文记录以二极管连接的MOS作为负载的共源极放大器。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;1-原理分析&quot;&gt;&lt;a href=&quot;#1-原理分析&quot; class=&quot;headerlink&quot; title=&quot;1. 原理分析&quot;&gt;&lt;/a&gt;1. 原理分析&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;二极管连接的MOS管如下图所示。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs1.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;无论PMOS还是NMOS，当导通时，均工作在饱和区。&lt;/p&gt;
+&lt;p&gt;等效电阻为&lt;/p&gt;
+&lt;p&gt;$$R_x=\frac{V_x}{I_x}=\frac{1}{g_m}//R_o\approx\frac{1}{g_m}$$&lt;/p&gt;
+&lt;p&gt;以二极管连接的mos作负载的共源极放大器电路连接如下图所示&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="集成电路设计" scheme="http://ccbirds.cn/categories/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+      <category term="cadence" scheme="http://ccbirds.cn/tags/cadence/"/>
+    
+      <category term="virtuoso" scheme="http://ccbirds.cn/tags/virtuoso/"/>
+    
+      <category term="ADE仿真" scheme="http://ccbirds.cn/tags/ADE%E4%BB%BF%E7%9C%9F/"/>
+    
+      <category term="共源极放大器" scheme="http://ccbirds.cn/tags/%E5%85%B1%E6%BA%90%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>集成电路设计学习笔记（四）基于IC617的交流小信号分析</title>
@@ -604,34 +641,6 @@
     
     
       <category term="投屏" scheme="http://ccbirds.cn/tags/%E6%8A%95%E5%B1%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu中使用pycharm有些快捷键无法使用</title>
-    <link href="http://ccbirds.cn/ubuntu-pycharm/"/>
-    <id>http://ccbirds.cn/ubuntu-pycharm/</id>
-    <published>2020-02-27T00:57:49.000Z</published>
-    <updated>2020-04-12T07:40:16.006Z</updated>
-    
-    <content type="html"><![CDATA[<p>问题描述：在使用pycharm过程中，ctrl+c,ctrl+v,ctrl+d等快捷键无法使用。</p><p>解决办法：file-&gt;setting-&gt;Editor下面有一个Vim Emulation选项。</p><a id="more"></a><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/pycharm.png" alt><br>将Handler一列中的vim全部改为IDE，点Apply。</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/pycharm2.png" alt><br>这样，快捷键就可以正常使用啦。</p><p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;问题描述：在使用pycharm过程中，ctrl+c,ctrl+v,ctrl+d等快捷键无法使用。&lt;/p&gt;
-&lt;p&gt;解决办法：file-&amp;gt;setting-&amp;gt;Editor下面有一个Vim Emulation选项。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="经验分享" scheme="http://ccbirds.cn/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"/>
-    
-    
-      <category term="ubuntu" scheme="http://ccbirds.cn/tags/ubuntu/"/>
-    
-      <category term="python" scheme="http://ccbirds.cn/tags/python/"/>
-    
-      <category term="pcharm" scheme="http://ccbirds.cn/tags/pcharm/"/>
     
   </entry>
   

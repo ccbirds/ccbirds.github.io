@@ -35,26 +35,34 @@
     var CONFIG = {"hostname":"ccbirds.cn","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"您搜索的${query}我们暂时还没有哦","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="上手nanopi后，一直好奇它的H5cpu性能怎么样和铝壳散热能力怎么样，下面我们来大概看一下。做一下压力测试。  安装两个软件 &#x3D;&#x3D;stress&#x3D;&#x3D;：对CPU施压 1$ sudo apt-get install stress">
+  <meta name="description" content="本文记录以二极管连接的MOS作为负载的共源极放大器。  1. 原理分析 二极管连接的MOS管如下图所示。  无论PMOS还是NMOS，当导通时，均工作在饱和区。 等效电阻为 $$R_x&#x3D;\frac{V_x}{I_x}&#x3D;\frac{1}{g_m}&#x2F;&#x2F;R_o\approx\frac{1}{g_m}$$ 以二极管连接的mos作负载的共源极放大器电路连接如下图所示">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nanopi压力测试和散热能力">
-<meta property="og:url" content="http://ccbirds.cn/nanopi-pressure-test/index.html">
+<meta property="og:title" content="集成电路设计学习笔记（五）基于IC617的以二极管连接的mos作负载的共源极放大器">
+<meta property="og:url" content="http://ccbirds.cn/ICnotes51/index.html">
 <meta property="og:site_name" content="ccbirds blog">
-<meta property="og:description" content="上手nanopi后，一直好奇它的H5cpu性能怎么样和铝壳散热能力怎么样，下面我们来大概看一下。做一下压力测试。  安装两个软件 &#x3D;&#x3D;stress&#x3D;&#x3D;：对CPU施压 1$ sudo apt-get install stress">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi_cpu1.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi_cpu2.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/cpu3.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/cpu4.png">
-<meta property="article:published_time" content="2020-03-04T12:11:50.000Z">
-<meta property="article:modified_time" content="2020-04-12T07:38:58.389Z">
+<meta property="og:description" content="本文记录以二极管连接的MOS作为负载的共源极放大器。  1. 原理分析 二极管连接的MOS管如下图所示。  无论PMOS还是NMOS，当导通时，均工作在饱和区。 等效电阻为 $$R_x&#x3D;\frac{V_x}{I_x}&#x3D;\frac{1}{g_m}&#x2F;&#x2F;R_o\approx\frac{1}{g_m}$$ 以二极管连接的mos作负载的共源极放大器电路连接如下图所示">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs1.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs2.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs3.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs4.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs5.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs6.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs7.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs8.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs9.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs10.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs11.png">
+<meta property="article:published_time" content="2020-05-07T02:17:12.000Z">
+<meta property="article:modified_time" content="2020-05-07T02:21:23.000Z">
 <meta property="article:author" content="ccbirds">
-<meta property="article:tag" content="nanopi">
-<meta property="article:tag" content="H5 cpu">
-<meta property="article:tag" content="压力测试">
+<meta property="article:tag" content="cadence">
+<meta property="article:tag" content="virtuoso">
+<meta property="article:tag" content="ADE仿真">
+<meta property="article:tag" content="共源极放大器">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi_cpu1.png">
+<meta name="twitter:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs1.png">
 
-<link rel="canonical" href="http://ccbirds.cn/nanopi-pressure-test/">
+<link rel="canonical" href="http://ccbirds.cn/ICnotes51/">
 
 
 <script id="page-configurations">
@@ -67,7 +75,7 @@
   };
 </script>
 
-  <title>nanopi压力测试和散热能力 | ccbirds blog</title>
+  <title>集成电路设计学习笔记（五）基于IC617的以二极管连接的mos作负载的共源极放大器 | ccbirds blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161422209-1"></script>
     <script>
@@ -239,7 +247,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://ccbirds.cn/nanopi-pressure-test/">
+    <link itemprop="mainEntityOfPage" href="http://ccbirds.cn/ICnotes51/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -252,7 +260,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          nanopi压力测试和散热能力
+          集成电路设计学习笔记（五）基于IC617的以二极管连接的mos作负载的共源极放大器
         </h1>
 
         <div class="post-meta">
@@ -261,28 +269,22 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-03-04 20:11:50" itemprop="dateCreated datePublished" datetime="2020-03-04T20:11:50+08:00">2020-03-04</time>
+              <time title="创建时间：2020-05-07 10:17:12 / 修改时间：10:21:23" itemprop="dateCreated datePublished" datetime="2020-05-07T10:17:12+08:00">2020-05-07</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-12 15:38:58" itemprop="dateModified" datetime="2020-04-12T15:38:58+08:00">2020-04-12</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/nanopi/" itemprop="url" rel="index"><span itemprop="name">nanopi</span></a>
+                  <a href="/categories/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">集成电路设计</span></a>
                 </span>
             </span>
 
           
-            <span id="/nanopi-pressure-test/" class="post-meta-item leancloud_visitors" data-flag-title="nanopi压力测试和散热能力" title="阅读次数">
+            <span id="/ICnotes51/" class="post-meta-item leancloud_visitors" data-flag-title="集成电路设计学习笔记（五）基于IC617的以二极管连接的mos作负载的共源极放大器" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -297,8 +299,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/nanopi-pressure-test/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="nanopi-pressure-test/" itemprop="commentCount"></span>
+    <a title="disqus" href="/ICnotes51/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="ICnotes51/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -311,8 +313,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/nanopi-pressure-test/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/nanopi-pressure-test/" itemprop="commentCount"></span>
+    <a title="valine" href="/ICnotes51/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/ICnotes51/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -327,47 +329,59 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>上手nanopi后，一直好奇它的H5cpu性能怎么样和铝壳散热能力怎么样，下面我们来大概看一下。做一下压力测试。</p>
+        <p>本文记录以二极管连接的MOS作为负载的共源极放大器。</p>
 <hr>
-<h3 id="安装两个软件"><a href="#安装两个软件" class="headerlink" title="安装两个软件"></a>安装两个软件</h3><hr>
-<p>==stress==：对CPU施压</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt-get install stress<br></code></pre></td></tr></table></figure>
-
+<h3 id="1-原理分析"><a href="#1-原理分析" class="headerlink" title="1. 原理分析"></a>1. 原理分析</h3><hr>
+<p>二极管连接的MOS管如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs1.png" alt></p>
+<p>无论PMOS还是NMOS，当导通时，均工作在饱和区。</p>
+<p>等效电阻为</p>
+<p>$$R_x=\frac{V_x}{I_x}=\frac{1}{g_m}//R_o\approx\frac{1}{g_m}$$</p>
+<p>以二极管连接的mos作负载的共源极放大器电路连接如下图所示</p>
 <a id="more"></a>
 
-<p>==htop==:CPU监控</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt-get install htop<br></code></pre></td></tr></table></figure>
-
-<p>最好是更新一下系统。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs2.png" alt></p>
+<p>以二极管连接的MOS管作负载时，交流小信号等效电路与以电阻为负载的共源极放大器相似，只是将$R_D$换为$\frac{1}{g_m}$</p>
+<p>所以，$$V_{out}=-g_{m1}V_{1}\frac{1}{g_{m2}}$$</p>
+<p>$$A_V=\frac{V_{out}}{V_{IN}}=-\frac{g_{m1}}{g_{m2}}=-\frac{\sqrt{\mu_p(W/L)}_1}{\sqrt{\mu_n(W/L)}_2}$$</p>
+<p>$$R_i=\infty$$</p>
+<p>$$R_o=\frac{1}{g_{m2}}$$</p>
+<p>当考虑体效应时，</p>
+<p>$$A_V=-\frac{\sqrt{\mu_p(W/L)}_1}{\sqrt{\mu_n(W/L)}_2}\frac{1}{1+\eta}$$</p>
+<p>$$\eta=\frac{1}{g_{mb2}}$$</p>
+<p>当不考虑体效应时，增益为两个MOS的宽长比。</p>
 <hr>
-<h3 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h3><hr>
-<p>先连接一个ssh</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo stress -c 4 -t 10000 -m 2 -d 2   <br>//4代表核数，10000代表时间,2代表内存进程，2代表硬盘进程<br>stress: info: [11352] dispatching hogs: 4 cpu, 0 io, 2 vm, 2 hdd<br></code></pre></td></tr></table></figure>
-
-
-
-<p>内存和硬盘设置为2 个，如果设置为4 的话就会影响nanopi的ssh进程。</p>
-<p>查看CPU情况，新打开一个SSH，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ htop<br></code></pre></td></tr></table></figure>
-
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi_cpu1.png" alt></p>
-<p>这是没有压力测试时候的情况，正常温度23左右，下面我们来进行压力测试。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi_cpu2.png" alt></p>
-<p>一段时间后，温度稳定在60度，4个CPU均跑满了，内存用了一半。铝壳的散热现在还是压的住的。功率增加了一倍多。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo stress -c 4 -t 10000 -m 3 -d 2<br></code></pre></td></tr></table></figure>
-
-<p>此时oled程序基本卡住，cpu跑满，内存700M左右，温度的话，铝壳散热是盖住了，大约70度，具体的就不知道了，oled显示已经乱了。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/cpu3.png" alt></p>
-<p>开始真正的烧机。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo stress -c 4 -t 10000 -m 4 -d 4<br></code></pre></td></tr></table></figure>
-
-<p>ssh已经开始连接不稳定，oled彻底罢工。温度还可以，</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/cpu4.png" alt></p>
-<p>作死跑了一个5cpu进程，还在运行，但其他进程已经不能正常工作了。</p>
-<p>总体来说，这个nanopi还可以，铝壳散热完全盖的住。4核的H5也是完全ok。</p>
+<h3 id="2-仿真验证"><a href="#2-仿真验证" class="headerlink" title="2.仿真验证"></a>2.仿真验证</h3><hr>
+<p>画电路图，填加电源，信号源，并正确设置MOS的宽长比，如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs3.png" alt></p>
+<p>打开ADE，设置仿真变量，仿真类型，和输出信号。</p>
+<p>先DC仿真，找电路的静态工作点。</p>
+<p>ADE设置如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs4.png" alt></p>
+<p>开始仿真，得到如下结果。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs5.png" alt></p>
+<p>放大位数10左右，输入范围大区120mV,输出范围大约1.25V。可设置AC的静态工作点。</p>
+<p>进行瞬态仿真，查看波形是否正常放大。</p>
+<p>将<strong>vdc</strong>修改为<strong>vsin</strong>，参数设置如下图。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs6.png" alt></p>
+<p>保存电路，ADE填加瞬态仿真类型。如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs7.png" alt></p>
+<p>并观察输入与输出信号的波形。如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs8.png" alt></p>
+<p>点击上方红框中的按钮可将两曲线分离，由图可知电路正常放大信号，且无失真。</p>
+<p>最后进行交流小信号分析。设置AC仿真如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs9.png" alt></p>
+<p>开始仿真，完成后选择<strong>AC Gain &amp; Phase</strong>，并依次选择输出信号与输入信号 。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs10.png" alt></p>
+<p>幅频与相频特性如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs11.png" alt></p>
+<p>大概记录了一下以二极管连接的MOS作负载的共源极放大器原理与验证过程。</p>
+<p>如有不对之处，大家多多指正。</p>
 <hr>
-<p>【参考】<a href="https://blog.csdn.net/qq_42869041/article/details/83834584" target="_blank" rel="noopener">https://blog.csdn.net/qq_42869041/article/details/83834584</a></p>
+<p>欢迎大家访问！</p>
 <p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+<p>也可电邮我</p>
+<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
 
     </div>
 
@@ -407,9 +421,10 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/nanopi/" rel="tag"><i class="fa fa-tag"></i> nanopi</a>
-              <a href="/tags/H5-cpu/" rel="tag"><i class="fa fa-tag"></i> H5 cpu</a>
-              <a href="/tags/%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95/" rel="tag"><i class="fa fa-tag"></i> 压力测试</a>
+              <a href="/tags/cadence/" rel="tag"><i class="fa fa-tag"></i> cadence</a>
+              <a href="/tags/virtuoso/" rel="tag"><i class="fa fa-tag"></i> virtuoso</a>
+              <a href="/tags/ADE%E4%BB%BF%E7%9C%9F/" rel="tag"><i class="fa fa-tag"></i> ADE仿真</a>
+              <a href="/tags/%E5%85%B1%E6%BA%90%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/" rel="tag"><i class="fa fa-tag"></i> 共源极放大器</a>
           </div>
 
         
@@ -418,13 +433,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog-on-nanopi/" rel="prev" title="将静态博客托管在nanopi上">
-      <i class="fa fa-chevron-left"></i> 将静态博客托管在nanopi上
+    <a href="/ICnotes4/" rel="prev" title="集成电路设计学习笔记（四）基于IC617的交流小信号分析">
+      <i class="fa fa-chevron-left"></i> 集成电路设计学习笔记（四）基于IC617的交流小信号分析
     </a></div>
-      <div class="post-nav-item">
-    <a href="/nanopi-install-oh-my-zsh/" rel="next" title="nanopi安装oh my zsh">
-      nanopi安装oh my zsh <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -504,7 +516,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装两个软件"><span class="nav-number">1.</span> <span class="nav-text">安装两个软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开始测试"><span class="nav-number">2.</span> <span class="nav-text">开始测试</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-原理分析"><span class="nav-number">1.</span> <span class="nav-text">1. 原理分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-仿真验证"><span class="nav-number">2.</span> <span class="nav-text">2.仿真验证</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -656,6 +668,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
@@ -671,9 +736,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "http://ccbirds.cn/nanopi-pressure-test/";
-    this.page.identifier = "nanopi-pressure-test/";
-    this.page.title = "nanopi压力测试和散热能力";
+    this.page.url = "http://ccbirds.cn/ICnotes51/";
+    this.page.identifier = "ICnotes51/";
+    this.page.title = "集成电路设计学习笔记（五）基于IC617的以二极管连接的mos作负载的共源极放大器";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
