@@ -35,21 +35,31 @@
     var CONFIG = {"hostname":"ccbirds.cn","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"您搜索的${query}我们暂时还没有哦","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="oled长时间点亮一个点，付出现烧屏现象，为了避免烧屏。我们将oled设置为闪屏。  关于oled模块驱动的安装，可以参考官方文档 123$ git clone https:&#x2F;&#x2F;github.com&#x2F;friendlyarm&#x2F;NanoHatOLED.git$ cd NanoHatOLED$ sudo -H .&#x2F;install.sh">
+  <meta name="description" content="本文记录电流源负载的共源极放大器。  1.基本原理 基本电路结构如下图所示。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nanopi_neo2_black_防烧屏设置">
-<meta property="og:url" content="http://ccbirds.cn/nanopi_neo2_black_Anti-burn_screen/index.html">
+<meta property="og:title" content="集成电路设计学习笔记（五）基于IC617的电流源负载的共源极放大器">
+<meta property="og:url" content="http://ccbirds.cn/ICnotes52/index.html">
 <meta property="og:site_name" content="ccbirds blog">
-<meta property="og:description" content="oled长时间点亮一个点，付出现烧屏现象，为了避免烧屏。我们将oled设置为闪屏。  关于oled模块驱动的安装，可以参考官方文档 123$ git clone https:&#x2F;&#x2F;github.com&#x2F;friendlyarm&#x2F;NanoHatOLED.git$ cd NanoHatOLED$ sudo -H .&#x2F;install.sh">
-<meta property="article:published_time" content="2020-02-28T07:07:46.000Z">
-<meta property="article:modified_time" content="2020-04-12T07:35:36.219Z">
+<meta property="og:description" content="本文记录电流源负载的共源极放大器。  1.基本原理 基本电路结构如下图所示。">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs31.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs32.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs33.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs34.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs35.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs36.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs37.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs38.png">
+<meta property="article:published_time" content="2020-05-13T02:27:55.000Z">
+<meta property="article:modified_time" content="2020-05-13T08:29:46.232Z">
 <meta property="article:author" content="ccbirds">
-<meta property="article:tag" content="nanopi">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="oled">
+<meta property="article:tag" content="cadence">
+<meta property="article:tag" content="virtuoso">
+<meta property="article:tag" content="ADE仿真">
+<meta property="article:tag" content="共源极放大器">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs31.png">
 
-<link rel="canonical" href="http://ccbirds.cn/nanopi_neo2_black_Anti-burn_screen/">
+<link rel="canonical" href="http://ccbirds.cn/ICnotes52/">
 
 
 <script id="page-configurations">
@@ -62,7 +72,7 @@
   };
 </script>
 
-  <title>nanopi_neo2_black_防烧屏设置 | ccbirds blog</title>
+  <title>集成电路设计学习笔记（五）基于IC617的电流源负载的共源极放大器 | ccbirds blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161422209-1"></script>
     <script>
@@ -234,7 +244,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://ccbirds.cn/nanopi_neo2_black_Anti-burn_screen/">
+    <link itemprop="mainEntityOfPage" href="http://ccbirds.cn/ICnotes52/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -247,7 +257,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          nanopi_neo2_black_防烧屏设置
+          集成电路设计学习笔记（五）基于IC617的电流源负载的共源极放大器
         </h1>
 
         <div class="post-meta">
@@ -256,28 +266,22 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-02-28 15:07:46" itemprop="dateCreated datePublished" datetime="2020-02-28T15:07:46+08:00">2020-02-28</time>
+              <time title="创建时间：2020-05-13 10:27:55 / 修改时间：16:29:46" itemprop="dateCreated datePublished" datetime="2020-05-13T10:27:55+08:00">2020-05-13</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-12 15:35:36" itemprop="dateModified" datetime="2020-04-12T15:35:36+08:00">2020-04-12</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/nanopi/" itemprop="url" rel="index"><span itemprop="name">nanopi</span></a>
+                  <a href="/categories/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">集成电路设计</span></a>
                 </span>
             </span>
 
           
-            <span id="/nanopi_neo2_black_Anti-burn_screen/" class="post-meta-item leancloud_visitors" data-flag-title="nanopi_neo2_black_防烧屏设置" title="阅读次数">
+            <span id="/ICnotes52/" class="post-meta-item leancloud_visitors" data-flag-title="集成电路设计学习笔记（五）基于IC617的电流源负载的共源极放大器" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -292,8 +296,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/nanopi_neo2_black_Anti-burn_screen/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="nanopi_neo2_black_Anti-burn_screen/" itemprop="commentCount"></span>
+    <a title="disqus" href="/ICnotes52/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="ICnotes52/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -306,8 +310,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/nanopi_neo2_black_Anti-burn_screen/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/nanopi_neo2_black_Anti-burn_screen/" itemprop="commentCount"></span>
+    <a title="valine" href="/ICnotes52/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/ICnotes52/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -322,19 +326,45 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>oled长时间点亮一个点，付出现烧屏现象，为了避免烧屏。我们将oled设置为闪屏。</p>
+        <p>本文记录电流源负载的共源极放大器。</p>
 <hr>
-<p>关于oled模块驱动的安装，可以参考<a href="http://wiki.friendlyarm.com/wiki/index.php/NanoHat_OLED" target="_blank" rel="noopener">官方文档</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git <span class="hljs-built_in">clone</span> https://github.com/friendlyarm/NanoHatOLED.git<br>$ <span class="hljs-built_in">cd</span> NanoHatOLED<br>$ sudo -H ./install.sh<br></code></pre></td></tr></table></figure>
+<h3 id="1-基本原理"><a href="#1-基本原理" class="headerlink" title="1.基本原理"></a>1.基本原理</h3><hr>
+<p>基本电路结构如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs31.png" alt></p>
 <a id="more"></a>
-<hr>
-<h4 id="cd到oled源文件目录-修改两个文件"><a href="#cd到oled源文件目录-修改两个文件" class="headerlink" title="cd到oled源文件目录,修改两个文件"></a>cd到oled源文件目录,修改两个文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> /root/NanoHatOLED/BakeBit/Software/Python<br>//使用python控制<br>$ sudo vim bakebit_nanohat_oled.py<br>//加入一条语句<br><span class="hljs-keyword">while</span> True:<br>    try:        <br>        oled.clear_raw() //加入这个语句，其他语句不变<br>        draw_page()<br>        lock.acquire()<br>        page_index = pageIndex<br>        lock.release()<br>   <br>$ sudo vim bakebit_128_64_oled.py<br>//加入下面的函数<br>def clear_raw():<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(8):<br>        setTextXY(0,j)    <br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(16):  <span class="hljs-comment">#clear all columns</span><br>            putChar(<span class="hljs-string">' '</span>)<br></code></pre></td></tr></table></figure>
 
-<h4 id="清除原进程，启动新进程"><a href="#清除原进程，启动新进程" class="headerlink" title="清除原进程，启动新进程"></a>清除原进程，启动新进程</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ps aux | grep python //查看进程<br>root     25913  3.8  1.4  22380 14648 pts/0    S    14:23   0:35 python bakebit_nanohat_oled.py<br>pi       26617  0.0  0.0   7284   544 pts/0    S+   14:39   0:00 grep --color=auto python<br>$ sudo pkill -f bakebit_nanohat_oled.py <br>//结束进程<br>$ sudo python bakebit_nanohat_oled.py<br>// 重启进程 <br>$ sudo python bakebit_nanohat_oled.py &amp;<br>// 重启进程 后台运行<br></code></pre></td></tr></table></figure>
-
+<p>交流小信号模型如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs32.png" alt></p>
+<p>输出电阻是</p>
+<p>$$R_{out}=r_{O1}//r_{O2}$$</p>
+<p>增益为</p>
+<p>$$A_{V}=-g_m1(r_{O1}//R_{O2})\approx-g_mr_{O1}=-\sqrt{2\mu_nC_{OX}I_D(\frac{W}{L})}\frac{1}{\lambda_1I_D}$$</p>
+<p>输出摆幅</p>
+<p>$$V_{in}-V_{tn}\leq V_{out} \leq V_b+|V_{tp}|$$</p>
 <hr>
-<p>这样就不会烧屏了！</p>
+<h3 id="2-仿真验证"><a href="#2-仿真验证" class="headerlink" title="2. 仿真验证"></a>2. 仿真验证</h3><hr>
+<p>绘制原理图并填加电源，如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs33.png" alt></p>
+<p>其中NMOS的栅极为输入，输入电压设为变量vgs，PMOS是电流源，栅极电压设为vb。</p>
+<p>设置ADE仿真环境，如下图所示，（具体设置过程见我学习笔记二 ）</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs34.png" alt></p>
+<p>先进行直流分析找静态工作点</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs35.png" alt></p>
+<p>放大倍数约34。静态工作电压约为915mV，输入摆幅约60mV。</p>
+<p>依此设置<strong>vsin</strong>的各参数，</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs36.png" alt></p>
+<p>由于放大倍数较大，输入摆幅设置的小一点。</p>
+<p>进行瞬态仿真，查看是否有失真现象</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs37.png" alt></p>
+<p>电路正常放大，无失真</p>
+<p>进行交流小信号分析，</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs38.png" alt></p>
+<p>增益约为40dB。</p>
+<hr>
+<p>欢迎大家访问！</p>
 <p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+<p>也可电邮我</p>
+<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
 
     </div>
 
@@ -374,9 +404,10 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/nanopi/" rel="tag"><i class="fa fa-tag"></i> nanopi</a>
-              <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
-              <a href="/tags/oled/" rel="tag"><i class="fa fa-tag"></i> oled</a>
+              <a href="/tags/cadence/" rel="tag"><i class="fa fa-tag"></i> cadence</a>
+              <a href="/tags/virtuoso/" rel="tag"><i class="fa fa-tag"></i> virtuoso</a>
+              <a href="/tags/ADE%E4%BB%BF%E7%9C%9F/" rel="tag"><i class="fa fa-tag"></i> ADE仿真</a>
+              <a href="/tags/%E5%85%B1%E6%BA%90%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/" rel="tag"><i class="fa fa-tag"></i> 共源极放大器</a>
           </div>
 
         
@@ -403,13 +434,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/nanopi-neo2-black-Musical-alarm-clock/" rel="prev" title="nanopi neo2 black 音乐闹钟">
-      <i class="fa fa-chevron-left"></i> nanopi neo2 black 音乐闹钟
+    <a href="/ICnotes51/" rel="prev" title="集成电路设计学习笔记（五）基于IC617的以二极管连接的mos作负载的共源极放大器">
+      <i class="fa fa-chevron-left"></i> 集成电路设计学习笔记（五）基于IC617的以二极管连接的mos作负载的共源极放大器
     </a></div>
-      <div class="post-nav-item">
-    <a href="/markedown-typora-picgo-github-aliyun/" rel="next" title="markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床">
-      markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -489,7 +517,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cd到oled源文件目录-修改两个文件"><span class="nav-number">1.</span> <span class="nav-text">cd到oled源文件目录,修改两个文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#清除原进程，启动新进程"><span class="nav-number">2.</span> <span class="nav-text">清除原进程，启动新进程</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本原理"><span class="nav-number">1.</span> <span class="nav-text">1.基本原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-仿真验证"><span class="nav-number">2.</span> <span class="nav-text">2. 仿真验证</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -641,6 +669,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
@@ -656,9 +737,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "http://ccbirds.cn/nanopi_neo2_black_Anti-burn_screen/";
-    this.page.identifier = "nanopi_neo2_black_Anti-burn_screen/";
-    this.page.title = "nanopi_neo2_black_防烧屏设置";
+    this.page.url = "http://ccbirds.cn/ICnotes52/";
+    this.page.identifier = "ICnotes52/";
+    this.page.title = "集成电路设计学习笔记（五）基于IC617的电流源负载的共源极放大器";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
