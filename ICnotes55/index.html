@@ -35,49 +35,31 @@
     var CONFIG = {"hostname":"ccbirds.cn","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"您搜索的${query}我们暂时还没有哦","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="平时在弄一些东西想记一些笔记，要不等弄完也就弄完了，几乎忘了怎么弄的，最好用笔记记录一下。首先尝试了一下印象笔记，免费用户可以两个设备同步，每个月还有流量限制，主要是照片比较多，一个月的流量很可能不来够，果断放弃。 考虑用markdown来记录一些东西，因为写博客也是用的markdown，写点代码什么的比较方便。上网搜了一下，使用typroa和坚果云可以实现云同步。typroa界面十分简洁清爽，非">
+  <meta name="description" content="本文主要记录共漏极放大器的原理与仿真验证  1. 原理 电路结构如图所示">
 <meta property="og:type" content="article">
-<meta property="og:title" content="markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床">
-<meta property="og:url" content="http://ccbirds.cn/markedown-typora-picgo-github-aliyun/index.html">
+<meta property="og:title" content="集成电路设计笔记（五）基于IC617共漏极放大器">
+<meta property="og:url" content="http://ccbirds.cn/ICnotes55/index.html">
 <meta property="og:site_name" content="ccbirds blog">
-<meta property="og:description" content="平时在弄一些东西想记一些笔记，要不等弄完也就弄完了，几乎忘了怎么弄的，最好用笔记记录一下。首先尝试了一下印象笔记，免费用户可以两个设备同步，每个月还有流量限制，主要是照片比较多，一个月的流量很可能不来够，果断放弃。 考虑用markdown来记录一些东西，因为写博客也是用的markdown，写点代码什么的比较方便。上网搜了一下，使用typroa和坚果云可以实现云同步。typroa界面十分简洁清爽，非">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/typroadownload.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/typroa-img1.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E5%9D%9A%E6%9E%9C%E4%BA%91%E4%B8%8B%E8%BD%BD.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E5%9D%9A%E6%9E%9C%E4%BA%91.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E5%9D%9A%E6%9E%9C%E4%BA%91%E5%90%8C%E6%AD%A5.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/picgo%E2%80%94download.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/picgo1.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/github_setting1.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/github_setting2.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/github_setting3.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/github_setting4.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/picgo-github.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss1.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss2.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss3.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss5.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss6.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss7.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss8.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss9.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/picgo-aliyun.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/typroa_upload.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/picgo-server.png">
-<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/typroa-upload1.png">
-<meta property="article:published_time" content="2020-03-01T06:51:24.000Z">
-<meta property="article:modified_time" content="2020-04-12T07:34:26.754Z">
+<meta property="og:description" content="本文主要记录共漏极放大器的原理与仿真验证  1. 原理 电路结构如图所示">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/551.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/552.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/553.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/554.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/555.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/556.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/557.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/558.png">
+<meta property="article:published_time" content="2020-06-22T12:49:00.000Z">
+<meta property="article:modified_time" content="2020-06-22T13:52:16.127Z">
 <meta property="article:author" content="ccbirds">
-<meta property="article:tag" content="图床">
-<meta property="article:tag" content="typroa">
-<meta property="article:tag" content="picgo">
-<meta property="article:tag" content="github 图床">
-<meta property="article:tag" content="坚果云">
-<meta property="article:tag" content="云笔记">
+<meta property="article:tag" content="cadence">
+<meta property="article:tag" content="virtuoso">
+<meta property="article:tag" content="ADE仿真">
+<meta property="article:tag" content="共漏极放大器">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/typroadownload.png">
+<meta name="twitter:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/551.png">
 
-<link rel="canonical" href="http://ccbirds.cn/markedown-typora-picgo-github-aliyun/">
+<link rel="canonical" href="http://ccbirds.cn/ICnotes55/">
 
 
 <script id="page-configurations">
@@ -90,7 +72,7 @@
   };
 </script>
 
-  <title>markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床 | ccbirds blog</title>
+  <title>集成电路设计笔记（五）基于IC617共漏极放大器 | ccbirds blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161422209-1"></script>
     <script>
@@ -262,7 +244,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://ccbirds.cn/markedown-typora-picgo-github-aliyun/">
+    <link itemprop="mainEntityOfPage" href="http://ccbirds.cn/ICnotes55/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -275,7 +257,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床
+          集成电路设计笔记（五）基于IC617共漏极放大器
         </h1>
 
         <div class="post-meta">
@@ -284,28 +266,22 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-03-01 14:51:24" itemprop="dateCreated datePublished" datetime="2020-03-01T14:51:24+08:00">2020-03-01</time>
+              <time title="创建时间：2020-06-22 20:49:00 / 修改时间：21:52:16" itemprop="dateCreated datePublished" datetime="2020-06-22T20:49:00+08:00">2020-06-22</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-12 15:34:26" itemprop="dateModified" datetime="2020-04-12T15:34:26+08:00">2020-04-12</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/" itemprop="url" rel="index"><span itemprop="name">经验分享</span></a>
+                  <a href="/categories/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">集成电路设计</span></a>
                 </span>
             </span>
 
           
-            <span id="/markedown-typora-picgo-github-aliyun/" class="post-meta-item leancloud_visitors" data-flag-title="markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床" title="阅读次数">
+            <span id="/ICnotes55/" class="post-meta-item leancloud_visitors" data-flag-title="集成电路设计笔记（五）基于IC617共漏极放大器" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -320,8 +296,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/markedown-typora-picgo-github-aliyun/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="markedown-typora-picgo-github-aliyun/" itemprop="commentCount"></span>
+    <a title="disqus" href="/ICnotes55/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="ICnotes55/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -334,8 +310,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/markedown-typora-picgo-github-aliyun/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/markedown-typora-picgo-github-aliyun/" itemprop="commentCount"></span>
+    <a title="valine" href="/ICnotes55/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/ICnotes55/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -350,91 +326,45 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>平时在弄一些东西想记一些笔记，要不等弄完也就弄完了，几乎忘了怎么弄的，最好用笔记记录一下。首先尝试了一下印象笔记，免费用户可以两个设备同步，每个月还有流量限制，主要是照片比较多，一个月的流量很可能不来够，果断放弃。</p>
-<p>考虑用markdown来记录一些东西，因为写博客也是用的markdown，写点代码什么的比较方便。上网搜了一下，使用typroa和坚果云可以实现云同步。typroa界面十分简洁清爽，非常舒服。坚果云的空间没有其他网盘大，但主打的是同步，每个月有1G的上传和3G的下载，对于只是同步 一下md文档，完全够用了。可是又有一个新的问题。图片怎么办？对于我这个时不时就截图的人来说，这个问题很致命。很巧typroa支持使用picgo上传图片。picgo是一个上传图片到图床的一个软件。图床的选择，免费的是Github，不过毕竟是免费的，大家都懂，七牛云，据说用的比较多，不过因为域名只能用一段时间，这后就需要使用自己备案过的域名，感觉不方便，所以考虑到阿里云和腾讯云，比较了一下，价钱的话差不多，实际上都用不了多少钱。个人感觉阿里云做的比较好。所以使用typora+坚果云+picgo+github图床+阿里云图床。这样即解决了笔记问题也解决了博客图床的问题。</p>
-<p>最重要的是typroa、坚果云、picgo都是支持windows macos 和linux。</p>
-<p>下面以windows为例介绍一下。</p>
+        <p>本文主要记录共漏极放大器的原理与仿真验证</p>
+<hr>
+<h3 id="1-原理"><a href="#1-原理" class="headerlink" title="1. 原理"></a>1. 原理</h3><hr>
+<p>电路结构如图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/551.png" alt></p>
 <a id="more"></a>
+
+<p>当$V_{in}&lt;V_{TH}$时，M1处于截止状态，$V_{out}$等于零。</p>
+<p>$V_{in}$增大超过$V_{TH}$时，M1导通进入饱和区。</p>
+<p>$V_{in}$进一步增大，$V_{out}$随$V_{in}$变化，且之差为$V_{GS}$</p>
+<p>$$R_{in}=\infty$$</p>
+<p>$$A_V=\frac{v_{out}}{v_{in}}=\frac{r_o//R_L}{\frac{1}{g_m}+r_o//R_L}\approx \frac{g_mR_L}{1+g_mR_L}&lt;1$$</p>
+<p>$$R_{out}=\frac{1}{g_m}//(r_o//R_l)\approx \frac{R_L}{1+g_mRL}$$</p>
+<p>增益较低，趋于一，电流驱动能力较强，可作为运放的最后一级。</p>
 <hr>
-<h3 id="typroa"><a href="#typroa" class="headerlink" title="typroa"></a>typroa</h3><hr>
-<p><a href="https://typora.io/" target="_blank" rel="noopener">下载地址</a></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/typroadownload.png" alt></p>
-<p>选择对应的版本，下载安装。</p>
-<p>安装后，打开 文件-&gt;偏好设置-&gt;图像</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/typroa-img1.png" alt></p>
-<p>选择上传图片，上传服务选择PicGo（app），路径选择一会安装PicGo的路径。</p>
-<p>其他设置，大家可以根据自己的喜好设置。</p>
+<h3 id="2-直流仿真验证"><a href="#2-直流仿真验证" class="headerlink" title="2. 直流仿真验证"></a>2. 直流仿真验证</h3><hr>
+<p>原理图如图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/552.png" alt></p>
+<p>ADE设置如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/553.png" alt></p>
+<p>DC仿真结果如下图所示，增益近乎为1，</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/554.png" alt></p>
 <hr>
-<h3 id="坚果云"><a href="#坚果云" class="headerlink" title="坚果云"></a>坚果云</h3><hr>
-<p><a href="https://www.jianguoyun.com/s/downloads" target="_blank" rel="noopener">下载地址</a></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E5%9D%9A%E6%9E%9C%E4%BA%91%E4%B8%8B%E8%BD%BD.png" alt></p>
-<p>选择对应的版本下载，安装（安装过程没有截图，大家按照提示安装就可以）。最后把typroa的md文件保存在坚果云的同步文件夹下就可以了。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E5%9D%9A%E6%9E%9C%E4%BA%91.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E5%9D%9A%E6%9E%9C%E4%BA%91%E5%90%8C%E6%AD%A5.png" alt></p>
+<h3 id="3-瞬态仿真"><a href="#3-瞬态仿真" class="headerlink" title="3. 瞬态仿真"></a>3. 瞬态仿真</h3><hr>
+<p>将直流源更换为交流源。结果如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/555.png" alt></p>
+<p>交流源设置如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/556.png" alt></p>
+<p>结果如图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/557.png" alt></p>
 <hr>
-<h3 id="PicGo"><a href="#PicGo" class="headerlink" title="PicGo"></a>PicGo</h3><hr>
-<p><a href="https://molunerfinn.com/PicGo/" target="_blank" rel="noopener">下载地址</a></p>
-<p>picgo是Github开源项目，大家下载自己需要的版本，其他平台大家可以参考文档安装。windows选择exe文件。安装后启动，刚开始不会有界面，右下角图标单击或者右键可以打开界面。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/picgo%E2%80%94download.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/picgo1.png" alt></p>
-<p>到这里不要忘了去typroa上找一下picgo的安装路径。</p>
+<h3 id="4-交流小信号"><a href="#4-交流小信号" class="headerlink" title="4. 交流小信号"></a>4. 交流小信号</h3><hr>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/558.png" alt></p>
+<p>因为增益小于1，所示交流增益小于0dB。</p>
 <hr>
-<h3 id="Github图床"><a href="#Github图床" class="headerlink" title="Github图床"></a>Github图床</h3><hr>
-<p><a href="https://github.com/" target="_blank" rel="noopener">github.com</a></p>
-<p>新建一个仓库，用做图床。（一定要公开不要私密，要不别人看不到图片）</p>
-<p>setting-&gt;developer setting-&gt;personal access tokens</p>
-<p>点generate new token</p>
-<p>note 随便填，下面不知道每个选项都是什么意思，跟我一样全选上。</p>
-<p>最后generate token</p>
-<p>记住生成的token秘钥，</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/github_setting1.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/github_setting2.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/github_setting3.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/github_setting4.png" alt></p>
-<hr>
-<p>打开picgo，选择Github图床。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/picgo-github.png" alt></p>
-<p>仓库名：用户名/仓库名</p>
-<p>分支名：master</p>
-<p>token：刚才生成的token秘钥</p>
-<p>存储路径：是仓库下新建一个文件夹来作为图床，后面要有/</p>
-<p>自定义域名;<a href="https://raw.githubsercontent.com/用户名/仓库名/分支" target="_blank" rel="noopener">https://raw.githubsercontent.com/用户名/仓库名/分支</a></p>
-<p>点确定即可。Github图床设置完成，可以上传一个图片试试。</p>
-<p>Github主要是免费的，速度什么的就不行了。</p>
-<hr>
-<h3 id="阿里云图床"><a href="#阿里云图床" class="headerlink" title="阿里云图床"></a>阿里云图床</h3><hr>
-<p><a href="https://cn.aliyun.com/" target="_blank" rel="noopener">阿里云网址</a></p>
-<p>选择对象存储OSS，或者直接搜索也可以。购买的话，40GB一年才9元，现在买还有折扣，一年7.2元。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss1.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss2.png" alt></p>
-<p>下单后，在控制台找到OSS。进入BUcket列表，创建bucket。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss3.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss5.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss6.png" alt></p>
-<p>bucket的名称大家自己想一个。读写权限改为公共读。</p>
-<p>确定。记住外网的两个域名。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss7.png" alt></p>
-<p>下面来生成key。点击概览，右侧有一个常用入口，下面有一个Access Key。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss8.png" alt></p>
-<p>进入后，点击   创建Accesskey   验证手机，会造成ID和key，最好是保存一下。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss9.png" alt></p>
-<hr>
-<p>打开picgo，进入阿里云oss设置。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/picgo-aliyun.png" alt></p>
-<p>keyid和keysecrect是刚才生成的ID和key。</p>
-<p>存储空间名是bucket的名</p>
-<p>存储区域是全世外网访问节点 去掉aliyuncs.com 前面的一串。</p>
-<p>存储路径什么的大家根据自己的喜好来。</p>
-<hr>
-<h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><p>typroa验证上传时，不成功</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/typroa_upload.png" alt></p>
-<p>原因：应该是typroa的端口与picgo的端口不对应。修改一下picgo的server端口就行。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/picgo-server.png" alt></p>
-<p>测试一下，成功了。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/typroa-upload1.png" alt></p>
-<hr>
-<p>到这里就完事了！</p>
+<p>欢迎大家访问！</p>
 <p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+<p>也可电邮我</p>
+<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
 
     </div>
 
@@ -474,12 +404,10 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%9B%BE%E5%BA%8A/" rel="tag"><i class="fa fa-tag"></i> 图床</a>
-              <a href="/tags/typroa/" rel="tag"><i class="fa fa-tag"></i> typroa</a>
-              <a href="/tags/picgo/" rel="tag"><i class="fa fa-tag"></i> picgo</a>
-              <a href="/tags/github-%E5%9B%BE%E5%BA%8A/" rel="tag"><i class="fa fa-tag"></i> github 图床</a>
-              <a href="/tags/%E5%9D%9A%E6%9E%9C%E4%BA%91/" rel="tag"><i class="fa fa-tag"></i> 坚果云</a>
-              <a href="/tags/%E4%BA%91%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 云笔记</a>
+              <a href="/tags/cadence/" rel="tag"><i class="fa fa-tag"></i> cadence</a>
+              <a href="/tags/virtuoso/" rel="tag"><i class="fa fa-tag"></i> virtuoso</a>
+              <a href="/tags/ADE%E4%BB%BF%E7%9C%9F/" rel="tag"><i class="fa fa-tag"></i> ADE仿真</a>
+              <a href="/tags/%E5%85%B1%E6%BC%8F%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/" rel="tag"><i class="fa fa-tag"></i> 共漏极放大器</a>
           </div>
 
         
@@ -506,13 +434,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/nanopi_neo2_black_Anti-burn_screen/" rel="prev" title="nanopi_neo2_black_防烧屏设置">
-      <i class="fa fa-chevron-left"></i> nanopi_neo2_black_防烧屏设置
+    <a href="/ICnotes54/" rel="prev" title="集成电路设计笔记（五）基于IC617带源极负反馈的共源级的放大器">
+      <i class="fa fa-chevron-left"></i> 集成电路设计笔记（五）基于IC617带源极负反馈的共源级的放大器
     </a></div>
-      <div class="post-nav-item">
-    <a href="/blog-on-nanopi/" rel="next" title="将静态博客托管在nanopi上">
-      将静态博客托管在nanopi上 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -592,7 +517,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#typroa"><span class="nav-number">1.</span> <span class="nav-text">typroa</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#坚果云"><span class="nav-number">2.</span> <span class="nav-text">坚果云</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PicGo"><span class="nav-number">3.</span> <span class="nav-text">PicGo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Github图床"><span class="nav-number">4.</span> <span class="nav-text">Github图床</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阿里云图床"><span class="nav-number">5.</span> <span class="nav-text">阿里云图床</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题："><span class="nav-number">6.</span> <span class="nav-text">问题：</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-原理"><span class="nav-number">1.</span> <span class="nav-text">1. 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-直流仿真验证"><span class="nav-number">2.</span> <span class="nav-text">2. 直流仿真验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-瞬态仿真"><span class="nav-number">3.</span> <span class="nav-text">3. 瞬态仿真</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-交流小信号"><span class="nav-number">4.</span> <span class="nav-text">4. 交流小信号</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -744,6 +669,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
@@ -759,9 +737,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "http://ccbirds.cn/markedown-typora-picgo-github-aliyun/";
-    this.page.identifier = "markedown-typora-picgo-github-aliyun/";
-    this.page.title = "markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床";
+    this.page.url = "http://ccbirds.cn/ICnotes55/";
+    this.page.identifier = "ICnotes55/";
+    this.page.title = "集成电路设计笔记（五）基于IC617共漏极放大器";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {

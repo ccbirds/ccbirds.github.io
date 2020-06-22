@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ccbirds.cn/"/>
-  <updated>2020-05-28T11:51:21.000Z</updated>
+  <updated>2020-06-22T13:52:16.127Z</updated>
   <id>http://ccbirds.cn/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>集成电路设计笔记（五）基于IC617共漏极放大器</title>
+    <link href="http://ccbirds.cn/ICnotes55/"/>
+    <id>http://ccbirds.cn/ICnotes55/</id>
+    <published>2020-06-22T12:49:00.000Z</published>
+    <updated>2020-06-22T13:52:16.127Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文主要记录共漏极放大器的原理与仿真验证</p><hr><h3 id="1-原理"><a href="#1-原理" class="headerlink" title="1. 原理"></a>1. 原理</h3><hr><p>电路结构如图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/551.png" alt></p><a id="more"></a><p>当$V_{in}&lt;V_{TH}$时，M1处于截止状态，$V_{out}$等于零。</p><p>$V_{in}$增大超过$V_{TH}$时，M1导通进入饱和区。</p><p>$V_{in}$进一步增大，$V_{out}$随$V_{in}$变化，且之差为$V_{GS}$</p><p>$$R_{in}=\infty$$</p><p>$$A_V=\frac{v_{out}}{v_{in}}=\frac{r_o//R_L}{\frac{1}{g_m}+r_o//R_L}\approx \frac{g_mR_L}{1+g_mR_L}&lt;1$$</p><p>$$R_{out}=\frac{1}{g_m}//(r_o//R_l)\approx \frac{R_L}{1+g_mRL}$$</p><p>增益较低，趋于一，电流驱动能力较强，可作为运放的最后一级。</p><hr><h3 id="2-直流仿真验证"><a href="#2-直流仿真验证" class="headerlink" title="2. 直流仿真验证"></a>2. 直流仿真验证</h3><hr><p>原理图如图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/552.png" alt></p><p>ADE设置如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/553.png" alt></p><p>DC仿真结果如下图所示，增益近乎为1，</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/554.png" alt></p><hr><h3 id="3-瞬态仿真"><a href="#3-瞬态仿真" class="headerlink" title="3. 瞬态仿真"></a>3. 瞬态仿真</h3><hr><p>将直流源更换为交流源。结果如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/555.png" alt></p><p>交流源设置如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/556.png" alt></p><p>结果如图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/557.png" alt></p><hr><h3 id="4-交流小信号"><a href="#4-交流小信号" class="headerlink" title="4. 交流小信号"></a>4. 交流小信号</h3><hr><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/558.png" alt></p><p>因为增益小于1，所示交流增益小于0dB。</p><hr><p>欢迎大家访问！</p><p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p><p>也可电邮我</p><p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文主要记录共漏极放大器的原理与仿真验证&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;1-原理&quot;&gt;&lt;a href=&quot;#1-原理&quot; class=&quot;headerlink&quot; title=&quot;1. 原理&quot;&gt;&lt;/a&gt;1. 原理&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;电路结构如图所示&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/551.png&quot; alt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="集成电路设计" scheme="http://ccbirds.cn/categories/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+      <category term="cadence" scheme="http://ccbirds.cn/tags/cadence/"/>
+    
+      <category term="virtuoso" scheme="http://ccbirds.cn/tags/virtuoso/"/>
+    
+      <category term="ADE仿真" scheme="http://ccbirds.cn/tags/ADE%E4%BB%BF%E7%9C%9F/"/>
+    
+      <category term="共漏极放大器" scheme="http://ccbirds.cn/tags/%E5%85%B1%E6%BC%8F%E6%9E%81%E6%94%BE%E5%A4%A7%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>集成电路设计笔记（五）基于IC617带源极负反馈的共源级的放大器</title>
@@ -629,35 +662,6 @@
       <category term="ubuntu" scheme="http://ccbirds.cn/tags/ubuntu/"/>
     
       <category term="SSH" scheme="http://ccbirds.cn/tags/SSH/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu下将文件备份到github</title>
-    <link href="http://ccbirds.cn/Back-up-files-to-github-under-ubuntu/"/>
-    <id>http://ccbirds.cn/Back-up-files-to-github-under-ubuntu/</id>
-    <published>2020-02-27T07:34:12.000Z</published>
-    <updated>2020-04-12T07:39:52.567Z</updated>
-    
-    <content type="html"><![CDATA[<p>将hexo博客目录备份到github，以防意外删除文件，这样也方便在其他设备上写博客</p><hr><h3 id="1-安装git"><a href="#1-安装git" class="headerlink" title="1. 安装git"></a>1. 安装git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt-get install git<br></code></pre></td></tr></table></figure><a id="more"></a><h3 id="2-生成ssh-key"><a href="#2-生成ssh-key" class="headerlink" title="2.生成ssh key"></a>2.生成ssh key</h3><p>使用命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ssh-keygen -t rsa -C “github username”<br></code></pre></td></tr></table></figure><p>会生成下面三个文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">id_rsa  id_rsa.pub  known_hosts<br></code></pre></td></tr></table></figure><h3 id="3-github-setting"><a href="#3-github-setting" class="headerlink" title="3.github setting"></a>3.github setting</h3><p>登录github，setting,左边有SSH and GPG keys 选项，点new<br>ssh key。title随便写，key 填写id_rsa.pub文件中的内容。<br>新建一个仓库用来备份。<br>测试ssh key是否成功</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ssh -T git@github.com<br>Hi ccbirds! You<span class="hljs-string">'ve successfully authenticated, but GitHub does not provide shell access.</span><br></code></pre></td></tr></table></figure><h3 id="4-在需要备份的目录下初始化git"><a href="#4-在需要备份的目录下初始化git" class="headerlink" title="4.在需要备份的目录下初始化git"></a>4.在需要备份的目录下初始化git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git init<br>Reinitialized existing Git repository <span class="hljs-keyword">in</span> /home/czq/blog/.git/<br></code></pre></td></tr></table></figure><h3 id="5-设置git"><a href="#5-设置git" class="headerlink" title="5.设置git"></a>5.设置git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git config user.name “github user name” <br>$ git config user.email “github email”<br>$ git config user.name //查看设置的name<br>$ git config user.email //查看设置的邮箱<br>$ git remote add origin https://github.com/ccbirds/hexo.git //github 仓库地址<br></code></pre></td></tr></table></figure><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/Github1.png" alt><br>如果显示origin已经存在,删除origin，并重新设置origin</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git remote rm origin <br>$ git remote add origin https://github.com/ccbirds/hexo.git<br></code></pre></td></tr></table></figure><h3 id="6-添加文件"><a href="#6-添加文件" class="headerlink" title="6.添加文件"></a>6.添加文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git add test.txt //指定一个文件<br>$ git add .    //目录下的所有文件<br>$ git commit -m <span class="hljs-string">"2020-02-27"</span> //备注<br>$ git push origin master<br>Username <span class="hljs-keyword">for</span> <span class="hljs-string">'https://github.com'</span>: ccbirds //输入用户名<br>Password <span class="hljs-keyword">for</span> <span class="hljs-string">'https://ccbirds@github.com'</span>:  //输入密码，密码不会显示<br>Writing objects: 100% (3/3), 277 bytes | 277.00 KiB/s, <span class="hljs-keyword">done</span>.<br>Total 3 (delta 0), reused 0 (delta 0)<br>To https://github.com/ccbirds/hexo.git<br>   da79977..341a1a4  master -&gt; master<br></code></pre></td></tr></table></figure><h3 id="这样就成功啦"><a href="#这样就成功啦" class="headerlink" title="这样就成功啦"></a>这样就成功啦</h3><p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;将hexo博客目录备份到github，以防意外删除文件，这样也方便在其他设备上写博客&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;1-安装git&quot;&gt;&lt;a href=&quot;#1-安装git&quot; class=&quot;headerlink&quot; title=&quot;1. 安装git&quot;&gt;&lt;/a&gt;1. 安装git&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;$ sudo apt-get install git&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="经验分享" scheme="http://ccbirds.cn/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"/>
-    
-    
-      <category term="ubuntu" scheme="http://ccbirds.cn/tags/ubuntu/"/>
-    
-      <category term="git" scheme="http://ccbirds.cn/tags/git/"/>
-    
-      <category term="github" scheme="http://ccbirds.cn/tags/github/"/>
     
   </entry>
   
