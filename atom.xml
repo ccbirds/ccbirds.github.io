@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ccbirds.cn/"/>
-  <updated>2020-06-22T13:52:16.127Z</updated>
+  <updated>2020-06-24T02:05:50.935Z</updated>
   <id>http://ccbirds.cn/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>集成电路设计笔记（六）基于IC617设计运算放大器</title>
+    <link href="http://ccbirds.cn/ICnotes6/"/>
+    <id>http://ccbirds.cn/ICnotes6/</id>
+    <published>2020-06-24T03:51:24.000Z</published>
+    <updated>2020-06-24T02:05:50.935Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-什么是运放？"><a href="#1-什么是运放？" class="headerlink" title="1. 什么是运放？"></a>1. 什么是运放？</h3><hr><p>运算放大器（简称“运放”）是具有很高放大倍数的电路单元。在实际电路中，通常结合反馈网络共同组成某种功能模块。它是一种带有特殊耦合电路及反馈的放大器。其输出信号可以是输入信号加、减或微分、积分等数学运算的结果。是电路中的一个常用结构。</p><p>运放的结构多种多样，本文记录一种简单的结构</p><a id="more"></a><hr><h3 id="2-运放原理"><a href="#2-运放原理" class="headerlink" title="2. 运放原理"></a>2. 运放原理</h3><hr><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/61.png" alt></p><p>运放的原理图如上图所示，上方四个PMOS为电流镜，为电路中其他部分提供电流，PM1为电流镜的参考电流。PM4和PM5为养分输入部分，放大差模信号抑制共模信号，在其下方的两个NMOS（NM2和NM3）为一对电流镜，将双端输出复制到单端，并作为差分输入的有源负载。NM4是电路的第二级放大。其上方的电阻和电容用来米勒补偿，调节电路的相位裕度，提高稳定性。最左的NM0和NM1与电阻为电路中的负反馈，稳定电路中各支路的电流。</p><hr><h3 id="3-各性能参数测量"><a href="#3-各性能参数测量" class="headerlink" title="3. 各性能参数测量"></a>3. 各性能参数测量</h3><hr><h4 id="3-1-DC差模"><a href="#3-1-DC差模" class="headerlink" title="3.1 DC差模"></a>3.1 DC差模</h4><p>用来观察电路直流状态下的工作情况，测试电路如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/62.png" alt></p><p>测试结果如下图所示，</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/63.png" alt></p><p>增益达到的500倍，输出是0V的3V。</p><h4 id="3-2-交流小信号分析"><a href="#3-2-交流小信号分析" class="headerlink" title="3.2 交流小信号分析"></a>3.2 交流小信号分析</h4><p>观察其在交流状态下的增益和相位情况，相位裕度决定系统的稳定性。</p><p>测试电路如图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/64.png" alt></p><p>测试结果如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/65.png" alt></p><p>相位裕度64度，增益最大95dB，0dB带宽为1.6MHz</p><h4 id="3-3-CMRR"><a href="#3-3-CMRR" class="headerlink" title="3.3 CMRR"></a>3.3 CMRR</h4><p>什么是CMRR？技术定义是差分增益与共模增益的比率，但这不能告诉我们过多的实际应用。共模输入电压影响输入差分对的偏置点。由于输入电路中固有的不匹配，改变偏置点会改变输入失调电压（VOS），从而改变输出电压。换句话说，当您更改共模电压时，您将看到输入失调电压的变化。CMRR告诉您这种变化会有多大。</p><p>测试电路如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/66.png" alt></p><p>测试结果如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/67.png" alt></p><p>CMRR最高为103dB</p><p>####　3.4 PSRR</p><p>电源纹波抑制比(PSRR)是输入电源变化量（以伏为单位）与转换器输出变化量（以伏为单位）的比值，常用分贝表示。对于高质量的D/A转换器，要求开关电路及运算放大器所用的电源电压发生变化时，对输出的电压影响极小。通常把满量程电压变化的百分数与电源电压变化的百分数之比称为电源纹波抑制比.</p><p>测试电路如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/68.png" alt></p><p>测试结果如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/69.png" alt></p><p>PSRR最大为87dB。</p><h4 id="3-5-摆率"><a href="#3-5-摆率" class="headerlink" title="3.5 摆率"></a>3.5 摆率</h4><p>运放接成闭环条件下，将一个大信号（含阶跃信号）输入到运放的输入端，从运放的输出端测得运放的输出上升速率。由于在转换期间，运放的输入级处于开关状态，所以运放的反馈回路不起作用，也就是转换速率与闭环增益无关。</p><p>测试电路如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/610.png" alt></p><p>测试结果如下图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/611.png" alt></p><p>摆率为0.318V/us</p><hr><h3 id="4-参数列表"><a href="#4-参数列表" class="headerlink" title="4. 参数列表"></a>4. 参数列表</h3><hr><table><thead><tr><th align="center">项目</th><th align="center">参数</th></tr></thead><tbody><tr><td align="center">作者</td><td align="center">ccbirds</td></tr><tr><td align="center">增益</td><td align="center">95dB</td></tr><tr><td align="center">PSRR</td><td align="center">87dB</td></tr><tr><td align="center">CMRR</td><td align="center">205dB</td></tr><tr><td align="center">3dB</td><td align="center">32Hz</td></tr><tr><td align="center">0dB</td><td align="center">1.6MHz</td></tr><tr><td align="center">相位裕度</td><td align="center">65deg</td></tr><tr><td align="center">摆率</td><td align="center">318V/ms</td></tr><tr><td align="center">功耗</td><td align="center">12.9uW</td></tr><tr><td align="center">差模输入范围</td><td align="center">6mV</td></tr><tr><td align="center">差模输出范围</td><td align="center">3V</td></tr><tr><td align="center">共模输入范围</td><td align="center">90mV</td></tr><tr><td align="center">共模输出范围</td><td align="center">1V</td></tr></tbody></table><hr><p>简单运放的设计完成了。</p><p>欢迎大家访问！</p><p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p><p>也可电邮我</p><p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;1-什么是运放？&quot;&gt;&lt;a href=&quot;#1-什么是运放？&quot; class=&quot;headerlink&quot; title=&quot;1. 什么是运放？&quot;&gt;&lt;/a&gt;1. 什么是运放？&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;运算放大器（简称“运放”）是具有很高放大倍数的电路单元。在实际电路中，通常结合反馈网络共同组成某种功能模块。它是一种带有特殊耦合电路及反馈的放大器。其输出信号可以是输入信号加、减或微分、积分等数学运算的结果。是电路中的一个常用结构。&lt;/p&gt;
+&lt;p&gt;运放的结构多种多样，本文记录一种简单的结构&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="集成电路设计" scheme="http://ccbirds.cn/categories/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+      <category term="cadence" scheme="http://ccbirds.cn/tags/cadence/"/>
+    
+      <category term="virtuoso" scheme="http://ccbirds.cn/tags/virtuoso/"/>
+    
+      <category term="ADE仿真" scheme="http://ccbirds.cn/tags/ADE%E4%BB%BF%E7%9C%9F/"/>
+    
+      <category term="运算放大器" scheme="http://ccbirds.cn/tags/%E8%BF%90%E7%AE%97%E6%94%BE%E5%A4%A7%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>集成电路设计笔记（五）基于IC617共漏极放大器</title>
@@ -290,11 +321,11 @@
     
       <category term="virtuoso" scheme="http://ccbirds.cn/tags/virtuoso/"/>
     
+      <category term="ADE仿真" scheme="http://ccbirds.cn/tags/ADE%E4%BB%BF%E7%9C%9F/"/>
+    
       <category term="原理图" scheme="http://ccbirds.cn/tags/%E5%8E%9F%E7%90%86%E5%9B%BE/"/>
     
       <category term="schmetic" scheme="http://ccbirds.cn/tags/schmetic/"/>
-    
-      <category term="ADE仿真" scheme="http://ccbirds.cn/tags/ADE%E4%BB%BF%E7%9C%9F/"/>
     
   </entry>
   
@@ -633,35 +664,6 @@
       <category term="ubuntu" scheme="http://ccbirds.cn/tags/ubuntu/"/>
     
       <category term="音乐闹钟" scheme="http://ccbirds.cn/tags/%E9%9F%B3%E4%B9%90%E9%97%B9%E9%92%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nanopi neo2 black 上电使用</title>
-    <link href="http://ccbirds.cn/nanopi-neo2-black-power-on/"/>
-    <id>http://ccbirds.cn/nanopi-neo2-black-power-on/</id>
-    <published>2020-02-27T12:39:55.000Z</published>
-    <updated>2020-04-12T07:36:47.713Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近上手一个小东西，nanopi neo2 black，非常精致，可以运行linux core ，可以运行Ubuntu 内核，感兴趣可以淘宝，或者<a href="http://nanopi.org/" target="_blank" rel="noopener">官网</a>看看。</p><hr><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi%E4%B8%801.png" alt></p><a id="more"></a><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi%E4%B8%802.jpg" alt><br>我买这个板子的时候，赠送了16GB的TF卡，里面有系统，所以我没有编译系统，关于系统的制作可以参考官方<a href="http://wiki.friendlyarm.com/wiki/index.php/NanoPi_NEO2_Black#Configure_System_with_npi-config" target="_blank" rel="noopener">文档</a></p><hr><h3 id="1-通过ssh连接"><a href="#1-通过ssh连接" class="headerlink" title="1. 通过ssh连接"></a>1. 通过ssh连接</h3><hr><p>登录方式有有三种：串口、HDMI、ssh<br>串口需要使用debug UART引脚，然而板子出厂时这个引脚是不焊的，所以暂时没有办法使用串口登录。<br>HDMI是使用提供的模块，也是通过串口debug UART连接，所以暂时也无法使用。<br>只能使用SSH登录。<br>由于身边没有路由器，无法使用有线网络。只能使用无线网卡连接网络。<br>插上网卡，接上键盘，没有显示输出，只能盲打（大家如果能使用有线，nanopi会直接获取ip，就可以跳过这步了）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ su root<br>fa<br>$ nmcli r wifi on //打开wifi<br>$ nmcli dev //显示网络设备，无线网卡是wlan0<br>$ nmcli dev wifi //扫描wifi信号<br>$ nmcli dev wifi connect <span class="hljs-string">"SSID"</span> password <span class="hljs-string">"PASSWORD"</span> ifname wlan0 //连接无线网，SSID是无线网名称，PASSWORD是密码<br></code></pre></td></tr></table></figure><p>等一会就会从oled上看到IP了，使用xshell能过ssh就可以登录了，登录名pi，密码pi。root的密码fa。<br><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi%E4%B8%803.png" alt><br>这样就连接成功了。</p><hr><h3 id="2-更新"><a href="#2-更新" class="headerlink" title="2. 更新"></a>2. 更新</h3><hr><p>更改更新源为国内源</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo vim /etc/apt/sources.list<br>//加入以下源<br>deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main multiverse restricted universe<br>deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-backports main multiverse restricted universe<br>deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-proposed main multiverse restricted universe<br>deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-security main multiverse restricted universe<br>deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-updates main multiverse restricted universe<br>deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main multiverse restricted universe<br>deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-backports main multiverse restricted universe<br>deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-proposed main multiverse restricted universe<br>deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-security main multiverse restricted universe<br>deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-updates main multiverse restricted universe<br></code></pre></td></tr></table></figure><p>有点慢，大家耐心等待（也可以是我的网慢）<br>执行更新命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt-get update<br>$ sudo apt-get upgrade<br></code></pre></td></tr></table></figure><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi%E4%B8%804.png" alt></p><hr><h3 id="3-测网速"><a href="#3-测网速" class="headerlink" title="3.测网速"></a>3.测网速</h3><hr><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt install speedtest-cli //安装<br>$ sudo speedtest-cli //测试，有时可能测不出来<br>Retrieving speedtest.net configuration...<br>Retrieving speedtest.net server list...<br>Testing from China Mobile Guangdong (223.104.236.97)...<br>Selecting best server based on latency...<br>Hosted by ChinaMobile, Liaoning Branch,Dalian (Dalian) [247.24 km]: 75.654 ms<br>Testing download speed........................................<br>Download: 2.42 Mbit/s<br>Testing upload speed..................................................<br>Upload: 0.76 Mbit/s<br>我是热点连接，手机又被限速了所以很慢<br></code></pre></td></tr></table></figure><p>我是热点连接，手机又被限速了所以很慢</p><hr><p>大家可以为所欲为了，哈哈。</p><p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近上手一个小东西，nanopi neo2 black，非常精致，可以运行linux core ，可以运行Ubuntu 内核，感兴趣可以淘宝，或者&lt;a href=&quot;http://nanopi.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官网&lt;/a&gt;看看。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;img src=&quot;https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi%E4%B8%801.png&quot; alt&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="nanopi" scheme="http://ccbirds.cn/categories/nanopi/"/>
-    
-    
-      <category term="nanopi" scheme="http://ccbirds.cn/tags/nanopi/"/>
-    
-      <category term="ubuntu" scheme="http://ccbirds.cn/tags/ubuntu/"/>
-    
-      <category term="SSH" scheme="http://ccbirds.cn/tags/SSH/"/>
     
   </entry>
   
