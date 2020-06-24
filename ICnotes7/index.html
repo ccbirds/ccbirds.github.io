@@ -35,15 +35,25 @@
     var CONFIG = {"hostname":"ccbirds.cn","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"您搜索的${query}我们暂时还没有哦","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ccbirds blog">
-<meta property="og:url" content="http://ccbirds.cn/tags/SSH/index.html">
+  <meta name="description" content="1. 什么是UVLO 欠压锁定（Undervoltage-Lockout）简称UVLO，是电子设备中在电源电压低于正常工程准位时，切断电源的电路。在嵌入式系统中常会用UVLO监控电池电压，若电压低于一定值，会直接切断电源，保护嵌入式系统的电路。  许多电子设备中都有UVLO的功能，例如在镇流器中就有UVLO电路，若电压过低时直接切断电源。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集成电路设计笔记（七）基于IC617UVLO设计">
+<meta property="og:url" content="http://ccbirds.cn/ICnotes7/index.html">
 <meta property="og:site_name" content="ccbirds blog">
+<meta property="og:description" content="1. 什么是UVLO 欠压锁定（Undervoltage-Lockout）简称UVLO，是电子设备中在电源电压低于正常工程准位时，切断电源的电路。在嵌入式系统中常会用UVLO监控电池电压，若电压低于一定值，会直接切断电源，保护嵌入式系统的电路。  许多电子设备中都有UVLO的功能，例如在镇流器中就有UVLO电路，若电压过低时直接切断电源。">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/71.png">
+<meta property="og:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/72.png">
+<meta property="article:published_time" content="2020-06-24T08:47:42.000Z">
+<meta property="article:modified_time" content="2020-06-24T09:33:55.277Z">
 <meta property="article:author" content="ccbirds">
-<meta property="article:tag" content="IC设计">
+<meta property="article:tag" content="cadence">
+<meta property="article:tag" content="virtuoso">
+<meta property="article:tag" content="ADE仿真">
+<meta property="article:tag" content="UVLO">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/71.png">
 
-<link rel="canonical" href="http://ccbirds.cn/tags/SSH/">
+<link rel="canonical" href="http://ccbirds.cn/ICnotes7/">
 
 
 <script id="page-configurations">
@@ -51,12 +61,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-Hans'
   };
 </script>
 
-  <title>标签: SSH | ccbirds blog</title>
+  <title>集成电路设计笔记（七）基于IC617UVLO设计 | ccbirds blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161422209-1"></script>
     <script>
@@ -223,54 +233,226 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">SSH
-          <small>标签</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://ccbirds.cn/ICnotes7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="ccbirds">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ccbirds blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          集成电路设计笔记（七）基于IC617UVLO设计
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-06-24 16:47:42 / 修改时间：17:33:55" itemprop="dateCreated datePublished" datetime="2020-06-24T16:47:42+08:00">2020-06-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">集成电路设计</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/ICnotes7/" class="post-meta-item leancloud_visitors" data-flag-title="集成电路设计笔记（七）基于IC617UVLO设计" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/ICnotes7/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="ICnotes7/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/ICnotes7/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/ICnotes7/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
+        <h3 id="1-什么是UVLO"><a href="#1-什么是UVLO" class="headerlink" title="1. 什么是UVLO"></a>1. 什么是UVLO</h3><hr>
+<p>欠压锁定（Undervoltage-Lockout）简称UVLO，是电子设备中在电源电压低于正常工程准位时，切断电源的电路。在嵌入式系统中常会用UVLO监控电池电压，若电压低于一定值，会直接切断电源，保护嵌入式系统的电路。 </p>
+<p>许多电子设备中都有UVLO的功能，例如在镇流器中就有UVLO电路，若电压过低时直接切断电源。</p>
+<a id="more"></a>
+
+<p>UVLO就是低电压锁定； 低压关断. 欠压关断模式是当供电电压低于IC的开启门限电压时的一种保护模式。欠压关断模式可保证IC在供电电压不足时不致于被损坏。一个低电压锁定（UVLO）电路可确保IC在电池电压未达到安全操作电压前不会激活，UVLO的功能会展示滞后现象，以确保在电源供应上的噪音不会不慎导致系统故障。</p>
+<p>UVLO的迟滞功能是防止电压在UVLO那一点的时候，出现振荡，所以加个迟滞.</p>
+<p>为了更稳定的工作，某些 DC/DC 转换器具有 UVLO（欠压锁定）功能。电源开启后，UVLO 功能使内部电路处于待机状态，直到DC/DC 转换器的输入电压（VIN）达到 UVLO 电压，以此来减少消费电流并避免误操作。</p>
+<hr>
+<h3 id="2-简单UVLO设计"><a href="#2-简单UVLO设计" class="headerlink" title="2. 简单UVLO设计"></a>2. 简单UVLO设计</h3><hr>
+<p>设计要求：3.3V电源电压，低电压2.8V关断，高电压3.0V启动</p>
+<p>下图为电路原理图</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/71.png" alt></p>
+<p>UVLO电路，迟滞比较器为电路核心。当电源电压由0V增加到5V时，在未正常工作前，放大器输出为低电平，经反向为高电平，使PM0关闭，</p>
+<p>$$V_{in+}=V_{cc}*\frac{R1}{R1+R2}$$</p>
+<p>当电源电压由5V减小为0V时，在关闭电源前，放大器输出为高电平，经反向为低电平。使得PM0导通。此时VIN+的电压为</p>
+<p>$$V_{in+}=V_{cc}*\frac{R1}{R1+R2//R3}$$</p>
+<p>根据要求，电源电压低于2.8V，系统关闭。电源电压高于3.0V系统打开。</p>
+<p>仿真结果如图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/72.png" alt></p>
+<p>电压降低时，低于2.8V后，电源关断。电压升高到3.0V时，电源启动。</p>
+<p>简单UVLO完成了</p>
+<hr>
+<p>欢迎大家访问！</p>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+<p>也可电邮我</p>
+<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-27T20:39:55+08:00"
-              content="2020-02-27">
-          02-27
-        </time>
+  
+</div>
+        <div class="reward-container">
+  <div>您的支持鼓励我继续创作</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/wechatpay.png" alt="ccbirds 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/alipay.jpg" alt="ccbirds 支付宝">
+        <p>支付宝</p>
       </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/nanopi-neo2-black-power-on/" itemprop="url">
-            <span itemprop="name">nanopi neo2 black 上电使用</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-    </div>
   </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cadence/" rel="tag"><i class="fa fa-tag"></i> cadence</a>
+              <a href="/tags/virtuoso/" rel="tag"><i class="fa fa-tag"></i> virtuoso</a>
+              <a href="/tags/ADE%E4%BB%BF%E7%9C%9F/" rel="tag"><i class="fa fa-tag"></i> ADE仿真</a>
+              <a href="/tags/UVLO/" rel="tag"><i class="fa fa-tag"></i> UVLO</a>
+          </div>
+
+        
+
+<!--MOB SHARE BEGIN-->
+<div class="-mob-share-ui-button -mob-share-open">分享</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+	<li class="-mob-share-weixin"><p>微信</p></li>        
+	<li class="-mob-share-weibo"><p>新浪微博</p></li>
+        <li class="-mob-share-qzone"><p>QQ空间</p></li>
+        <li class="-mob-share-qq"><p>QQ好友</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=2f19103d43729"></script>
+<!--MOB SHARE END-->
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ICnotes6/" rel="prev" title="集成电路设计笔记（六）基于IC617设计运算放大器">
+      <i class="fa fa-chevron-left"></i> 集成电路设计笔记（六）基于IC617设计运算放大器
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
   
   
   
 
-  
-
+  </div>
 
 
           </div>
           
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-disqus">disqus</a></li>
+            <li class="tab"><a href="#comment-valine">valine</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+            </div>
+            <div class="tab-pane valine" id="comment-valine">
+              <div class="comments" id="valine-comments"></div>
+            </div>
+        </div>
+      </div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -317,6 +499,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是UVLO"><span class="nav-number">1.</span> <span class="nav-text">1. 什么是UVLO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-简单UVLO设计"><span class="nav-number">2.</span> <span class="nav-text">2. 简单UVLO设计</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -468,6 +651,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
@@ -480,6 +716,26 @@
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://ccbirds.cn/ICnotes7/";
+    this.page.identifier = "ICnotes7/";
+    this.page.title = "集成电路设计笔记（七）基于IC617UVLO设计";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://ccbirds.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
 

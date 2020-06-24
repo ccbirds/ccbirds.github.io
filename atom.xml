@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ccbirds.cn/"/>
-  <updated>2020-06-24T02:05:50.935Z</updated>
+  <updated>2020-06-24T09:33:55.277Z</updated>
   <id>http://ccbirds.cn/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>集成电路设计笔记（七）基于IC617UVLO设计</title>
+    <link href="http://ccbirds.cn/ICnotes7/"/>
+    <id>http://ccbirds.cn/ICnotes7/</id>
+    <published>2020-06-24T08:47:42.000Z</published>
+    <updated>2020-06-24T09:33:55.277Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-什么是UVLO"><a href="#1-什么是UVLO" class="headerlink" title="1. 什么是UVLO"></a>1. 什么是UVLO</h3><hr><p>欠压锁定（Undervoltage-Lockout）简称UVLO，是电子设备中在电源电压低于正常工程准位时，切断电源的电路。在嵌入式系统中常会用UVLO监控电池电压，若电压低于一定值，会直接切断电源，保护嵌入式系统的电路。 </p><p>许多电子设备中都有UVLO的功能，例如在镇流器中就有UVLO电路，若电压过低时直接切断电源。</p><a id="more"></a><p>UVLO就是低电压锁定； 低压关断. 欠压关断模式是当供电电压低于IC的开启门限电压时的一种保护模式。欠压关断模式可保证IC在供电电压不足时不致于被损坏。一个低电压锁定（UVLO）电路可确保IC在电池电压未达到安全操作电压前不会激活，UVLO的功能会展示滞后现象，以确保在电源供应上的噪音不会不慎导致系统故障。</p><p>UVLO的迟滞功能是防止电压在UVLO那一点的时候，出现振荡，所以加个迟滞.</p><p>为了更稳定的工作，某些 DC/DC 转换器具有 UVLO（欠压锁定）功能。电源开启后，UVLO 功能使内部电路处于待机状态，直到DC/DC 转换器的输入电压（VIN）达到 UVLO 电压，以此来减少消费电流并避免误操作。</p><hr><h3 id="2-简单UVLO设计"><a href="#2-简单UVLO设计" class="headerlink" title="2. 简单UVLO设计"></a>2. 简单UVLO设计</h3><hr><p>设计要求：3.3V电源电压，低电压2.8V关断，高电压3.0V启动</p><p>下图为电路原理图</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/71.png" alt></p><p>UVLO电路，迟滞比较器为电路核心。当电源电压由0V增加到5V时，在未正常工作前，放大器输出为低电平，经反向为高电平，使PM0关闭，</p><p>$$V_{in+}=V_{cc}*\frac{R1}{R1+R2}$$</p><p>当电源电压由5V减小为0V时，在关闭电源前，放大器输出为高电平，经反向为低电平。使得PM0导通。此时VIN+的电压为</p><p>$$V_{in+}=V_{cc}*\frac{R1}{R1+R2//R3}$$</p><p>根据要求，电源电压低于2.8V，系统关闭。电源电压高于3.0V系统打开。</p><p>仿真结果如图所示</p><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/72.png" alt></p><p>电压降低时，低于2.8V后，电源关断。电压升高到3.0V时，电源启动。</p><p>简单UVLO完成了</p><hr><p>欢迎大家访问！</p><p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p><p>也可电邮我</p><p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;1-什么是UVLO&quot;&gt;&lt;a href=&quot;#1-什么是UVLO&quot; class=&quot;headerlink&quot; title=&quot;1. 什么是UVLO&quot;&gt;&lt;/a&gt;1. 什么是UVLO&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;欠压锁定（Undervoltage-Lockout）简称UVLO，是电子设备中在电源电压低于正常工程准位时，切断电源的电路。在嵌入式系统中常会用UVLO监控电池电压，若电压低于一定值，会直接切断电源，保护嵌入式系统的电路。 &lt;/p&gt;
+&lt;p&gt;许多电子设备中都有UVLO的功能，例如在镇流器中就有UVLO电路，若电压过低时直接切断电源。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="集成电路设计" scheme="http://ccbirds.cn/categories/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+      <category term="cadence" scheme="http://ccbirds.cn/tags/cadence/"/>
+    
+      <category term="virtuoso" scheme="http://ccbirds.cn/tags/virtuoso/"/>
+    
+      <category term="ADE仿真" scheme="http://ccbirds.cn/tags/ADE%E4%BB%BF%E7%9C%9F/"/>
+    
+      <category term="UVLO" scheme="http://ccbirds.cn/tags/UVLO/"/>
+    
+  </entry>
   
   <entry>
     <title>集成电路设计笔记（六）基于IC617设计运算放大器</title>
@@ -634,36 +665,6 @@
       <category term="python" scheme="http://ccbirds.cn/tags/python/"/>
     
       <category term="oled" scheme="http://ccbirds.cn/tags/oled/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nanopi neo2 black 音乐闹钟</title>
-    <link href="http://ccbirds.cn/nanopi-neo2-black-Musical-alarm-clock/"/>
-    <id>http://ccbirds.cn/nanopi-neo2-black-Musical-alarm-clock/</id>
-    <published>2020-02-28T02:37:00.000Z</published>
-    <updated>2020-04-12T07:37:37.171Z</updated>
-    
-    <content type="html"><![CDATA[<p>nanopi neo2 black 有音频接口，可以用它来放个音乐，折腾一下做个音乐闹钟吧。</p><hr><h3 id="首先查看cron是否运行"><a href="#首先查看cron是否运行" class="headerlink" title="首先查看cron是否运行"></a>首先查看cron是否运行</h3><hr><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ps -ef | grep cron //查看cron是否运行<br>root       561     1  0 15:52 ?        00:00:00 /usr/sbin/cron -f<br>pi       18668 18655  0 21:07 pts/0    00:00:00 grep --color=auto cron<br></code></pre></td></tr></table></figure><a id="more"></a><p>没有运行的话，启动一下</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo service cron start //启动命令<br>$ sudo service cron stop  //停止命令<br>$ sudo service cron restart  //重启命令<br></code></pre></td></tr></table></figure><hr><h3 id="设置定时播放音乐"><a href="#设置定时播放音乐" class="headerlink" title="设置定时播放音乐"></a>设置定时播放音乐</h3><hr><p>安装sox用来播放mp3音乐</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo apt-get install sox libsox-fmt-all<br>//libsox-fmt-all包含解码器<br></code></pre></td></tr></table></figure><p>可以先播放一个音乐试试</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ play XXX.mp3<br></code></pre></td></tr></table></figure><p>设置定时播放音乐</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ crontab -e //第一次使用会让你选择编辑器，选择vim就可以<br>//在文件末尾加<br>30 21 * * * play /home/pi/Music/XXX.mp3<br>//每天21:30播放音乐XXX.mp3<br></code></pre></td></tr></table></figure><p>五个* * * * *<br>对应的分别是 分 时 天 月 周<br>重启一个cron服务就可以了</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ sudo service cron restart<br>$ service cron restart<br></code></pre></td></tr></table></figure><hr><p>大家每天定时听音乐吧！</p><p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;nanopi neo2 black 有音频接口，可以用它来放个音乐，折腾一下做个音乐闹钟吧。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;首先查看cron是否运行&quot;&gt;&lt;a href=&quot;#首先查看cron是否运行&quot; class=&quot;headerlink&quot; title=&quot;首先查看cron是否运行&quot;&gt;&lt;/a&gt;首先查看cron是否运行&lt;/h3&gt;&lt;hr&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;$ ps -ef | grep cron //查看cron是否运行&lt;br&gt;root       561     1  0 15:52 ?        00:00:00 /usr/sbin/cron -f&lt;br&gt;pi       18668 18655  0 21:07 pts/0    00:00:00 grep --color=auto cron&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="nanopi" scheme="http://ccbirds.cn/categories/nanopi/"/>
-    
-    
-      <category term="nanopi" scheme="http://ccbirds.cn/tags/nanopi/"/>
-    
-      <category term="ubuntu" scheme="http://ccbirds.cn/tags/ubuntu/"/>
-    
-      <category term="音乐闹钟" scheme="http://ccbirds.cn/tags/%E9%9F%B3%E4%B9%90%E9%97%B9%E9%92%9F/"/>
     
   </entry>
   
