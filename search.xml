@@ -1,32 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>nanopi_neo2_black_防烧屏设置</title>
-    <url>/nanopi_neo2_black_Anti-burn_screen/</url>
-    <content><![CDATA[<p>oled长时间点亮一个点，付出现烧屏现象，为了避免烧屏。我们将oled设置为闪屏。</p>
-<hr>
-<p>关于oled模块驱动的安装，可以参考<a href="http://wiki.friendlyarm.com/wiki/index.php/NanoHat_OLED" target="_blank" rel="noopener">官方文档</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git <span class="hljs-built_in">clone</span> https://github.com/friendlyarm/NanoHatOLED.git<br>$ <span class="hljs-built_in">cd</span> NanoHatOLED<br>$ sudo -H ./install.sh<br></code></pre></td></tr></table></figure>
-<a id="more"></a>
-<hr>
-<h4 id="cd到oled源文件目录-修改两个文件"><a href="#cd到oled源文件目录-修改两个文件" class="headerlink" title="cd到oled源文件目录,修改两个文件"></a>cd到oled源文件目录,修改两个文件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> /root/NanoHatOLED/BakeBit/Software/Python<br>//使用python控制<br>$ sudo vim bakebit_nanohat_oled.py<br>//加入一条语句<br><span class="hljs-keyword">while</span> True:<br>    try:        <br>        oled.clear_raw() //加入这个语句，其他语句不变<br>        draw_page()<br>        lock.acquire()<br>        page_index = pageIndex<br>        lock.release()<br>   <br>$ sudo vim bakebit_128_64_oled.py<br>//加入下面的函数<br>def clear_raw():<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(8):<br>        setTextXY(0,j)    <br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(16):  <span class="hljs-comment">#clear all columns</span><br>            putChar(<span class="hljs-string">' '</span>)<br></code></pre></td></tr></table></figure>
-
-<h4 id="清除原进程，启动新进程"><a href="#清除原进程，启动新进程" class="headerlink" title="清除原进程，启动新进程"></a>清除原进程，启动新进程</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ ps aux | grep python //查看进程<br>root     25913  3.8  1.4  22380 14648 pts/0    S    14:23   0:35 python bakebit_nanohat_oled.py<br>pi       26617  0.0  0.0   7284   544 pts/0    S+   14:39   0:00 grep --color=auto python<br>$ sudo pkill -f bakebit_nanohat_oled.py <br>//结束进程<br>$ sudo python bakebit_nanohat_oled.py<br>// 重启进程 <br>$ sudo python bakebit_nanohat_oled.py &amp;<br>// 重启进程 后台运行<br></code></pre></td></tr></table></figure>
-
-<hr>
-<p>这样就不会烧屏了！</p>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-]]></content>
-      <categories>
-        <category>nanopi</category>
-      </categories>
-      <tags>
-        <tag>nanopi</tag>
-        <tag>python</tag>
-        <tag>oled</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>[Hexo] Theme BeanTech</title>
     <url>/Theme-BeanTech/</url>
     <content><![CDATA[<blockquote>
@@ -78,6 +52,32 @@
       <tags>
         <tag>Hexo</tag>
         <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nanopi_neo2_black_防烧屏设置</title>
+    <url>/nanopi_neo2_black_Anti-burn_screen/</url>
+    <content><![CDATA[<p>oled长时间点亮一个点，付出现烧屏现象，为了避免烧屏。我们将oled设置为闪屏。</p>
+<hr>
+<p>关于oled模块驱动的安装，可以参考<a href="http://wiki.friendlyarm.com/wiki/index.php/NanoHat_OLED" target="_blank" rel="noopener">官方文档</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git <span class="hljs-built_in">clone</span> https://github.com/friendlyarm/NanoHatOLED.git<br>$ <span class="hljs-built_in">cd</span> NanoHatOLED<br>$ sudo -H ./install.sh<br></code></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<h4 id="cd到oled源文件目录-修改两个文件"><a href="#cd到oled源文件目录-修改两个文件" class="headerlink" title="cd到oled源文件目录,修改两个文件"></a>cd到oled源文件目录,修改两个文件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> /root/NanoHatOLED/BakeBit/Software/Python<br>//使用python控制<br>$ sudo vim bakebit_nanohat_oled.py<br>//加入一条语句<br><span class="hljs-keyword">while</span> True:<br>    try:        <br>        oled.clear_raw() //加入这个语句，其他语句不变<br>        draw_page()<br>        lock.acquire()<br>        page_index = pageIndex<br>        lock.release()<br>   <br>$ sudo vim bakebit_128_64_oled.py<br>//加入下面的函数<br>def clear_raw():<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(8):<br>        setTextXY(0,j)    <br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(16):  <span class="hljs-comment">#clear all columns</span><br>            putChar(<span class="hljs-string">' '</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="清除原进程，启动新进程"><a href="#清除原进程，启动新进程" class="headerlink" title="清除原进程，启动新进程"></a>清除原进程，启动新进程</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ ps aux | grep python //查看进程<br>root     25913  3.8  1.4  22380 14648 pts/0    S    14:23   0:35 python bakebit_nanohat_oled.py<br>pi       26617  0.0  0.0   7284   544 pts/0    S+   14:39   0:00 grep --color=auto python<br>$ sudo pkill -f bakebit_nanohat_oled.py <br>//结束进程<br>$ sudo python bakebit_nanohat_oled.py<br>// 重启进程 <br>$ sudo python bakebit_nanohat_oled.py &amp;<br>// 重启进程 后台运行<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p>这样就不会烧屏了！</p>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+]]></content>
+      <categories>
+        <category>nanopi</category>
+      </categories>
+      <tags>
+        <tag>nanopi</tag>
+        <tag>python</tag>
+        <tag>oled</tag>
       </tags>
   </entry>
   <entry>
@@ -179,39 +179,6 @@
         <tag>github 图床</tag>
         <tag>坚果云</tag>
         <tag>云笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nanopi neo2 black 音乐闹钟</title>
-    <url>/nanopi-neo2-black-Musical-alarm-clock/</url>
-    <content><![CDATA[<p>nanopi neo2 black 有音频接口，可以用它来放个音乐，折腾一下做个音乐闹钟吧。</p>
-<hr>
-<h3 id="首先查看cron是否运行"><a href="#首先查看cron是否运行" class="headerlink" title="首先查看cron是否运行"></a>首先查看cron是否运行</h3><hr>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ ps -ef | grep cron //查看cron是否运行<br>root       561     1  0 15:52 ?        00:00:00 /usr/sbin/cron -f<br>pi       18668 18655  0 21:07 pts/0    00:00:00 grep --color=auto cron<br></code></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>没有运行的话，启动一下</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo service cron start //启动命令<br>$ sudo service cron stop  //停止命令<br>$ sudo service cron restart  //重启命令<br></code></pre></td></tr></table></figure>
-<hr>
-<h3 id="设置定时播放音乐"><a href="#设置定时播放音乐" class="headerlink" title="设置定时播放音乐"></a>设置定时播放音乐</h3><hr>
-<p>安装sox用来播放mp3音乐</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt-get install sox libsox-fmt-all<br>//libsox-fmt-all包含解码器<br></code></pre></td></tr></table></figure>
-<p>可以先播放一个音乐试试</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ play XXX.mp3<br></code></pre></td></tr></table></figure>
-<p>设置定时播放音乐</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ crontab -e //第一次使用会让你选择编辑器，选择vim就可以<br>//在文件末尾加<br>30 21 * * * play /home/pi/Music/XXX.mp3<br>//每天21:30播放音乐XXX.mp3<br></code></pre></td></tr></table></figure>
-<p>五个* * * * *<br>对应的分别是 分 时 天 月 周<br>重启一个cron服务就可以了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo service cron restart<br>$ service cron restart<br></code></pre></td></tr></table></figure>
-<hr>
-<p>大家每天定时听音乐吧！</p>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-]]></content>
-      <categories>
-        <category>nanopi</category>
-      </categories>
-      <tags>
-        <tag>nanopi</tag>
-        <tag>ubuntu</tag>
-        <tag>音乐闹钟</tag>
       </tags>
   </entry>
   <entry>
@@ -331,6 +298,39 @@
       </tags>
   </entry>
   <entry>
+    <title>nanopi neo2 black 音乐闹钟</title>
+    <url>/nanopi-neo2-black-Musical-alarm-clock/</url>
+    <content><![CDATA[<p>nanopi neo2 black 有音频接口，可以用它来放个音乐，折腾一下做个音乐闹钟吧。</p>
+<hr>
+<h3 id="首先查看cron是否运行"><a href="#首先查看cron是否运行" class="headerlink" title="首先查看cron是否运行"></a>首先查看cron是否运行</h3><hr>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ ps -ef | grep cron //查看cron是否运行<br>root       561     1  0 15:52 ?        00:00:00 /usr/sbin/cron -f<br>pi       18668 18655  0 21:07 pts/0    00:00:00 grep --color=auto cron<br></code></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>没有运行的话，启动一下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo service cron start //启动命令<br>$ sudo service cron stop  //停止命令<br>$ sudo service cron restart  //重启命令<br></code></pre></td></tr></table></figure>
+<hr>
+<h3 id="设置定时播放音乐"><a href="#设置定时播放音乐" class="headerlink" title="设置定时播放音乐"></a>设置定时播放音乐</h3><hr>
+<p>安装sox用来播放mp3音乐</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt-get install sox libsox-fmt-all<br>//libsox-fmt-all包含解码器<br></code></pre></td></tr></table></figure>
+<p>可以先播放一个音乐试试</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ play XXX.mp3<br></code></pre></td></tr></table></figure>
+<p>设置定时播放音乐</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ crontab -e //第一次使用会让你选择编辑器，选择vim就可以<br>//在文件末尾加<br>30 21 * * * play /home/pi/Music/XXX.mp3<br>//每天21:30播放音乐XXX.mp3<br></code></pre></td></tr></table></figure>
+<p>五个* * * * *<br>对应的分别是 分 时 天 月 周<br>重启一个cron服务就可以了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo service cron restart<br>$ service cron restart<br></code></pre></td></tr></table></figure>
+<hr>
+<p>大家每天定时听音乐吧！</p>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+]]></content>
+      <categories>
+        <category>nanopi</category>
+      </categories>
+      <tags>
+        <tag>nanopi</tag>
+        <tag>ubuntu</tag>
+        <tag>音乐闹钟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu下将文件备份到github</title>
     <url>/Back-up-files-to-github-under-ubuntu/</url>
     <content><![CDATA[<p>将hexo博客目录备份到github，以防意外删除文件，这样也方便在其他设备上写博客</p>
@@ -361,6 +361,62 @@
       </tags>
   </entry>
   <entry>
+    <title>nanopi安装oh my zsh</title>
+    <url>/nanopi-install-oh-my-zsh/</url>
+    <content><![CDATA[<p>nanopi是基于ubuntu16.04LTS，自带的bash终端总觉的有点不舒服，有一款终端不错还可以更换主题。oh my zsh。<a href="https://ohmyz.sh/" target="_blank" rel="noopener">https://ohmyz.sh/</a> </p>
+<p>下面我们来反nanopi的终端美化一下。</p>
+<hr>
+<p>首先安装zsh，我们先看一下，我们有没有zsh。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ cat /etc/shells<br>/bin/sh<br>/bin/dash<br>/bin/bash<br>/bin/rbash<br>$ <span class="hljs-built_in">echo</span> <span class="hljs-variable">$SHELL</span>  //查看我们当前使用的shell<br>/bin/bash<br></code></pre></td></tr></table></figure>
+
+<p>当前，我们是没有安装zsh的。使用的是默认的bash。</p>
+<a id="more"></a>
+<hr>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><hr>
+<p>先安装zsh</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt-get install zsh<br>Reading package lists... Done<br>Building dependency tree <br>Reading state information... Done<br>The following packages were automatically installed and are no longer required:<br>  aspell aspell-en dictionaries-common emacsen-common libaspell15 libenca0 libfaad2 libjack-jackd2-0 libmodplug1<br>  libmpcdec6 libopus0 libopusfile0 librcc0 librcd0 libresid-builder0c2a libsidplay2v5 libsidutils0 libspeex1<br>  libtag1v5 libtag1v5-vanilla libtagc0 libtext-iconv-perl<br>Use <span class="hljs-string">'sudo apt autoremove'</span> to remove them.<br>The following additional packages will be installed:<br>  zsh-common<br>Suggested packages:<br>  zsh-doc<br>The following NEW packages will be installed:<br>  zsh zsh-common<br>0 upgraded, 2 newly installed, 0 to remove and 250 not upgraded.<br>Need to get 3,724 kB of archives.<br>After this operation, 14.0 MB of additional disk space will be used.<br>Do you want to <span class="hljs-built_in">continue</span>? [Y/n] y<br>Get:1 http://mirrors.ustc.edu.cn/ubuntu-ports xenial-security/main arm64 zsh-common all 5.1.1-1ubuntu2.3 [3,182 kB]<br>Get:2 http://mirrors.ustc.edu.cn/ubuntu-ports xenial-security/main arm64 zsh arm64 5.1.1-1ubuntu2.3 [542 kB]<br>Fetched 3,724 kB <span class="hljs-keyword">in</span> 5s (648 kB/s)<br>debconf: delaying package configuration, since apt-utils is not installed<br>Selecting previously unselected package zsh-common.<br>(Reading database ... 45962 files and directories currently installed.)<br>Preparing to unpack .../zsh-common_5.1.1-1ubuntu2.3_all.deb ...<br>Unpacking zsh-common (5.1.1-1ubuntu2.3) ...<br>Selecting previously unselected package zsh.<br>Preparing to unpack .../zsh_5.1.1-1ubuntu2.3_arm64.deb ...<br>Unpacking zsh (5.1.1-1ubuntu2.3) ...<br>Setting up zsh-common (5.1.1-1ubuntu2.3) ...<br>Setting up zsh (5.1.1-1ubuntu2.3) ...<br>update-alternatives: using /bin/zsh5 to provide /bin/zsh (zsh) <span class="hljs-keyword">in</span> auto mode<br>update-alternatives: using /bin/zsh5 to provide /bin/rzsh (rzsh) <span class="hljs-keyword">in</span> auto mode<br></code></pre></td></tr></table></figure>
+
+<p>查看一下有没有安装上，</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ cat /etc/shells<br>/bin/sh<br>/bin/dash<br>/bin/bash<br>/bin/rbash<br>/bin/zsh<br>/usr/bin/zsh   //已经有zsh了<br></code></pre></td></tr></table></figure>
+
+<p>把zsh修改为默认shell</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ chsh -s /bin/zsh<br></code></pre></td></tr></table></figure>
+
+<p>安装oh my zsh</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sh -c <span class="hljs-string">"<span class="hljs-variable">$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)</span>"</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi_ohmyzsh.png" alt></p>
+<p>这样就安装上了</p>
+<hr>
+<h3 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h3><hr>
+<p>更改主题和加插件，编辑文件==~/.zshrc==</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ vim ~/.zshrc<br>ZSH_THEME=<span class="hljs-string">"ys"</span>   //更改主题，我比较喜欢ys<br>$ <span class="hljs-built_in">source</span> ~/.zshrc<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/ohmyzsh1.png" alt></p>
+<p>可以在==~/.oh-my-zsh/themes==查看都有什么主题</p>
+<hr>
+<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><hr>
+<h4 id="安装autojump插件"><a href="#安装autojump插件" class="headerlink" title="安装autojump插件"></a>安装autojump插件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt-get install autojump<br>$ vim ~/.zshrc<br><span class="hljs-comment">#在最后一行加入</span><br>. /usr/share/autojump/autojump.sh<br>$ <span class="hljs-built_in">source</span> ~/.zshrc   生效<br></code></pre></td></tr></table></figure>
+
+<h4 id="安装自动补齐插件"><a href="#安装自动补齐插件" class="headerlink" title="安装自动补齐插件"></a>安装自动补齐插件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> ~/.oh-my-zsh/plugins/<br>$ mkdir incr<br>$ <span class="hljs-built_in">cd</span> incr<br>$ wget http://mimosa-pudica.net/src/incr-0.2.zsh<br>$ vim ~/.zshrc<br><span class="hljs-comment">#在最后加入 </span><br><span class="hljs-built_in">source</span> ~/.oh-my-zsh/plugins/incr/incr-0.2.zsh<br>$ <span class="hljs-built_in">source</span> ~/.zshrc 生效<br></code></pre></td></tr></table></figure>
+
+<h4 id="安装语法高亮zsh-syntax-highlighting"><a href="#安装语法高亮zsh-syntax-highlighting" class="headerlink" title="安装语法高亮zsh-syntax-highlighting"></a>安装语法高亮zsh-syntax-highlighting</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> ~/.oh-my-zsh/plugins<br>$ vim ~/.zshrc<br>$ git <span class="hljs-built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git<br><span class="hljs-comment">#在最后加入</span><br><span class="hljs-built_in">source</span> <span class="hljs-variable">$&#123;(q-)PWD&#125;</span>/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh<br>$ <span class="hljs-built_in">source</span> ~./zshrc<br></code></pre></td></tr></table></figure>
+
+<h4 id="安装语法历史记录"><a href="#安装语法历史记录" class="headerlink" title="安装语法历史记录"></a>安装语法历史记录</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git <span class="hljs-built_in">clone</span> git://github.com/zsh-users/zsh-autosuggestions <span class="hljs-variable">$ZSH_CUSTOM</span>/plugins/zsh-autosuggestions<br>$ vim ~/.zshrc<br><span class="hljs-comment"># 修改</span><br>plugins=(git extract z zsh-autosuggestions)<br>$ <span class="hljs-built_in">source</span> ~/.xshrc<br></code></pre></td></tr></table></figure>
+
+<p>现在终端好看了许多</p>
+<hr>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+]]></content>
+      <categories>
+        <category>nanopi</category>
+      </categories>
+      <tags>
+        <tag>nanopi</tag>
+        <tag>oh my zsh</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu中使用pycharm有些快捷键无法使用</title>
     <url>/ubuntu-pycharm/</url>
     <content><![CDATA[<p>问题描述：在使用pycharm过程中，ctrl+c,ctrl+v,ctrl+d等快捷键无法使用。</p>
@@ -377,6 +433,144 @@
         <tag>python</tag>
         <tag>ubuntu</tag>
         <tag>pcharm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>将静态博客托管在nanopi上</title>
+    <url>/blog-on-nanopi/</url>
+    <content><![CDATA[<p>最近买了一个nanopi，里面运行的是Ubuntu，可以做很多事情，我便想到用来做我博客的服务器。这前我是把我的博客托管在Github上。Github在国内的速度还是比较慢的。而且以前有被墙过。</p>
+<hr>
+<p>在nanopi上安装nginx</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt install nginx<br></code></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>编辑nginx的设置文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ vim /etc/nginx/nginx.conf<br></code></pre></td></tr></table></figure>
+
+<p>在http里面加</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">server &#123;<br>                listen          80 default_server;<br>                server_name     ccbirds.cn;//自己的域名<br>                root            /home/fa/hexo-blog; //<span class="hljs-built_in">clone</span>下来的位置<br>                location / &#123;<br>                &#125;<br>        &#125;<br><br>        server &#123;<br>                listen          80;<br>                server_name     www.ccbirds.cn;<br>                <span class="hljs-built_in">return</span>          301 http://ccbirds.cn<span class="hljs-variable">$request_uri</span>;<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<p>开启nginx服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo service nginx start  //启动命令<br>$ sudo service nginx stop   //停止命令<br>$ sudo service nginx restart  //重启命令<br></code></pre></td></tr></table></figure>
+
+<p>如果报错，根据提示查看报错原因，</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo nginx -t  //查看配置文件是否有问题<br>$ ps -ef | grep nginx  //显示nginx的进程<br>$ sudo <span class="hljs-built_in">kill</span> -quit 14952  //杀死进程<br></code></pre></td></tr></table></figure>
+
+<p>现在使用IP或者域名就可以访问了。</p>
+<hr>
+<p>可是每次更新博客都要手动clone一下吗？</p>
+<p>网上有使用webhooks自动部署的方法，不过本人比较笨，没有弄好，感兴趣的可以试试，成功了记得告诉我一声。</p>
+<p>我采用了比较笨的一种方法，每天定时删除hexo-log，定时重新clone一次。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ crontab -e <br>//在最后加上两句<br>0 0 * * * sudo rm -rf /home/fa/hexo-blog  //每天零点删除hexo-blog<br>5 0 * * * sudo git <span class="hljs-built_in">clone</span> https://github.com/ccbirds/ccbirds.github.io.git /home/fa/hexo-blog  //每天零点五分 重新<span class="hljs-built_in">clone</span><br>$ sudo service cron restart  //重启cron<br>$ service cron restart<br></code></pre></td></tr></table></figure>
+
+<p>五个* * * * *<br>对应的分别是 分 时 天 月 周</p>
+<p>不是很完美，先这样吧。</p>
+<hr>
+<p>遇到的问题：</p>
+<p>启动nginx时，报错，80端口已经被占用，看了一下进程，发现是nginx自己占用了80端口。使用nginx -t 看一下问题，是/etc/nginx/sites-enabled/default这个也在使用80端口，把这里的80改成其他端口就没有问题了</p>
+<hr>
+<p>欢迎大家访问！</p>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+]]></content>
+      <categories>
+        <category>nanopi</category>
+      </categories>
+      <tags>
+        <tag>nanopi</tag>
+        <tag>博客托管</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>手机无线投屏win10</title>
+    <url>/Mobile-phone-wireless-projection-screen-win10/</url>
+    <content><![CDATA[<p>手机上屏幕小，看视频特别难受，并且有些软件没与PC版，应该怎么办?下面我来介绍一种方法，将手机屏幕投屏到电脑上。</p>
+<hr>
+<p>条件：1.装有win10的PC。<br>2. 手机具有无线投屏功能（现在大多数手机都有无线投屏功能，只是名字可能有些不同，下面一以荣耀V10手机为例给大家演示）</p>
+<a id="more"></a>
+<hr>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><hr>
+<h3 id="1-PC端"><a href="#1-PC端" class="headerlink" title="1.PC端"></a>1.PC端</h3><hr>
+<h4 id="使用搜索命令搜索“连接”"><a href="#使用搜索命令搜索“连接”" class="headerlink" title="使用搜索命令搜索“连接”"></a>使用搜索命令搜索“连接”</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F1.png" alt></p>
+<h4 id="打开连接应用，"><a href="#打开连接应用，" class="headerlink" title="打开连接应用，"></a>打开连接应用，</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F2.png" alt></p>
+<h4 id="记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。"><a href="#记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。" class="headerlink" title="记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。"></a>记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。</h4><hr>
+<h3 id="2-手机端"><a href="#2-手机端" class="headerlink" title="2.手机端"></a>2.手机端</h3><hr>
+<h4 id="打开设置"><a href="#打开设置" class="headerlink" title="打开设置"></a>打开设置</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F3.jpg" alt></p>
+<h4 id="选择设备连接"><a href="#选择设备连接" class="headerlink" title="选择设备连接"></a>选择设备连接</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F4.jpg" alt></p>
+<h4 id="选择无线投屏功能"><a href="#选择无线投屏功能" class="headerlink" title="选择无线投屏功能"></a>选择无线投屏功能</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F5.jpg" alt></p>
+<h4 id="需要打开WLAN，它会搜索可使用设备。"><a href="#需要打开WLAN，它会搜索可使用设备。" class="headerlink" title="需要打开WLAN，它会搜索可使用设备。"></a>需要打开WLAN，它会搜索可使用设备。</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F6.jpg" alt><br><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F7.jpg" alt></p>
+<h4 id="选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。"><a href="#选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。" class="headerlink" title="选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。"></a>选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F8.png" alt></p>
+<h4 id="点右上角按钮，可以全屏。"><a href="#点右上角按钮，可以全屏。" class="headerlink" title="点右上角按钮，可以全屏。"></a>点右上角按钮，可以全屏。</h4><hr>
+<p>大家赶紧去试试吧。<br>有问题可以联系我，邮箱：<a href="mailto:hanbing3566@gmail.com">hanbing3566@gmail.com</a></p>
+<hr>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+]]></content>
+      <categories>
+        <category>经验分享</category>
+      </categories>
+      <tags>
+        <tag>投屏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>集成电路学习笔记（一）IC617工艺库安装</title>
+    <url>/ICnotes1/</url>
+    <content><![CDATA[<hr>
+<h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h3><hr>
+<p>集成电路设计使用cadence virtuoso 作为开发环境。virtuoso的安装十分复杂，在此不对开发环境的安装过多阐述，大家可自行咸鱼或淘宝。本人使用IC617进行学习。</p>
+<hr>
+<h3 id="工艺库"><a href="#工艺库" class="headerlink" title="工艺库"></a>工艺库</h3><hr>
+<p>工艺库是各工艺厂商为设计人员提供的，不同厂商的工艺库是不同，设计集成电路必须使用工艺库。工艺库的安装也比较简单，但工艺库 两种，CDB，和IOA。CDB是为IC5xx提供，OA是为IC6XX提供。咱们是IC617安装CDB的库稍稍麻烦一点，下面将分别介绍安装方法。</p>
+<hr>
+<h3 id="CDB库安装"><a href="#CDB库安装" class="headerlink" title="CDB库安装"></a>CDB库安装</h3><hr>
+<a id="more"></a>
+
+<p>下载smic18ee的库。<a href="https://lanzous.com/b0evko4gf" target="_blank" rel="noopener">https://lanzous.com/b0evko4gf</a></p>
+<p>进入库所在目录，解压</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ tar -zxvf smic18ee_2P6M_20100810.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>并将解压后的目录复制到设计目录，我是在用户home目录下，新建一个virtuoso目录，以后在这个目录进行设计 。将解压后的目录复制到~/virtuoso。启动IC617。使用命令icfb或者virtuoso。点<em>tools</em>，</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6171.png" alt></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6172.png" alt></p>
+<p>选择倒数第二个，<em>conversion toolbox</em>.</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6173.png" alt></p>
+<p>选择第一个，<em>CDB to open access translator</em>.</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6175.png" alt></p>
+<p>点<em>Browse</em>找到复制到virtuoso下工艺库文件目录。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6176.png" alt></p>
+<p>点<em>ok</em></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6177.png" alt></p>
+<p>在右边的框里会有<em>smic18ee</em>，选中，一定要点一下，默认是不选中的。点<em>ok</em>。稍等一会。CIW这里会提示完成。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6178.png" alt></p>
+<p>在virtuos目录下会多一个smic18ee的目录。打开<em>library  manager</em>会出现smic18ee的库。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6179.png" alt></p>
+<p>到这里smic18ee的库安装成功了。</p>
+<hr>
+<h3 id="OA库安装"><a href="#OA库安装" class="headerlink" title="OA库安装"></a>OA库安装</h3><hr>
+<p>将需要安装的库解压并移动到virtuoso下。下载地址。<a href="https://lanzous.com/ic5p21a" target="_blank" rel="noopener">https://lanzous.com/ic5p21a</a></p>
+<p>OA库的安装，比较简单。打开virtuoso，打开<em>tools<em>下的</em>library path Editor</em></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61710.png" alt></p>
+<p>选中最下方的空白格。点<em>Edit</em> 。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61711.png" alt></p>
+<p>选择<em>Add Library</em> </p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61712.png" alt></p>
+<p>选择smic65这个文件夹，点进去。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61713.png" alt></p>
+<p>选择右边框里的<em>smic65_OA<em>，点</em>ok</em></p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61714.png" alt></p>
+<p>保存一下。打开<em>library  manager</em>就可以看到库了。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61715.png" alt></p>
+<p>到这里OA库也安装完了。</p>
+<hr>
+<p>欢迎大家访问！</p>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+<p>也可电邮我</p>
+<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
+]]></content>
+      <categories>
+        <category>集成电路设计</category>
+      </categories>
+      <tags>
+        <tag>cadence</tag>
+        <tag>virtuoso</tag>
       </tags>
   </entry>
   <entry>
@@ -465,62 +659,6 @@
       </tags>
   </entry>
   <entry>
-    <title>nanopi安装oh my zsh</title>
-    <url>/nanopi-install-oh-my-zsh/</url>
-    <content><![CDATA[<p>nanopi是基于ubuntu16.04LTS，自带的bash终端总觉的有点不舒服，有一款终端不错还可以更换主题。oh my zsh。<a href="https://ohmyz.sh/" target="_blank" rel="noopener">https://ohmyz.sh/</a> </p>
-<p>下面我们来反nanopi的终端美化一下。</p>
-<hr>
-<p>首先安装zsh，我们先看一下，我们有没有zsh。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ cat /etc/shells<br>/bin/sh<br>/bin/dash<br>/bin/bash<br>/bin/rbash<br>$ <span class="hljs-built_in">echo</span> <span class="hljs-variable">$SHELL</span>  //查看我们当前使用的shell<br>/bin/bash<br></code></pre></td></tr></table></figure>
-
-<p>当前，我们是没有安装zsh的。使用的是默认的bash。</p>
-<a id="more"></a>
-<hr>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><hr>
-<p>先安装zsh</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt-get install zsh<br>Reading package lists... Done<br>Building dependency tree <br>Reading state information... Done<br>The following packages were automatically installed and are no longer required:<br>  aspell aspell-en dictionaries-common emacsen-common libaspell15 libenca0 libfaad2 libjack-jackd2-0 libmodplug1<br>  libmpcdec6 libopus0 libopusfile0 librcc0 librcd0 libresid-builder0c2a libsidplay2v5 libsidutils0 libspeex1<br>  libtag1v5 libtag1v5-vanilla libtagc0 libtext-iconv-perl<br>Use <span class="hljs-string">'sudo apt autoremove'</span> to remove them.<br>The following additional packages will be installed:<br>  zsh-common<br>Suggested packages:<br>  zsh-doc<br>The following NEW packages will be installed:<br>  zsh zsh-common<br>0 upgraded, 2 newly installed, 0 to remove and 250 not upgraded.<br>Need to get 3,724 kB of archives.<br>After this operation, 14.0 MB of additional disk space will be used.<br>Do you want to <span class="hljs-built_in">continue</span>? [Y/n] y<br>Get:1 http://mirrors.ustc.edu.cn/ubuntu-ports xenial-security/main arm64 zsh-common all 5.1.1-1ubuntu2.3 [3,182 kB]<br>Get:2 http://mirrors.ustc.edu.cn/ubuntu-ports xenial-security/main arm64 zsh arm64 5.1.1-1ubuntu2.3 [542 kB]<br>Fetched 3,724 kB <span class="hljs-keyword">in</span> 5s (648 kB/s)<br>debconf: delaying package configuration, since apt-utils is not installed<br>Selecting previously unselected package zsh-common.<br>(Reading database ... 45962 files and directories currently installed.)<br>Preparing to unpack .../zsh-common_5.1.1-1ubuntu2.3_all.deb ...<br>Unpacking zsh-common (5.1.1-1ubuntu2.3) ...<br>Selecting previously unselected package zsh.<br>Preparing to unpack .../zsh_5.1.1-1ubuntu2.3_arm64.deb ...<br>Unpacking zsh (5.1.1-1ubuntu2.3) ...<br>Setting up zsh-common (5.1.1-1ubuntu2.3) ...<br>Setting up zsh (5.1.1-1ubuntu2.3) ...<br>update-alternatives: using /bin/zsh5 to provide /bin/zsh (zsh) <span class="hljs-keyword">in</span> auto mode<br>update-alternatives: using /bin/zsh5 to provide /bin/rzsh (rzsh) <span class="hljs-keyword">in</span> auto mode<br></code></pre></td></tr></table></figure>
-
-<p>查看一下有没有安装上，</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ cat /etc/shells<br>/bin/sh<br>/bin/dash<br>/bin/bash<br>/bin/rbash<br>/bin/zsh<br>/usr/bin/zsh   //已经有zsh了<br></code></pre></td></tr></table></figure>
-
-<p>把zsh修改为默认shell</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ chsh -s /bin/zsh<br></code></pre></td></tr></table></figure>
-
-<p>安装oh my zsh</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sh -c <span class="hljs-string">"<span class="hljs-variable">$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)</span>"</span><br></code></pre></td></tr></table></figure>
-
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/nanopi_ohmyzsh.png" alt></p>
-<p>这样就安装上了</p>
-<hr>
-<h3 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h3><hr>
-<p>更改主题和加插件，编辑文件==~/.zshrc==</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ vim ~/.zshrc<br>ZSH_THEME=<span class="hljs-string">"ys"</span>   //更改主题，我比较喜欢ys<br>$ <span class="hljs-built_in">source</span> ~/.zshrc<br></code></pre></td></tr></table></figure>
-
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/ohmyzsh1.png" alt></p>
-<p>可以在==~/.oh-my-zsh/themes==查看都有什么主题</p>
-<hr>
-<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><hr>
-<h4 id="安装autojump插件"><a href="#安装autojump插件" class="headerlink" title="安装autojump插件"></a>安装autojump插件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt-get install autojump<br>$ vim ~/.zshrc<br><span class="hljs-comment">#在最后一行加入</span><br>. /usr/share/autojump/autojump.sh<br>$ <span class="hljs-built_in">source</span> ~/.zshrc   生效<br></code></pre></td></tr></table></figure>
-
-<h4 id="安装自动补齐插件"><a href="#安装自动补齐插件" class="headerlink" title="安装自动补齐插件"></a>安装自动补齐插件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> ~/.oh-my-zsh/plugins/<br>$ mkdir incr<br>$ <span class="hljs-built_in">cd</span> incr<br>$ wget http://mimosa-pudica.net/src/incr-0.2.zsh<br>$ vim ~/.zshrc<br><span class="hljs-comment">#在最后加入 </span><br><span class="hljs-built_in">source</span> ~/.oh-my-zsh/plugins/incr/incr-0.2.zsh<br>$ <span class="hljs-built_in">source</span> ~/.zshrc 生效<br></code></pre></td></tr></table></figure>
-
-<h4 id="安装语法高亮zsh-syntax-highlighting"><a href="#安装语法高亮zsh-syntax-highlighting" class="headerlink" title="安装语法高亮zsh-syntax-highlighting"></a>安装语法高亮zsh-syntax-highlighting</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cd</span> ~/.oh-my-zsh/plugins<br>$ vim ~/.zshrc<br>$ git <span class="hljs-built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git<br><span class="hljs-comment">#在最后加入</span><br><span class="hljs-built_in">source</span> <span class="hljs-variable">$&#123;(q-)PWD&#125;</span>/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh<br>$ <span class="hljs-built_in">source</span> ~./zshrc<br></code></pre></td></tr></table></figure>
-
-<h4 id="安装语法历史记录"><a href="#安装语法历史记录" class="headerlink" title="安装语法历史记录"></a>安装语法历史记录</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ git <span class="hljs-built_in">clone</span> git://github.com/zsh-users/zsh-autosuggestions <span class="hljs-variable">$ZSH_CUSTOM</span>/plugins/zsh-autosuggestions<br>$ vim ~/.zshrc<br><span class="hljs-comment"># 修改</span><br>plugins=(git extract z zsh-autosuggestions)<br>$ <span class="hljs-built_in">source</span> ~/.xshrc<br></code></pre></td></tr></table></figure>
-
-<p>现在终端好看了许多</p>
-<hr>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-]]></content>
-      <categories>
-        <category>nanopi</category>
-      </categories>
-      <tags>
-        <tag>nanopi</tag>
-        <tag>oh my zsh</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>为使用hexo搭建的博客加入评论系统gitalk</title>
     <url>/hexo-blog-gitalk/</url>
     <content><![CDATA[<p>使用hexo结合github搭建自己的个人博客网站，非常方便，而且免费，对于个人来说是一个不错的选择。不过有一个缺点是没有评论系统。需要自己额外引入评论插件。<br>现在常用的评论插件有三种：<br>disqus：已经被墙了，暂时不考虑。<br>gitment：基于github的一个评论系统，但是作者长时间没有维护，需要使用自己的服务器。<br>gitalk：也是基于github的一个评论系统，目前可以正常使用。<br>主题不同添加gitalk的方法也略有区别，有的主题本身带有gitalk评论，打开相应的开关就可以。我使用的主题是beantech，本身没有gitalk评论系统。</p>
@@ -547,144 +685,6 @@
       <tags>
         <tag>hexo</tag>
         <tag>gitalk</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>手机无线投屏win10</title>
-    <url>/Mobile-phone-wireless-projection-screen-win10/</url>
-    <content><![CDATA[<p>手机上屏幕小，看视频特别难受，并且有些软件没与PC版，应该怎么办?下面我来介绍一种方法，将手机屏幕投屏到电脑上。</p>
-<hr>
-<p>条件：1.装有win10的PC。<br>2. 手机具有无线投屏功能（现在大多数手机都有无线投屏功能，只是名字可能有些不同，下面一以荣耀V10手机为例给大家演示）</p>
-<a id="more"></a>
-<hr>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><hr>
-<h3 id="1-PC端"><a href="#1-PC端" class="headerlink" title="1.PC端"></a>1.PC端</h3><hr>
-<h4 id="使用搜索命令搜索“连接”"><a href="#使用搜索命令搜索“连接”" class="headerlink" title="使用搜索命令搜索“连接”"></a>使用搜索命令搜索“连接”</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F1.png" alt></p>
-<h4 id="打开连接应用，"><a href="#打开连接应用，" class="headerlink" title="打开连接应用，"></a>打开连接应用，</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F2.png" alt></p>
-<h4 id="记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。"><a href="#记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。" class="headerlink" title="记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。"></a>记住你的无线投屏的名字，如果周围有多个设备时，不要选错哦。</h4><hr>
-<h3 id="2-手机端"><a href="#2-手机端" class="headerlink" title="2.手机端"></a>2.手机端</h3><hr>
-<h4 id="打开设置"><a href="#打开设置" class="headerlink" title="打开设置"></a>打开设置</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F3.jpg" alt></p>
-<h4 id="选择设备连接"><a href="#选择设备连接" class="headerlink" title="选择设备连接"></a>选择设备连接</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F4.jpg" alt></p>
-<h4 id="选择无线投屏功能"><a href="#选择无线投屏功能" class="headerlink" title="选择无线投屏功能"></a>选择无线投屏功能</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F5.jpg" alt></p>
-<h4 id="需要打开WLAN，它会搜索可使用设备。"><a href="#需要打开WLAN，它会搜索可使用设备。" class="headerlink" title="需要打开WLAN，它会搜索可使用设备。"></a>需要打开WLAN，它会搜索可使用设备。</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F6.jpg" alt><br><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F7.jpg" alt></p>
-<h4 id="选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。"><a href="#选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。" class="headerlink" title="选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。"></a>选择你的设备，不要选错哦。这样就就连接上了，看个视频试一下。</h4><p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E6%8A%95%E5%B1%8F8.png" alt></p>
-<h4 id="点右上角按钮，可以全屏。"><a href="#点右上角按钮，可以全屏。" class="headerlink" title="点右上角按钮，可以全屏。"></a>点右上角按钮，可以全屏。</h4><hr>
-<p>大家赶紧去试试吧。<br>有问题可以联系我，邮箱：<a href="mailto:hanbing3566@gmail.com">hanbing3566@gmail.com</a></p>
-<hr>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-]]></content>
-      <categories>
-        <category>经验分享</category>
-      </categories>
-      <tags>
-        <tag>投屏</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>将静态博客托管在nanopi上</title>
-    <url>/blog-on-nanopi/</url>
-    <content><![CDATA[<p>最近买了一个nanopi，里面运行的是Ubuntu，可以做很多事情，我便想到用来做我博客的服务器。这前我是把我的博客托管在Github上。Github在国内的速度还是比较慢的。而且以前有被墙过。</p>
-<hr>
-<p>在nanopi上安装nginx</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo apt install nginx<br></code></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>编辑nginx的设置文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ vim /etc/nginx/nginx.conf<br></code></pre></td></tr></table></figure>
-
-<p>在http里面加</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">server &#123;<br>                listen          80 default_server;<br>                server_name     ccbirds.cn;//自己的域名<br>                root            /home/fa/hexo-blog; //<span class="hljs-built_in">clone</span>下来的位置<br>                location / &#123;<br>                &#125;<br>        &#125;<br><br>        server &#123;<br>                listen          80;<br>                server_name     www.ccbirds.cn;<br>                <span class="hljs-built_in">return</span>          301 http://ccbirds.cn<span class="hljs-variable">$request_uri</span>;<br>        &#125;<br></code></pre></td></tr></table></figure>
-
-<p>开启nginx服务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo service nginx start  //启动命令<br>$ sudo service nginx stop   //停止命令<br>$ sudo service nginx restart  //重启命令<br></code></pre></td></tr></table></figure>
-
-<p>如果报错，根据提示查看报错原因，</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ sudo nginx -t  //查看配置文件是否有问题<br>$ ps -ef | grep nginx  //显示nginx的进程<br>$ sudo <span class="hljs-built_in">kill</span> -quit 14952  //杀死进程<br></code></pre></td></tr></table></figure>
-
-<p>现在使用IP或者域名就可以访问了。</p>
-<hr>
-<p>可是每次更新博客都要手动clone一下吗？</p>
-<p>网上有使用webhooks自动部署的方法，不过本人比较笨，没有弄好，感兴趣的可以试试，成功了记得告诉我一声。</p>
-<p>我采用了比较笨的一种方法，每天定时删除hexo-log，定时重新clone一次。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ crontab -e <br>//在最后加上两句<br>0 0 * * * sudo rm -rf /home/fa/hexo-blog  //每天零点删除hexo-blog<br>5 0 * * * sudo git <span class="hljs-built_in">clone</span> https://github.com/ccbirds/ccbirds.github.io.git /home/fa/hexo-blog  //每天零点五分 重新<span class="hljs-built_in">clone</span><br>$ sudo service cron restart  //重启cron<br>$ service cron restart<br></code></pre></td></tr></table></figure>
-
-<p>五个* * * * *<br>对应的分别是 分 时 天 月 周</p>
-<p>不是很完美，先这样吧。</p>
-<hr>
-<p>遇到的问题：</p>
-<p>启动nginx时，报错，80端口已经被占用，看了一下进程，发现是nginx自己占用了80端口。使用nginx -t 看一下问题，是/etc/nginx/sites-enabled/default这个也在使用80端口，把这里的80改成其他端口就没有问题了</p>
-<hr>
-<p>欢迎大家访问！</p>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-]]></content>
-      <categories>
-        <category>nanopi</category>
-      </categories>
-      <tags>
-        <tag>nanopi</tag>
-        <tag>博客托管</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>集成电路学习笔记（一）IC617工艺库安装</title>
-    <url>/ICnotes1/</url>
-    <content><![CDATA[<hr>
-<h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h3><hr>
-<p>集成电路设计使用cadence virtuoso 作为开发环境。virtuoso的安装十分复杂，在此不对开发环境的安装过多阐述，大家可自行咸鱼或淘宝。本人使用IC617进行学习。</p>
-<hr>
-<h3 id="工艺库"><a href="#工艺库" class="headerlink" title="工艺库"></a>工艺库</h3><hr>
-<p>工艺库是各工艺厂商为设计人员提供的，不同厂商的工艺库是不同，设计集成电路必须使用工艺库。工艺库的安装也比较简单，但工艺库 两种，CDB，和IOA。CDB是为IC5xx提供，OA是为IC6XX提供。咱们是IC617安装CDB的库稍稍麻烦一点，下面将分别介绍安装方法。</p>
-<hr>
-<h3 id="CDB库安装"><a href="#CDB库安装" class="headerlink" title="CDB库安装"></a>CDB库安装</h3><hr>
-<a id="more"></a>
-
-<p>下载smic18ee的库。<a href="https://lanzous.com/b0evko4gf" target="_blank" rel="noopener">https://lanzous.com/b0evko4gf</a></p>
-<p>进入库所在目录，解压</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ tar -zxvf smic18ee_2P6M_20100810.tar.gz<br></code></pre></td></tr></table></figure>
-
-<p>并将解压后的目录复制到设计目录，我是在用户home目录下，新建一个virtuoso目录，以后在这个目录进行设计 。将解压后的目录复制到~/virtuoso。启动IC617。使用命令icfb或者virtuoso。点<em>tools</em>，</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6171.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6172.png" alt></p>
-<p>选择倒数第二个，<em>conversion toolbox</em>.</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6173.png" alt></p>
-<p>选择第一个，<em>CDB to open access translator</em>.</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6175.png" alt></p>
-<p>点<em>Browse</em>找到复制到virtuoso下工艺库文件目录。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6176.png" alt></p>
-<p>点<em>ok</em></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6177.png" alt></p>
-<p>在右边的框里会有<em>smic18ee</em>，选中，一定要点一下，默认是不选中的。点<em>ok</em>。稍等一会。CIW这里会提示完成。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6178.png" alt></p>
-<p>在virtuos目录下会多一个smic18ee的目录。打开<em>library  manager</em>会出现smic18ee的库。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC6179.png" alt></p>
-<p>到这里smic18ee的库安装成功了。</p>
-<hr>
-<h3 id="OA库安装"><a href="#OA库安装" class="headerlink" title="OA库安装"></a>OA库安装</h3><hr>
-<p>将需要安装的库解压并移动到virtuoso下。下载地址。<a href="https://lanzous.com/ic5p21a" target="_blank" rel="noopener">https://lanzous.com/ic5p21a</a></p>
-<p>OA库的安装，比较简单。打开virtuoso，打开<em>tools<em>下的</em>library path Editor</em></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61710.png" alt></p>
-<p>选中最下方的空白格。点<em>Edit</em> 。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61711.png" alt></p>
-<p>选择<em>Add Library</em> </p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61712.png" alt></p>
-<p>选择smic65这个文件夹，点进去。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61713.png" alt></p>
-<p>选择右边框里的<em>smic65_OA<em>，点</em>ok</em></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61714.png" alt></p>
-<p>保存一下。打开<em>library  manager</em>就可以看到库了。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/IC61715.png" alt></p>
-<p>到这里OA库也安装完了。</p>
-<hr>
-<p>欢迎大家访问！</p>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-<p>也可电邮我</p>
-<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
-]]></content>
-      <categories>
-        <category>集成电路设计</category>
-      </categories>
-      <tags>
-        <tag>cadence</tag>
-        <tag>virtuoso</tag>
       </tags>
   </entry>
   <entry>
@@ -1037,73 +1037,6 @@
       </tags>
   </entry>
   <entry>
-    <title>集成电路设计学习笔记（五）基于IC617的以二极管连接的mos作负载的共源极放大器</title>
-    <url>/ICnotes51/</url>
-    <content><![CDATA[<p>本文记录以二极管连接的MOS作为负载的共源极放大器。</p>
-<hr>
-<h3 id="1-原理分析"><a href="#1-原理分析" class="headerlink" title="1. 原理分析"></a>1. 原理分析</h3><hr>
-<p>二极管连接的MOS管如下图所示。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs1.png" alt></p>
-<p>无论PMOS还是NMOS，当导通时，均工作在饱和区。</p>
-<p>等效电阻为</p>
-<p>$$R_x=\frac{V_x}{I_x}=\frac{1}{g_m}//R_o\approx\frac{1}{g_m}$$</p>
-<p>以二极管连接的mos作负载的共源极放大器电路连接如下图所示</p>
-<a id="more"></a>
-
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs2.png" alt></p>
-<p>以二极管连接的MOS管作负载时，交流小信号等效电路与以电阻为负载的共源极放大器相似，只是将$R_D$换为$\frac{1}{g_m}$</p>
-<p>所以，$$V_{out}=-g_{m1}V_{1}\frac{1}{g_{m2}}$$</p>
-<p>$$A_V=\frac{V_{out}}{V_{IN}}=-\frac{g_{m1}}{g_{m2}}=-\frac{\sqrt{\mu_p(W/L)}_1}{\sqrt{\mu_n(W/L)}_2}$$</p>
-<p>$$R_i=\infty$$</p>
-<p>$$R_o=\frac{1}{g_{m2}}$$</p>
-<p>当考虑体效应时，</p>
-<p>$$A_V=-\frac{\sqrt{\mu_p(W/L)}_1}{\sqrt{\mu_n(W/L)}_2}\frac{1}{1+\eta}$$</p>
-<p>$$\eta=\frac{1}{g_{mb2}}$$</p>
-<p>当不考虑体效应时，增益为两个MOS的宽长比。</p>
-<hr>
-<h3 id="2-仿真验证"><a href="#2-仿真验证" class="headerlink" title="2.仿真验证"></a>2.仿真验证</h3><hr>
-<p>画电路图，填加电源，信号源，并正确设置MOS的宽长比，如下图所示。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs3.png" alt></p>
-<p>打开ADE，设置仿真变量，仿真类型，和输出信号。</p>
-<p>先DC仿真，找电路的静态工作点。</p>
-<p>ADE设置如下图所示</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs4.png" alt></p>
-<p>开始仿真，得到如下结果。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs5.png" alt></p>
-<p>放大位数10左右，输入范围大区120mV,输出范围大约1.25V。可设置AC的静态工作点。</p>
-<p>进行瞬态仿真，查看波形是否正常放大。</p>
-<p>将<strong>vdc</strong>修改为<strong>vsin</strong>，参数设置如下图。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs6.png" alt></p>
-<p>保存电路，ADE填加瞬态仿真类型。如下图所示</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs7.png" alt></p>
-<p>并观察输入与输出信号的波形。如下图所示</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs8.png" alt></p>
-<p>点击上方红框中的按钮可将两曲线分离，由图可知电路正常放大信号，且无失真。</p>
-<p>最后进行交流小信号分析。设置AC仿真如下图所示</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs9.png" alt></p>
-<p>开始仿真，完成后选择<strong>AC Gain &amp; Phase</strong>，并依次选择输出信号与输入信号 。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs10.png" alt></p>
-<p>幅频与相频特性如下图所示</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs11.png" alt></p>
-<p>大概记录了一下以二极管连接的MOS作负载的共源极放大器原理与验证过程。</p>
-<p>如有不对之处，大家多多指正。</p>
-<hr>
-<p>欢迎大家访问！</p>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-<p>也可电邮我</p>
-<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
-]]></content>
-      <categories>
-        <category>集成电路设计</category>
-      </categories>
-      <tags>
-        <tag>cadence</tag>
-        <tag>virtuoso</tag>
-        <tag>ADE仿真</tag>
-        <tag>共源极放大器</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>集成电路设计学习笔记（二）基于IC617反相器设计之layout</title>
     <url>/ICnotes23/</url>
     <content><![CDATA[<p>本文主要记录反相器版图的绘制以及layout的常用操作。</p>
@@ -1265,6 +1198,73 @@
       </tags>
   </entry>
   <entry>
+    <title>集成电路设计学习笔记（五）基于IC617的以二极管连接的mos作负载的共源极放大器</title>
+    <url>/ICnotes51/</url>
+    <content><![CDATA[<p>本文记录以二极管连接的MOS作为负载的共源极放大器。</p>
+<hr>
+<h3 id="1-原理分析"><a href="#1-原理分析" class="headerlink" title="1. 原理分析"></a>1. 原理分析</h3><hr>
+<p>二极管连接的MOS管如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs1.png" alt></p>
+<p>无论PMOS还是NMOS，当导通时，均工作在饱和区。</p>
+<p>等效电阻为</p>
+<p>$$R_x=\frac{V_x}{I_x}=\frac{1}{g_m}//R_o\approx\frac{1}{g_m}$$</p>
+<p>以二极管连接的mos作负载的共源极放大器电路连接如下图所示</p>
+<a id="more"></a>
+
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs2.png" alt></p>
+<p>以二极管连接的MOS管作负载时，交流小信号等效电路与以电阻为负载的共源极放大器相似，只是将$R_D$换为$\frac{1}{g_m}$</p>
+<p>所以，$$V_{out}=-g_{m1}V_{1}\frac{1}{g_{m2}}$$</p>
+<p>$$A_V=\frac{V_{out}}{V_{IN}}=-\frac{g_{m1}}{g_{m2}}=-\frac{\sqrt{\mu_p(W/L)}_1}{\sqrt{\mu_n(W/L)}_2}$$</p>
+<p>$$R_i=\infty$$</p>
+<p>$$R_o=\frac{1}{g_{m2}}$$</p>
+<p>当考虑体效应时，</p>
+<p>$$A_V=-\frac{\sqrt{\mu_p(W/L)}_1}{\sqrt{\mu_n(W/L)}_2}\frac{1}{1+\eta}$$</p>
+<p>$$\eta=\frac{1}{g_{mb2}}$$</p>
+<p>当不考虑体效应时，增益为两个MOS的宽长比。</p>
+<hr>
+<h3 id="2-仿真验证"><a href="#2-仿真验证" class="headerlink" title="2.仿真验证"></a>2.仿真验证</h3><hr>
+<p>画电路图，填加电源，信号源，并正确设置MOS的宽长比，如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs3.png" alt></p>
+<p>打开ADE，设置仿真变量，仿真类型，和输出信号。</p>
+<p>先DC仿真，找电路的静态工作点。</p>
+<p>ADE设置如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs4.png" alt></p>
+<p>开始仿真，得到如下结果。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs5.png" alt></p>
+<p>放大位数10左右，输入范围大区120mV,输出范围大约1.25V。可设置AC的静态工作点。</p>
+<p>进行瞬态仿真，查看波形是否正常放大。</p>
+<p>将<strong>vdc</strong>修改为<strong>vsin</strong>，参数设置如下图。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs6.png" alt></p>
+<p>保存电路，ADE填加瞬态仿真类型。如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs7.png" alt></p>
+<p>并观察输入与输出信号的波形。如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs8.png" alt></p>
+<p>点击上方红框中的按钮可将两曲线分离，由图可知电路正常放大信号，且无失真。</p>
+<p>最后进行交流小信号分析。设置AC仿真如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs9.png" alt></p>
+<p>开始仿真，完成后选择<strong>AC Gain &amp; Phase</strong>，并依次选择输出信号与输入信号 。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs10.png" alt></p>
+<p>幅频与相频特性如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs11.png" alt></p>
+<p>大概记录了一下以二极管连接的MOS作负载的共源极放大器原理与验证过程。</p>
+<p>如有不对之处，大家多多指正。</p>
+<hr>
+<p>欢迎大家访问！</p>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+<p>也可电邮我</p>
+<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
+]]></content>
+      <categories>
+        <category>集成电路设计</category>
+      </categories>
+      <tags>
+        <tag>cadence</tag>
+        <tag>virtuoso</tag>
+        <tag>ADE仿真</tag>
+        <tag>共源极放大器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>集成电路设计学习笔记（五）基于IC617的电流源负载的共源极放大器</title>
     <url>/ICnotes52/</url>
     <content><![CDATA[<p>本文记录电流源负载的共源极放大器。</p>
@@ -1318,6 +1318,47 @@
       </tags>
   </entry>
   <entry>
+    <title>集成电路设计笔记（七）基于IC617UVLO设计</title>
+    <url>/ICnotes7/</url>
+    <content><![CDATA[<h3 id="1-什么是UVLO"><a href="#1-什么是UVLO" class="headerlink" title="1. 什么是UVLO"></a>1. 什么是UVLO</h3><hr>
+<p>欠压锁定（Undervoltage-Lockout）简称UVLO，是电子设备中在电源电压低于正常工程准位时，切断电源的电路。在嵌入式系统中常会用UVLO监控电池电压，若电压低于一定值，会直接切断电源，保护嵌入式系统的电路。 </p>
+<p>许多电子设备中都有UVLO的功能，例如在镇流器中就有UVLO电路，若电压过低时直接切断电源。</p>
+<a id="more"></a>
+
+<p>UVLO就是低电压锁定； 低压关断. 欠压关断模式是当供电电压低于IC的开启门限电压时的一种保护模式。欠压关断模式可保证IC在供电电压不足时不致于被损坏。一个低电压锁定（UVLO）电路可确保IC在电池电压未达到安全操作电压前不会激活，UVLO的功能会展示滞后现象，以确保在电源供应上的噪音不会不慎导致系统故障。</p>
+<p>UVLO的迟滞功能是防止电压在UVLO那一点的时候，出现振荡，所以加个迟滞.</p>
+<p>为了更稳定的工作，某些 DC/DC 转换器具有 UVLO（欠压锁定）功能。电源开启后，UVLO 功能使内部电路处于待机状态，直到DC/DC 转换器的输入电压（VIN）达到 UVLO 电压，以此来减少消费电流并避免误操作。</p>
+<hr>
+<h3 id="2-简单UVLO设计"><a href="#2-简单UVLO设计" class="headerlink" title="2. 简单UVLO设计"></a>2. 简单UVLO设计</h3><hr>
+<p>设计要求：3.3V电源电压，低电压2.8V关断，高电压3.0V启动</p>
+<p>下图为电路原理图</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/71.png" alt></p>
+<p>UVLO电路，迟滞比较器为电路核心。当电源电压由0V增加到5V时，在未正常工作前，放大器输出为低电平，经反向为高电平，使PM0关闭，</p>
+<p>$$V_{in+}=V_{cc}*\frac{R1}{R1+R2}$$</p>
+<p>当电源电压由5V减小为0V时，在关闭电源前，放大器输出为高电平，经反向为低电平。使得PM0导通。此时VIN+的电压为</p>
+<p>$$V_{in+}=V_{cc}*\frac{R1}{R1+R2//R3}$$</p>
+<p>根据要求，电源电压低于2.8V，系统关闭。电源电压高于3.0V系统打开。</p>
+<p>仿真结果如图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/72.png" alt></p>
+<p>电压降低时，低于2.8V后，电源关断。电压升高到3.0V时，电源启动。</p>
+<p>简单UVLO完成了</p>
+<hr>
+<p>欢迎大家访问！</p>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+<p>也可电邮我</p>
+<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
+]]></content>
+      <categories>
+        <category>集成电路设计</category>
+      </categories>
+      <tags>
+        <tag>cadence</tag>
+        <tag>virtuoso</tag>
+        <tag>ADE仿真</tag>
+        <tag>UVLO</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>集成电路设计笔记（五）基于IC617共漏极放大器</title>
     <url>/ICnotes55/</url>
     <content><![CDATA[<p>本文主要记录共漏极放大器的原理与仿真验证</p>
@@ -1368,6 +1409,176 @@
         <tag>virtuoso</tag>
         <tag>ADE仿真</tag>
         <tag>共漏极放大器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>集成电路设计笔记（五）基于IC617带源极负反馈的共源级的放大器</title>
+    <url>/ICnotes54/</url>
+    <content><![CDATA[<p>本文主要记录带源极负反馈的共源级的放大器的原理及仿真验证</p>
+<hr>
+<h3 id="1-原理"><a href="#1-原理" class="headerlink" title="1. 原理"></a>1. 原理</h3><hr>
+<p>电路如图所示，$R_S$为源极反馈电阻</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs51.png" alt></p>
+<p>交流小信号如图所示</p>
+<a id="more"></a>
+
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs52.png" alt></p>
+<p>$$V_1=-I_xR_s$$</p>
+<p>$$I_x-(g_m+g_{mb})V_1=I_x+(g_m+g_{mb})R_sIx$$</p>
+<p>$$V_x=r_o[I_x+(g_m+g_{mb})R_sI_x]+I_xR_s$$</p>
+<p>$$R_{out}=V_x/I_x=[I+(g_m+g_{mb})R_s]r_o+R_s=[1+(g_m+g_{mb})r_o]R_s+r_o$$</p>
+<p>因为$(g_m+g_{mb})r_o&gt;&gt;I$</p>
+<p>所以$$R_{out}\approx[1+(g_m+g_{mb})R_s]r_o$$</p>
+<p>$$I_{out}=g_mV_1+g_{mb}V_{bs}+I_{ro}=g_mV_1-g_{mb}V_x-\frac{I_{out}R_s}{r_o}=g_m(V_{in}-I_{out}R_s)+g_{mb}(-I_{out}R_s)-\frac{I_{out}R_s}{r_o}$$</p>
+<p>可得到</p>
+<p>$$G_m=\frac{I_{out}}{V_{in}}=\frac{g_mr_o}{R_s+[1+(g_m+g_{mb})R_s]r_o}$$</p>
+<p>$$R_{out}=[1+(g_m+G_{mb})r_o]R_s+r_o$$</p>
+<p>可得增益为</p>
+<p>$$A_V=-G_m(R_D//R_{out})$$</p>
+<p>如果忽略沟道长度调制效应和衬底偏置效应，则</p>
+<p>交流小信号等效模型如图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs53.png" alt></p>
+<p>$$V_{in}-V_1=g_mR_sV_1$$</p>
+<p>$$I_{out}=g_mV_1$$</p>
+<p>$$G_m=\frac{g_m}{1+g_mR_s}$$</p>
+<p>$$R_{out}=R_D$$</p>
+<p>$$A_V=-G_mR_{out}=-\frac{g_mR_D}{1+g_mR_s}=-\frac{R_D}{\frac{1}{g_M}+R_S}\approx -\frac{R_D}{R_S}$$</p>
+<p>可知，增益与两电阻的阻值有关。</p>
+<p>由于有源极负反馈，放大倍数不高。而且放大倍数与电阻有关，在电路中电阻越大，占有面积越大。</p>
+<hr>
+<h3 id="2-直流仿真验证"><a href="#2-直流仿真验证" class="headerlink" title="2. 直流仿真验证"></a>2. 直流仿真验证</h3><hr>
+<p>原理图如图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs54.png" alt></p>
+<p>将栅极电压和两个电阻均设置为变量，</p>
+<p>变量初始值如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs55.png" alt></p>
+<p>进行直流仿真结果，如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs56.png" alt></p>
+<p>可知，放大倍数小，摆幅小。是因为两个电阻的比值小。</p>
+<p>下面我们增大RD来看看，曲线的变化 。</p>
+<p>打开参数扫描，如下图设置</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs57.png" alt></p>
+<p>开始仿真，如图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs58.png" alt></p>
+<p>RD电阻越大，增益越大。</p>
+<p><em>关于，参数扫描。在参数扫描中设置的变量可以认为是第二变量，仿真后的曲线为ADE中设置的变量，在参数扫描中的变量会以多条曲线的形式画出来，仿真的步数等于曲线的条数。</em></p>
+<p>我们设置RD的阻值为50K，来进行下面的仿真验证。DC仿真如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs59.png" alt></p>
+<hr>
+<h3 id="3-瞬态仿真验证"><a href="#3-瞬态仿真验证" class="headerlink" title="3. 瞬态仿真验证"></a>3. 瞬态仿真验证</h3><hr>
+<p>将信号源更改为正弦信号，并按下图设置</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs510.png" alt></p>
+<p>仿真结果如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs511.png" alt></p>
+<p>可知，电路正常放大，无失真</p>
+<hr>
+<h3 id="4-交流小信号仿真"><a href="#4-交流小信号仿真" class="headerlink" title="4. 交流小信号仿真"></a>4. 交流小信号仿真</h3><hr>
+<p>设置AC仿真，频率范围设置为1K—10G</p>
+<p>结果如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs512.png" alt></p>
+<p>可知，增益并不高。</p>
+<p>原理仿真就完事啦，欢迎大家留言讨论。</p>
+<hr>
+<p>欢迎大家访问！</p>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+<p>也可电邮我</p>
+<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
+]]></content>
+      <categories>
+        <category>集成电路设计</category>
+      </categories>
+      <tags>
+        <tag>cadence</tag>
+        <tag>virtuoso</tag>
+        <tag>ADE仿真</tag>
+        <tag>共源极放大器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>集成电路设计学习笔记（四）基于IC617的交流小信号分析</title>
+    <url>/ICnotes4/</url>
+    <content><![CDATA[<p>以电阻负载的共源极放大器为例，记录交流小信号分析的方法与过程。</p>
+<hr>
+<h3 id="1-电阻负载的共源极放大器"><a href="#1-电阻负载的共源极放大器" class="headerlink" title="1. 电阻负载的共源极放大器"></a>1. 电阻负载的共源极放大器</h3><hr>
+<p>电路基本结构如下图所示</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac1.png" alt></p>
+<p>MOS管处于截止区时，$V_{gs}&lt;V_{TH}$</p>
+<p>处于饱和区时，$V_{gs}&gt;V_{TH}$且$V_{DS}&gt;V_{gs}-V_{TH}$ </p>
+<p>处于线性区时，$V_{gs}&gt;V_{TH}$ 且 $V_{DS}&lt;V_{gs}-V_{TH}$</p>
+<a id="more"></a>
+
+<p>输出电压，$Vout=-gmV_1(r_0//R_D)$ </p>
+<p>电压增益，$A_V=\frac{V_{out}}{V_{in}}=-g_m(r_0//R_D)$ </p>
+<p>输入电阻，$R_i=\infty$</p>
+<p>输出电阻，$R_o=r_o//R_D$ </p>
+<p>由于$r_o&gt;&gt;R_D$ 所以$A_v=-g_mR_D=-\sqrt{2\mu_nC_{ox}\frac{W}{L}I_DR_D}=-\sqrt{2\mu_nC_{ox\frac{W}{L}}}\frac{V_{RD}}{\sqrt{I_D}}$</p>
+<hr>
+<h3 id="2-交流小信号分析"><a href="#2-交流小信号分析" class="headerlink" title="2. 交流小信号分析"></a>2. 交流小信号分析</h3><hr>
+<p><strong>幅频特性</strong></p>
+<p>​       幅频特性是指在电子技术实践中所遇到的信号往往不是单一频率的， 而是在某一段频率范围内，在放大电路、滤波电路及谐振电路等几乎所有的电子电路和设备中都含有电抗性元件， 由于它们在各种频率下的电抗值是不相同的，因而电信号在通过这些电子电路和设备的过程中，其幅度和相位发生了变化，亦即是使电信号在传输过程中发生了失真。电信号传输前后输入信号与输出信号的幅度之比称为幅频特性</p>
+<p>​       频率响应是控制系统对正弦输入信号的稳态正弦响应。即一个稳定的线性定常系统，在正弦信号的作用下，稳态时输出仍是一个与输入同频率的正弦信号，且稳态输出的幅值与相位是输入正弦信号频率的函数。幅频特性，它等于频率响应输出幅值与输入信号幅值之比。</p>
+<p>​       幅频特性就是指系统频率响应的幅度随频率变化的曲线,幅度大的地方对应通带,也就是对应频率成分通过系统有较小衰减,幅度小的地方对应阻带,也就是对应频率成分通过系统有较大衰减，根据这个特性，可以用来观测比较滤波器的情况，观察其是否符合要求也就是作为滤波器的技术指标。</p>
+<p>　　理想滤波器是分段常数型的,对应的脉冲响应是无限长的sinc函数,实际系统不可能实现,因此要对脉冲响应进行截断处理,这就在频域产生吉布斯效应,也就是在通带和阻带内形成波动,并且不再尖锐截止,产生过度带。同时可以画幅频特性曲线，这样可以主要检查设计的滤波器是否满足要求,主要指标有:通带截止频率,阻带截止频率,通带波纹和阻带衰减是否达到要求。</p>
+<p> <strong>相频特性</strong></p>
+<p>​       输入信号与输出信号的相角差称为相频特性，相角差与频率的关系曲线称为相频特性曲线</p>
+<p>正弦输入信号的响应也是正弦信号，频率与输入信号相同。不同的是相位与幅值。</p>
+<p>​       在电子技术实践中所遇到的信号往往不是单一频率的, 而是在某一段频率范围内, 在放大电路、滤波电路及谐振电路等几乎所有的电子电路和设备中都含有电抗性元件, 由于它们在各种频率下的电抗值是不相同的, 因而电信号在通过这些电子电路和设备的过程中, 其幅度和相位发生了变化, 亦即是使电信号在传输过程中发生了失真.这种失真有时候是我们需要的, 而有时候是不需要的, 而且必须加以克服。</p>
+<p>​       相位的测量, 通常是指两个或几个同频中的简谐信号之间的相位差的测量.它广泛应用于测量多相系统中或彩色电视系统中几个信号电压之间的相位关系;任意二端阻抗中的电压和电流之间的相位差;滤波器、移相器和放大器等网络的相位移及相位频率特性等</p>
+<hr>
+<h3 id="3-DC仿真找静态工作点"><a href="#3-DC仿真找静态工作点" class="headerlink" title="3. DC仿真找静态工作点"></a>3. DC仿真找静态工作点</h3><hr>
+<p>绘制原理图，如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac2.png" alt></p>
+<p>其中电源电压为3.3V。输入信号设置为变量<strong>vgs</strong>，电阻阻值为10K左右，如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac3.png" alt></p>
+<p>打开ADE，设置变量<strong>vgs</strong>，仿真类型<strong>dc</strong>，设置输出为<strong>out</strong>。（相关操作可参考<a href="http://ccbirds.cn/ICnotes22/">http://ccbirds.cn/ICnotes22/</a>）设置完成后如图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac4.png" alt></p>
+<p>开始仿真，结果如下。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac5.png" alt></p>
+<p>使用快捷键<strong>m</strong>，标记线上的点，再使用快捷键 <strong>d</strong>，再点一个线上的点，会计算出两点之间的横坐标差与纵坐标差和斜率。（使用快捷键<strong>d</strong>时，要保持<strong>m</strong>点处于选中状态）。</p>
+<p>由上图可知 ，交流输入范围大约<em>790mV</em>，交流输出范围大约<em>1.4V</em>。输入电压的中点约<em>1.7V</em>左右。也就是静态工作点。</p>
+<hr>
+<h3 id="4-tran仿真"><a href="#4-tran仿真" class="headerlink" title="4. tran仿真"></a>4. tran仿真</h3><hr>
+<p>输入信号设置为正弦，查看输出是否正常，有无畸变。</p>
+<p>将原理图中的输入信号改为正弦波输入，选用器件<strong>vsin</strong>，如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac6.png" alt></p>
+<p><strong>DC voltage</strong>为静态工工作点的值，<strong>Amplitude</strong>为输入范围的一半。<strong>frequency</strong>为频率设定，根据自己情况设置。</p>
+<p>电路如下图所示。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac7.png" alt></p>
+<p>设置ADE仿真环境，仿真类型为<strong>tran</strong>，输出加上一个输入信号 <strong>vin</strong>，输入与输出 对比，查看波形是否正常。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac8.png" alt></p>
+<p>可以设置 多个仿真类型，使用哪个在哪个使能框中打勾即可。</p>
+<p>结果如下图。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac9.png" alt></p>
+<p>基本无失真，说明静态工作点设置合适。</p>
+<hr>
+<h3 id="5-AC仿真"><a href="#5-AC仿真" class="headerlink" title="5. AC仿真"></a>5. AC仿真</h3><hr>
+<p>使用AC仿真，查看电路的幅频特性与相频特性。</p>
+<p>修改电路中<strong>vsin</strong>的参数 。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac10.png" alt></p>
+<p><strong>AC  magnitude</strong>，设置为<em>350mV</em>。<strong>AC  magnitude</strong>用于AC仿真，<strong>Amplitude</strong>用于瞬态仿真。</p>
+<p>设置仿真类型为ac，并设置开始与结束频率。</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac11.png" alt></p>
+<p>开始仿真！，此时得到的结果不是幅频与相频，</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac12.png" alt></p>
+<p>选择红框中的<strong>AC Gain&amp;Phase</strong>。并依次选择原理图中的<strong>out</strong>与<strong>vin</strong></p>
+<p>结果如图所示，</p>
+<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac13.png" alt></p>
+<p>此次没有优化放大器参数，电路特性不好。</p>
+<p>交流小信号分析就完事啦。</p>
+<hr>
+<p>欢迎大家访问！</p>
+<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
+<p>也可电邮我</p>
+<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
+]]></content>
+      <categories>
+        <category>集成电路设计</category>
+      </categories>
+      <tags>
+        <tag>cadence</tag>
+        <tag>virtuoso</tag>
+        <tag>ADE仿真</tag>
+        <tag>交流小信号分析</tag>
       </tags>
   </entry>
   <entry>
@@ -1491,217 +1702,6 @@
         <tag>virtuoso</tag>
         <tag>ADE仿真</tag>
         <tag>运算放大器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>集成电路设计学习笔记（四）基于IC617的交流小信号分析</title>
-    <url>/ICnotes4/</url>
-    <content><![CDATA[<p>以电阻负载的共源极放大器为例，记录交流小信号分析的方法与过程。</p>
-<hr>
-<h3 id="1-电阻负载的共源极放大器"><a href="#1-电阻负载的共源极放大器" class="headerlink" title="1. 电阻负载的共源极放大器"></a>1. 电阻负载的共源极放大器</h3><hr>
-<p>电路基本结构如下图所示</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac1.png" alt></p>
-<p>MOS管处于截止区时，$V_{gs}&lt;V_{TH}$</p>
-<p>处于饱和区时，$V_{gs}&gt;V_{TH}$且$V_{DS}&gt;V_{gs}-V_{TH}$ </p>
-<p>处于线性区时，$V_{gs}&gt;V_{TH}$ 且 $V_{DS}&lt;V_{gs}-V_{TH}$</p>
-<a id="more"></a>
-
-<p>输出电压，$Vout=-gmV_1(r_0//R_D)$ </p>
-<p>电压增益，$A_V=\frac{V_{out}}{V_{in}}=-g_m(r_0//R_D)$ </p>
-<p>输入电阻，$R_i=\infty$</p>
-<p>输出电阻，$R_o=r_o//R_D$ </p>
-<p>由于$r_o&gt;&gt;R_D$ 所以$A_v=-g_mR_D=-\sqrt{2\mu_nC_{ox}\frac{W}{L}I_DR_D}=-\sqrt{2\mu_nC_{ox\frac{W}{L}}}\frac{V_{RD}}{\sqrt{I_D}}$</p>
-<hr>
-<h3 id="2-交流小信号分析"><a href="#2-交流小信号分析" class="headerlink" title="2. 交流小信号分析"></a>2. 交流小信号分析</h3><hr>
-<p><strong>幅频特性</strong></p>
-<p>​       幅频特性是指在电子技术实践中所遇到的信号往往不是单一频率的， 而是在某一段频率范围内，在放大电路、滤波电路及谐振电路等几乎所有的电子电路和设备中都含有电抗性元件， 由于它们在各种频率下的电抗值是不相同的，因而电信号在通过这些电子电路和设备的过程中，其幅度和相位发生了变化，亦即是使电信号在传输过程中发生了失真。电信号传输前后输入信号与输出信号的幅度之比称为幅频特性</p>
-<p>​       频率响应是控制系统对正弦输入信号的稳态正弦响应。即一个稳定的线性定常系统，在正弦信号的作用下，稳态时输出仍是一个与输入同频率的正弦信号，且稳态输出的幅值与相位是输入正弦信号频率的函数。幅频特性，它等于频率响应输出幅值与输入信号幅值之比。</p>
-<p>​       幅频特性就是指系统频率响应的幅度随频率变化的曲线,幅度大的地方对应通带,也就是对应频率成分通过系统有较小衰减,幅度小的地方对应阻带,也就是对应频率成分通过系统有较大衰减，根据这个特性，可以用来观测比较滤波器的情况，观察其是否符合要求也就是作为滤波器的技术指标。</p>
-<p>　　理想滤波器是分段常数型的,对应的脉冲响应是无限长的sinc函数,实际系统不可能实现,因此要对脉冲响应进行截断处理,这就在频域产生吉布斯效应,也就是在通带和阻带内形成波动,并且不再尖锐截止,产生过度带。同时可以画幅频特性曲线，这样可以主要检查设计的滤波器是否满足要求,主要指标有:通带截止频率,阻带截止频率,通带波纹和阻带衰减是否达到要求。</p>
-<p> <strong>相频特性</strong></p>
-<p>​       输入信号与输出信号的相角差称为相频特性，相角差与频率的关系曲线称为相频特性曲线</p>
-<p>正弦输入信号的响应也是正弦信号，频率与输入信号相同。不同的是相位与幅值。</p>
-<p>​       在电子技术实践中所遇到的信号往往不是单一频率的, 而是在某一段频率范围内, 在放大电路、滤波电路及谐振电路等几乎所有的电子电路和设备中都含有电抗性元件, 由于它们在各种频率下的电抗值是不相同的, 因而电信号在通过这些电子电路和设备的过程中, 其幅度和相位发生了变化, 亦即是使电信号在传输过程中发生了失真.这种失真有时候是我们需要的, 而有时候是不需要的, 而且必须加以克服。</p>
-<p>​       相位的测量, 通常是指两个或几个同频中的简谐信号之间的相位差的测量.它广泛应用于测量多相系统中或彩色电视系统中几个信号电压之间的相位关系;任意二端阻抗中的电压和电流之间的相位差;滤波器、移相器和放大器等网络的相位移及相位频率特性等</p>
-<hr>
-<h3 id="3-DC仿真找静态工作点"><a href="#3-DC仿真找静态工作点" class="headerlink" title="3. DC仿真找静态工作点"></a>3. DC仿真找静态工作点</h3><hr>
-<p>绘制原理图，如下图所示。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac2.png" alt></p>
-<p>其中电源电压为3.3V。输入信号设置为变量<strong>vgs</strong>，电阻阻值为10K左右，如下图所示。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac3.png" alt></p>
-<p>打开ADE，设置变量<strong>vgs</strong>，仿真类型<strong>dc</strong>，设置输出为<strong>out</strong>。（相关操作可参考<a href="http://ccbirds.cn/ICnotes22/">http://ccbirds.cn/ICnotes22/</a>）设置完成后如图所示。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac4.png" alt></p>
-<p>开始仿真，结果如下。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac5.png" alt></p>
-<p>使用快捷键<strong>m</strong>，标记线上的点，再使用快捷键 <strong>d</strong>，再点一个线上的点，会计算出两点之间的横坐标差与纵坐标差和斜率。（使用快捷键<strong>d</strong>时，要保持<strong>m</strong>点处于选中状态）。</p>
-<p>由上图可知 ，交流输入范围大约<em>790mV</em>，交流输出范围大约<em>1.4V</em>。输入电压的中点约<em>1.7V</em>左右。也就是静态工作点。</p>
-<hr>
-<h3 id="4-tran仿真"><a href="#4-tran仿真" class="headerlink" title="4. tran仿真"></a>4. tran仿真</h3><hr>
-<p>输入信号设置为正弦，查看输出是否正常，有无畸变。</p>
-<p>将原理图中的输入信号改为正弦波输入，选用器件<strong>vsin</strong>，如下图所示。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac6.png" alt></p>
-<p><strong>DC voltage</strong>为静态工工作点的值，<strong>Amplitude</strong>为输入范围的一半。<strong>frequency</strong>为频率设定，根据自己情况设置。</p>
-<p>电路如下图所示。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac7.png" alt></p>
-<p>设置ADE仿真环境，仿真类型为<strong>tran</strong>，输出加上一个输入信号 <strong>vin</strong>，输入与输出 对比，查看波形是否正常。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac8.png" alt></p>
-<p>可以设置 多个仿真类型，使用哪个在哪个使能框中打勾即可。</p>
-<p>结果如下图。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac9.png" alt></p>
-<p>基本无失真，说明静态工作点设置合适。</p>
-<hr>
-<h3 id="5-AC仿真"><a href="#5-AC仿真" class="headerlink" title="5. AC仿真"></a>5. AC仿真</h3><hr>
-<p>使用AC仿真，查看电路的幅频特性与相频特性。</p>
-<p>修改电路中<strong>vsin</strong>的参数 。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac10.png" alt></p>
-<p><strong>AC  magnitude</strong>，设置为<em>350mV</em>。<strong>AC  magnitude</strong>用于AC仿真，<strong>Amplitude</strong>用于瞬态仿真。</p>
-<p>设置仿真类型为ac，并设置开始与结束频率。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac11.png" alt></p>
-<p>开始仿真！，此时得到的结果不是幅频与相频，</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac12.png" alt></p>
-<p>选择红框中的<strong>AC Gain&amp;Phase</strong>。并依次选择原理图中的<strong>out</strong>与<strong>vin</strong></p>
-<p>结果如图所示，</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/ac13.png" alt></p>
-<p>此次没有优化放大器参数，电路特性不好。</p>
-<p>交流小信号分析就完事啦。</p>
-<hr>
-<p>欢迎大家访问！</p>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-<p>也可电邮我</p>
-<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
-]]></content>
-      <categories>
-        <category>集成电路设计</category>
-      </categories>
-      <tags>
-        <tag>cadence</tag>
-        <tag>virtuoso</tag>
-        <tag>ADE仿真</tag>
-        <tag>交流小信号分析</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>集成电路设计笔记（五）基于IC617带源极负反馈的共源级的放大器</title>
-    <url>/ICnotes54/</url>
-    <content><![CDATA[<p>本文主要记录带源极负反馈的共源级的放大器的原理及仿真验证</p>
-<hr>
-<h3 id="1-原理"><a href="#1-原理" class="headerlink" title="1. 原理"></a>1. 原理</h3><hr>
-<p>电路如图所示，$R_S$为源极反馈电阻</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs51.png" alt></p>
-<p>交流小信号如图所示</p>
-<a id="more"></a>
-
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs52.png" alt></p>
-<p>$$V_1=-I_xR_s$$</p>
-<p>$$I_x-(g_m+g_{mb})V_1=I_x+(g_m+g_{mb})R_sIx$$</p>
-<p>$$V_x=r_o[I_x+(g_m+g_{mb})R_sI_x]+I_xR_s$$</p>
-<p>$$R_{out}=V_x/I_x=[I+(g_m+g_{mb})R_s]r_o+R_s=[1+(g_m+g_{mb})r_o]R_s+r_o$$</p>
-<p>因为$(g_m+g_{mb})r_o&gt;&gt;I$</p>
-<p>所以$$R_{out}\approx[1+(g_m+g_{mb})R_s]r_o$$</p>
-<p>$$I_{out}=g_mV_1+g_{mb}V_{bs}+I_{ro}=g_mV_1-g_{mb}V_x-\frac{I_{out}R_s}{r_o}=g_m(V_{in}-I_{out}R_s)+g_{mb}(-I_{out}R_s)-\frac{I_{out}R_s}{r_o}$$</p>
-<p>可得到</p>
-<p>$$G_m=\frac{I_{out}}{V_{in}}=\frac{g_mr_o}{R_s+[1+(g_m+g_{mb})R_s]r_o}$$</p>
-<p>$$R_{out}=[1+(g_m+G_{mb})r_o]R_s+r_o$$</p>
-<p>可得增益为</p>
-<p>$$A_V=-G_m(R_D//R_{out})$$</p>
-<p>如果忽略沟道长度调制效应和衬底偏置效应，则</p>
-<p>交流小信号等效模型如图所示</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs53.png" alt></p>
-<p>$$V_{in}-V_1=g_mR_sV_1$$</p>
-<p>$$I_{out}=g_mV_1$$</p>
-<p>$$G_m=\frac{g_m}{1+g_mR_s}$$</p>
-<p>$$R_{out}=R_D$$</p>
-<p>$$A_V=-G_mR_{out}=-\frac{g_mR_D}{1+g_mR_s}=-\frac{R_D}{\frac{1}{g_M}+R_S}\approx -\frac{R_D}{R_S}$$</p>
-<p>可知，增益与两电阻的阻值有关。</p>
-<p>由于有源极负反馈，放大倍数不高。而且放大倍数与电阻有关，在电路中电阻越大，占有面积越大。</p>
-<hr>
-<h3 id="2-直流仿真验证"><a href="#2-直流仿真验证" class="headerlink" title="2. 直流仿真验证"></a>2. 直流仿真验证</h3><hr>
-<p>原理图如图所示</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs54.png" alt></p>
-<p>将栅极电压和两个电阻均设置为变量，</p>
-<p>变量初始值如下图所示</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs55.png" alt></p>
-<p>进行直流仿真结果，如下图所示</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs56.png" alt></p>
-<p>可知，放大倍数小，摆幅小。是因为两个电阻的比值小。</p>
-<p>下面我们增大RD来看看，曲线的变化 。</p>
-<p>打开参数扫描，如下图设置</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs57.png" alt></p>
-<p>开始仿真，如图所示。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs58.png" alt></p>
-<p>RD电阻越大，增益越大。</p>
-<p><em>关于，参数扫描。在参数扫描中设置的变量可以认为是第二变量，仿真后的曲线为ADE中设置的变量，在参数扫描中的变量会以多条曲线的形式画出来，仿真的步数等于曲线的条数。</em></p>
-<p>我们设置RD的阻值为50K，来进行下面的仿真验证。DC仿真如下图所示。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs59.png" alt></p>
-<hr>
-<h3 id="3-瞬态仿真验证"><a href="#3-瞬态仿真验证" class="headerlink" title="3. 瞬态仿真验证"></a>3. 瞬态仿真验证</h3><hr>
-<p>将信号源更改为正弦信号，并按下图设置</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs510.png" alt></p>
-<p>仿真结果如下图所示</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs511.png" alt></p>
-<p>可知，电路正常放大，无失真</p>
-<hr>
-<h3 id="4-交流小信号仿真"><a href="#4-交流小信号仿真" class="headerlink" title="4. 交流小信号仿真"></a>4. 交流小信号仿真</h3><hr>
-<p>设置AC仿真，频率范围设置为1K—10G</p>
-<p>结果如下图所示</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/cs512.png" alt></p>
-<p>可知，增益并不高。</p>
-<p>原理仿真就完事啦，欢迎大家留言讨论。</p>
-<hr>
-<p>欢迎大家访问！</p>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-<p>也可电邮我</p>
-<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
-]]></content>
-      <categories>
-        <category>集成电路设计</category>
-      </categories>
-      <tags>
-        <tag>cadence</tag>
-        <tag>virtuoso</tag>
-        <tag>ADE仿真</tag>
-        <tag>共源极放大器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>集成电路设计笔记（七）基于IC617UVLO设计</title>
-    <url>/ICnotes7/</url>
-    <content><![CDATA[<h3 id="1-什么是UVLO"><a href="#1-什么是UVLO" class="headerlink" title="1. 什么是UVLO"></a>1. 什么是UVLO</h3><hr>
-<p>欠压锁定（Undervoltage-Lockout）简称UVLO，是电子设备中在电源电压低于正常工程准位时，切断电源的电路。在嵌入式系统中常会用UVLO监控电池电压，若电压低于一定值，会直接切断电源，保护嵌入式系统的电路。 </p>
-<p>许多电子设备中都有UVLO的功能，例如在镇流器中就有UVLO电路，若电压过低时直接切断电源。</p>
-<a id="more"></a>
-
-<p>UVLO就是低电压锁定； 低压关断. 欠压关断模式是当供电电压低于IC的开启门限电压时的一种保护模式。欠压关断模式可保证IC在供电电压不足时不致于被损坏。一个低电压锁定（UVLO）电路可确保IC在电池电压未达到安全操作电压前不会激活，UVLO的功能会展示滞后现象，以确保在电源供应上的噪音不会不慎导致系统故障。</p>
-<p>UVLO的迟滞功能是防止电压在UVLO那一点的时候，出现振荡，所以加个迟滞.</p>
-<p>为了更稳定的工作，某些 DC/DC 转换器具有 UVLO（欠压锁定）功能。电源开启后，UVLO 功能使内部电路处于待机状态，直到DC/DC 转换器的输入电压（VIN）达到 UVLO 电压，以此来减少消费电流并避免误操作。</p>
-<hr>
-<h3 id="2-简单UVLO设计"><a href="#2-简单UVLO设计" class="headerlink" title="2. 简单UVLO设计"></a>2. 简单UVLO设计</h3><hr>
-<p>设计要求：3.3V电源电压，低电压2.8V关断，高电压3.0V启动</p>
-<p>下图为电路原理图</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/71.png" alt></p>
-<p>UVLO电路，迟滞比较器为电路核心。当电源电压由0V增加到5V时，在未正常工作前，放大器输出为低电平，经反向为高电平，使PM0关闭，</p>
-<p>$$V_{in+}=V_{cc}*\frac{R1}{R1+R2}$$</p>
-<p>当电源电压由5V减小为0V时，在关闭电源前，放大器输出为高电平，经反向为低电平。使得PM0导通。此时VIN+的电压为</p>
-<p>$$V_{in+}=V_{cc}*\frac{R1}{R1+R2//R3}$$</p>
-<p>根据要求，电源电压低于2.8V，系统关闭。电源电压高于3.0V系统打开。</p>
-<p>仿真结果如图所示</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/72.png" alt></p>
-<p>电压降低时，低于2.8V后，电源关断。电压升高到3.0V时，电源启动。</p>
-<p>简单UVLO完成了</p>
-<hr>
-<p>欢迎大家访问！</p>
-<p>博客网站  ：<br><a href="http://ccbirds.cn">ccbirds.cn</a><br><a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
-<p>也可电邮我</p>
-<p><a href="mailto:ccbirds@gmail.com">ccbirds@gmail.com</a></p>
-]]></content>
-      <categories>
-        <category>集成电路设计</category>
-      </categories>
-      <tags>
-        <tag>cadence</tag>
-        <tag>virtuoso</tag>
-        <tag>ADE仿真</tag>
-        <tag>UVLO</tag>
       </tags>
   </entry>
 </search>
